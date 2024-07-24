@@ -20,7 +20,7 @@ Details
   * actors and kdramas
 
 This Version
-* About 4 days, July 2024
+* Work duration: July 20, 2024 - Present
 
 Additional notes
 * Inaugural coderystal project!
