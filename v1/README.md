@@ -14,7 +14,7 @@ Features
 
 Details
 * Languages: plain HTML, JS, CSS
-* Structure: single HTML file, sharing through an HTML preview service [html-preview.github.io](https://github.com/html-preview/html-preview.github.io) using [tinyurl.com/kdramastatsv1](tinyurl.com/kdramastatsv1)
+* Structure: single HTML file, sharing through an HTML preview service [html-preview.github.io](https://github.com/html-preview/html-preview.github.io) using [tinyurl.com/kdramastatsv1](https://tinyurl.com/kdramastatsv1)
 * Data: JS Arrays
   * kdramareviews and edits
   * actors and kdramas
