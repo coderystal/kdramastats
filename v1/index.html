@@ -978,9 +978,9 @@
     <div id="footer">
       made by Crystal Wen, to recommend kdramas and keep track of my videos. beware controversial opinions and bad edits.
       sources of truth (in regards to this chart):
-      <a href="https://github.com/coderystal/kdramastats/tree/main/v1"><img id="github"
+      <a href="https://github.com/coderystal/kdramastats/tree/main/v1" target="_blank"><img id="github"
           src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"></a>
-      <a href="https://www.youtube.com/channel/UC6CkVOVhu8dKzJNfiGxtfoA"><img id="youtube"
+      <a href="https://www.youtube.com/channel/UC6CkVOVhu8dKzJNfiGxtfoA" target="_blank"><img id="youtube"
           src="https://cdn-icons-png.flaticon.com/512/152/152810.png"></a>
     </div>
 
@@ -1231,7 +1231,7 @@
             document.getElementById("kdramareviewstext").style.width="70%"
             document.getElementById("kdramareviewsimg").style.width="28%"
             let asianwikikey = kdrama[AWKEY]
-            document.getElementById("kdramareviewsimg").innerHTML = "<a id='actorlink' href='https://asianwiki.com/"+asianwikikey+"#Trailers'>AsianWiki: " + asianwikikey.replaceAll("_"," ") + "</a><br>" +
+            document.getElementById("kdramareviewsimg").innerHTML = "<a id='actorlink' href='https://asianwiki.com/"+asianwikikey+"#Trailers' target='_blank'>AsianWiki: " + asianwikikey.replaceAll("_"," ") + "</a><br>" +
               "<img id='kdramaposter' src='"+kdrama[PNG]+"''>"
           } else {
             document.getElementById("kdramareviewdetails_title").innerHTML = ""
@@ -1343,7 +1343,7 @@
       let text = document.createElement("div")
       text.innerHTML = (actor in actors ? actors[actor].name : actor) + "<br>"
       if (actor in actors) {
-        text.innerHTML += "<a id='actorlink' href='https://asianwiki.com/"+actors[actor].awkey+"'>AsianWiki: " + actors[actor].awkey.replaceAll("_", " ") + "</a>"
+        text.innerHTML += "<a id='actorlink' href='https://asianwiki.com/"+actors[actor].awkey+"' target='_blank'>AsianWiki: " + actors[actor].awkey.replaceAll("_", " ") + "</a>"
         let img = document.createElement("img")
         img.src = actors[actor].png
         img.id = "actorimg"
@@ -1360,7 +1360,7 @@
       document.getElementById("actordetails").appendChild(div)
     }
     function getEditDetail(edit) {
-      return "<a href='" + edit.Link + "'>" + edit.Title + " (wyx tv edit #" + edit.Number + ")</a><br>" +
+      return "<a href='" + edit.Link + "' target='_blank'>" + edit.Title + " (wyx tv edit #" + edit.Number + ")</a><br>" +
         "featuring <b>" + edit.Character + "</b> archetypes from " + edit.kdramas.length + " drama" + (edit.kdramas.length == 1 ? "" : "s") + ":<br>" + 
         edit.kdramas.map(kdrama => kdramas[kdrama]).join(", ")
 
