@@ -1,1259 +1,1426 @@
 <html>
-  <script id="definevariables">
-    function compareAlph(a, b, ind) {
-      if (a[ind] < b[ind])
-        return -1;
-      if (a[ind] > b[ind])
-        return 1;
-      return 0;
-    }
-
-    let actors = {
-      AJH: {"name":"Ahn Jae Hyun","awkey":"Ahn_Jae-Hyeon","png":"https://asianwiki.com/images/9/95/Ahn_Jae-Hyeon-p02.jpg"},
-      BARO: {"name":"Baro","awkey":"Baro","png":"https://asianwiki.com/images/3/3f/Cha_Sun-Woo-1992-p1.jpeg"},
-      CHANYEOL: {"name":"Chanyeol","awkey":"Chanyeol","png":"https://asianwiki.com/images/2/21/Chanyeol-p1.jpg"},
-      CJA: {"name":"Chae Jung An","awkey":"Chae_Jung-An","png":"https://asianwiki.com/images/5/53/Chae_Jung-An-1977-p1.jpeg"},
-      CSB: {"name":"Chae Soo Bin","awkey":"Chae_Soo-Bin","png":"https://asianwiki.com/images/f/fa/Chae_Soo-Bin-p1.jpg"},
-      CSW: {"name":"Cha Seung Won","awkey":"Cha_Seung-Won","png":"https://asianwiki.com/images/b/ba/Cha_Seung-Won-p3.jpg"},
-      CTH: {"name":"Cha Tae Hyun","awkey":"Cha_Tae-Hyun","png":"https://asianwiki.com/images/0/06/Cha_Tae-Hyun-SlowVideo.jpg"},
-      CYR: {"name":"Cha Ye Ryun","awkey":"Cha_Ye-Ryun","png":"https://asianwiki.com/images/a/a1/Cha_Ye_Ryun-The_Tenor.jpg"},
-      GHJ: {"name":"Gong Hyo Jin","awkey":"Kong_Hyo-Jin","png":"https://asianwiki.com/images/5/5f/Kong_Hyo-Jin-12-03-2016.jpg"},
-      HEJ: {"name":"Ham Eun Jung","awkey":"Ham_Eun-Jung","png":"https://asianwiki.com/images/c/c1/Eun_Jung-p5.jpg"},
-      HHJ: {"name":"Han Hyo Joo","awkey":"Han_Hyo-Joo","png":"https://asianwiki.com/images/6/69/Han_Hyo-Joo-1987-p1.jpeg"},
-      HJE: {"name":"Hwang Jung Eum","awkey":"Hwang_Jung-Eum","png":"https://asianwiki.com/images/1/1c/Hwang_Jung-Eum-1985-p1.jpg"},
-      HJW: {"name":"Ha Ji Won","awkey":"Ha_Ji-Won","png":"https://asianwiki.com/images/6/65/Ha_Ji-Won-1978-p1.jpeg"},
-      HSE: {"name":"Hwang Seung eon","awkey":"Hwang_Seung-Un","png":"https://asianwiki.com/images/c/c7/Hwang_Seung-Un-1988-p1.jpg"},
-      HYERI: {"name":"Hyeri","awkey":"Hyeri","png":"https://asianwiki.com/images/0/0f/Hyeri-1994-p1.jpg"},
-      HYS: {"name":"Han Ye Seul","awkey":"Han_Ye-Seul","png":"https://asianwiki.com/images/8/86/Han_Ye-Seul-1982.jpg"},
-      HYUNBIN: {"name":"Hyun Bin","awkey":"Hyun-Bin","png":"https://asianwiki.com/images/7/76/Hyun-Bin-1982-p1.jpg"},
-      IU: {"name":"IU","awkey":"IU","png":"https://asianwiki.com/images/e/ea/IU-p3.jpg"},
-      JB: {"name":"JB","awkey":"JB","png":"https://asianwiki.com/images/9/9d/Jb.jpg"},
-      JBA: {"name":"Jo Bo Ah","awkey":"Jo_Bo-Ah","png":"https://asianwiki.com/images/e/e4/Jo_Bo-Ah-1991-p1.jpeg"},
-      JEJ: {"name":"Jung Eun Ji","awkey":"Jung_Eun-Ji","png":"https://asianwiki.com/images/8/8f/Jung_Eun-Ji-Apink-p02.jpg"},
-      JES: {"name":"Ji Eun Sung","awkey":"Ji_Eun-Sung","png":"https://asianwiki.com/images/3/38/Ji_Eun-Sung-p1.jpg"},
-      JHI: {"name":"Jung Hae In","awkey":"Jung_Hae-In","png":"https://asianwiki.com/images/b/b3/Jung_Hae-In-1988-p1.jpg"},
-      JHW: {"name":"Ji Hyun Woo","awkey":"Ji_Hyun-Woo","png":"https://asianwiki.com/images/d/da/Ji_Hyun-Woo-p001.jpg"},
-      JHY: {"name":"Jung Ho Yeon","awkey":"Jung_Ho-Yeon_(1994)","png":"https://asianwiki.com/images/c/c7/Jung_Ho-Yeon_1994-p1.jpg"},
-      JINGOO: {"name":"Jin Goo","awkey":"Jin_Goo","png":"https://asianwiki.com/images/9/99/Jin-Goo-p2.jpg"},
-      JINWOON: {"name":"Jinwoon","awkey":"Jinwoon","png":"https://asianwiki.com/images/3/33/Jeong_Jin-Woon-1991-p1.jpg"},
-      JISOO: {"name":"Ji soo","awkey":"Ji_Soo","png":"https://asianwiki.com/images/2/20/Ji_Soo-p1.jpg"},
-      JISUNG: {"name":"Ji Sung","awkey":"Ji_Sung","png":"https://asianwiki.com/images/1/16/Ji_Sung-p4.jpg"},
-      JJH: {"name":"Jun Ji Hyun","awkey":"Gianna_Jun","png":"https://asianwiki.com/images/f/fa/Gianna_Jun-p4.jpg"},
-      JJS: {"name":"Jo Jong Suk","awkey":"Cho_Jung-Seok","png":"https://asianwiki.com/images/2/28/Cho_Jung-Seok-10-25-2015.jpg"},
-      JJY: {"name":"Jo Jae Yoon","awkey":"Jo_Jae-Yun","png":"https://asianwiki.com/images/6/65/Jo_Jae-Yun-1974-p1.jpg"},
-      KDM: {"name":"Kim Da Mi","awkey":"Kim_Da-Mi","png":"https://asianwiki.com/images/2/25/Kim_Da-Mi-P1.jpg"},
-      KDY: {"name":"Kwak Dong Yeon","awkey":"Kwak_Dong-Yeon","png":"https://asianwiki.com/images/c/c3/Kwak_Dong-Yeon-1997-p1.jpg"},
-      KGE: {"name":"Kim Go Eun","awkey":"Kim_Go-Eun","png":"https://asianwiki.com/images/6/6f/Kim_Go-Eun-Coin_Locker_Girl-GV.jpg"},
-      KHSF: {"name":"Kim Hee Sun","awkey":"Kim_Hee-Seon","png":"https://asianwiki.com/images/f/f0/Kim_Hee-Seon-p3.jpg"},
-      KHSM: {"name":"Kim Hye Sung","awkey":"Kim_Hye-Seong","png":"https://asianwiki.com/images/d/d2/Kim_Hye-Seong-p02.jpg"},
-      KJHAN: {"name":"Kim Jun Han","awkey":"Kim_Joon-Han_(1983)","png":"https://asianwiki.com/images/5/5d/Kim_Joon-Han_%281983%29-p01.jpg"},
-      KJHYUN: {"name":"Kim Jung Hyun","awkey":"Kim_Jung-Hyun_(1990)","png":"https://asianwiki.com/images/c/cd/Kim_Jung-Hyun-1990-pr1.jpeg"},
-      KJW: {"name":"Kim Ji Won","awkey":"Kim_Ji-Won_(1992)","png":"https://asianwiki.com/images/7/7f/Kim_Ji-Won_%281992%29-p3.jpg"},
-      KMH: {"name":"Kang Min Hyuk","awkey":"Kang_Min-Hyuk","png":"https://asianwiki.com/images/8/81/Kang_Min-Hyuk-1991-p1.jpeg"},
-      KNR: {"name":"Kwon Na Ra","awkey":"Kwon_Na-Ra","png":"https://asianwiki.com/images/d/d0/Kwon_Na-Ra-1991-p1.jpeg"},
-      KRW: {"name":"Kim Rae Won","awkey":"Kim_Rae-Won","png":"https://asianwiki.com/images/9/9c/Kim_Rae-Won-P3.jpg"},
-      KRYSTAL: {"name":"Krystal","awkey":"Krystal_(Jung_Soo-Jung)","png":"https://asianwiki.com/images/1/1c/Krystal_%28Jung_Soo-Jung%29-p001.jpg"},
-      KSG: {"name":"Kim Seul Gi","awkey":"Kim_Seul-Gi","png":"https://asianwiki.com/images/7/75/Kim_Seul-Gi-1991-p1.jpg"},
-      KSHF: {"name":"Kim So Hyun","awkey":"Kim_So-Hyun_(1999)","png":"https://asianwiki.com/images/5/5e/Kim_So-Hyun-1999-p001.jpeg"},
-      KSHM: {"name":"Kim Soo Hyun","awkey":"Kim_Soo-Hyun_(1988)","png":"https://asianwiki.com/images/e/ec/Kim_Soo-Hyun-1988-p02.jpg"},
-      KSR: {"name":"Kang So Ra","awkey":"Kang_So-Ra","png":"https://asianwiki.com/images/d/d6/Kang_So-Ra-1990-p1.jpeg"},
-      KWB: {"name":"Kim Woo Bin","awkey":"Kim_Woo-Bin","png":"https://asianwiki.com/images/1/10/Kim_Woo-Bin-1989-p1.jpg"},
-      KYJ: {"name":"Kim Yoo Jung","awkey":"Kim_You-Jung","png":"https://asianwiki.com/images/2/23/Kim_You-Jung-1999-tp1.jpeg"},
-      L: {"name":"L","awkey":"Kim_Myung-Soo_(L)","png":"https://asianwiki.com/images/b/bf/Kim_Myung-Soo-L-1992-p1.jpg"},
-      LDH: {"name":"Lee Da Hee","awkey":"Lee_Da-Hee","png":"https://asianwiki.com/images/6/6a/Lee_Da-Hee-1985-p01.jpg"},
-      LJH: {"name":"Lim Ju Hwan","awkey":"Lim_Ju-Hwan","png":"https://asianwiki.com/images/3/35/Lim_Ju-Hwan-1982-pt1.jpg"},
-      LJJ: {"name":"Lee Jung Jae","awkey":"Lee_Jung-Jae","png":"https://asianwiki.com/images/2/21/Lee_Jung-Jae-Assassiantion-GV.jpg"},
-      LJS: {"name":"Lee Jong Suk","awkey":"Lee_Jong-Suk","png":"https://asianwiki.com/images/9/9a/Lee_Jong-Suk-1989-p1.jpg"},
-      LJY: {"name":"Lim Ji Yeon","awkey":"Lim_Ji-Yeon","png":"https://asianwiki.com/images/a/a7/Lim_Ji-Yeon-1990-p1.jpeg"},
-      LMK: {"name":"Lee Min Ki","awkey":"Lee_Min-Ki","png":"https://asianwiki.com/images/9/91/Lee_Min-Ki-1985-p1.jpg"},
-      LSG: {"name":"Lee Sun Gyun","awkey":"Lee_Sun-Kyun","png":"https://asianwiki.com/images/f/f4/Lee_Sun-Kyun-1975-p01.jpg"},
-      LSGI: {"name":"Lee Seung Gi","awkey":"Lee_Seung-Gi","png":"https://asianwiki.com/images/7/75/Lee_Seung-Ki-p2.jpg"},
-      LSK: {"name":"Lee Sung Kyung","awkey":"Lee_Sung-Kyung","png":"https://asianwiki.com/images/9/93/Lee_Sung-Kyung-1990-p1.jpg"},
-      LSY: {"name":"Lee Sang Yeob","awkey":"Lee_Sang-Yeob","png":"https://asianwiki.com/images/3/3d/Lee_Sang-Yeob-1983-p1.jpg"},
-      LWK: {"name":"Lee Won Keun","awkey":"Lee_Won-Geun","png":"https://asianwiki.com/images/6/6d/Lee_Won-Geun-p02.jpg"},
-      MGY: {"name":"Moon Ga Young","awkey":"Mun_Ka-Young","png":"https://asianwiki.com/images/7/7b/Mun_Ka-Young-1996-p1.jpeg"},
-      MJI: {"name":"Moon Ji In","awkey":"Moon_Ji-In","png":"https://asianwiki.com/images/5/5a/Moon_Ji-In-1986.jpg"},
-      N: {"name":"N","awkey":"Cha_Hak-Yeon","png":"https://asianwiki.com/images/9/92/Cha_Hak-Yeon-1990-p1.jpg"},
-      NJH: {"name":"Nam Ji Hyun","awkey":"Nam_Ji-Hyun","png":"https://asianwiki.com/images/9/93/Nam_Ji-Hyun-1995-p1.jpg"},
-      NJHYUK: {"name":"Nam Joo Hyuk","awkey":"Nam_Joo-Hyuk","png":"https://asianwiki.com/images/7/7c/Nam_Joo-Hyuk-PR002.jpg"},
-      OJW: {"name":"On Joo Wan","awkey":"On_Joo-Wan","png":"https://asianwiki.com/images/1/1e/On_Joo-Wan-1983-p1.jpeg"},
-      ONR: {"name":"Oh Na Ra","awkey":"Oh_Na-Ra","png":"https://asianwiki.com/images/3/34/Oh_Na-Ra-1974-p01.jpg"},
-      OYS: {"name":"Oh Yeon Seo","awkey":"Oh_Yeon-Seo","png":"https://asianwiki.com/images/7/78/Oh_Yeon-Seo-p2.jpg"},
-      PBY: {"name":"Park Bo Young","awkey":"Park_Bo-Young","png":"https://asianwiki.com/images/a/a9/Park_Bo-Young-1990-p1.jpg"},
-      PHJ: {"name":"Park Hae jin","awkey":"Park_Hae-Jin","png":"https://asianwiki.com/images/f/fd/Park_Hae-Jin-1983-p1.jpeg"},
-      PHSAN: {"name":"Park Ho San","awkey":"Park_Ho-San","png":"https://asianwiki.com/images/6/6d/Park_Ho-San-1972-p1.jpeg"},
-      PHSIK: {"name":"Park Hyung Sik","awkey":"Park_Hyung-Sik","png":"https://asianwiki.com/images/f/f7/Park_Hyung-Sik-1991-p01.jpg"},
-      PHSOO: {"name":"Park Hae Soo","awkey":"Park_Hae-Soo","png":"https://asianwiki.com/images/a/ac/Park_Hae-Soo-P2.jpg"},
-      PJS: {"name":"Park Ji Soo","awkey":"Park_Ji-Soo","png":"https://asianwiki.com/images/b/b3/Mai_Ratima-0004.jpg"},
-      PJY: {"name":"Park Ji Yeon","awkey":"Park_Ji-Yeon_(T-ara)","png":"https://asianwiki.com/images/7/7b/Park_Ji-Yeon-Tara-p1.jpg"},
-      PSH: {"name":"Park Sung Hoon","awkey":"Park_Sung-Hoon_(1985)","png":"https://asianwiki.com/images/7/7b/Park_Sung-Hoon_%281985%29-p02.jpg"},
-      PSHYE: {"name":"Park Shin Hye","awkey":"Park_Shin-Hye","png":"https://asianwiki.com/images/7/7d/Park_Shin-Hye-1990-p01.jpeg"},
-      PSJ: {"name":"Park Seo Joon","awkey":"Park_Seo-Jun","png":"https://asianwiki.com/images/5/58/Park_Seo-Jun-1988-p1.jpeg"},
-      RAIN: {"name":"Rain","awkey":"Rain","png":"https://asianwiki.com/images/b/bf/Rain-1982-p1.jpg"},
-      RHY: {"name":"Ryu Hwa Young","awkey":"Ryu_Hwa-Young","png":"https://asianwiki.com/images/a/a3/Hwa_Young-p1.jpg"},
-      SEOHYUN: {"name":"Seohyun","awkey":"Seohyun","png":"https://asianwiki.com/images/a/a7/Seohyun-p001.jpg"},
-      SHJ: {"name":"Seo Hyun Jin","awkey":"Seo_Hyun-Jin_(1985)","png":"https://asianwiki.com/images/6/69/Seo_Hyun-Jin_-_1985-p1.jpg"},
-      SHK: {"name":"Song Hye Ko","awkey":"Song_Hye-Kyo","png":"https://asianwiki.com/images/e/ec/Song_Hye-Kyo-BIFF-p2.jpg"},
-      SIG: {"name":"Seo In Guk","awkey":"Seo_In-Guk","png":"https://asianwiki.com/images/d/da/Seo_In-Guk-p2.jpg"},
-      SJHA: {"name":"Shin Jae Ha","awkey":"Shin_Jae-Ha","png":"https://asianwiki.com/images/5/5b/Shin_Jae-Ha-1993-p01.jpeg"},
-      SJHYE: {"name":"Seo Ji Hye","awkey":"Seo_Ji-Hye","png":"https://asianwiki.com/images/4/46/Seo_Ji-Hye-1984-p1.jpg"},
-      SJHYUN: {"name":"Son Ji Hyun","awkey":"Nam_Ji-Hyun_(1990)","png":"https://asianwiki.com/images/c/c6/Son_Ji-Hyun-1990-p1.jpg"},
-      SJK: {"name":"Song Joong Ki","awkey":"Song_Joong-Ki","png":"https://asianwiki.com/images/e/e8/Song_Joong-Ki-p002.jpeg"},
-      SJR: {"name":"Song Jae Rim","awkey":"Song_Jae-Rim","png":"https://asianwiki.com/images/c/cc/Song_Jae-Rim-1985-p1.jpeg"},
-      SKJ: {"name":"Seo Kang Joon","awkey":"Seo_Kang-Joon","png":"https://asianwiki.com/images/f/f6/Seo_Kang-Joon-p1.jpg"},
-      SSB: {"name":"Song Sae Byeok","awkey":"Song_Sae-Byeok","png":"https://asianwiki.com/images/1/1d/Song_Sae-Byeok-p2.jpg"},
-      SUNGJAE: {"name":"Sungjae","awkey":"Yook_Sung-Jae","png":"https://asianwiki.com/images/3/36/Yook_Sung-Jae-1995-P1.jpeg"},
-      SUNGJOON: {"name":"Sung Joon","awkey":"Sung_Joon","png":"https://asianwiki.com/images/b/b6/Sung_Joon-p02.jpg"},
-      SUZY: {"name":"Suzy","awkey":"Bae_Suzy","png":"https://asianwiki.com/images/d/d0/Bae_Suzy-PR002.jpg"},
-      SYJ: {"name":"Son Ye Jin","awkey":"Son_Ye-Jin","png":"https://asianwiki.com/images/c/cb/Son_Ye-Jin-1982-p1.jpeg"},
-      TAECYEON: {"name":"Taecyeon","awkey":"TaecYeon","png":"https://asianwiki.com/images/a/a4/TaecYeon-p03.jpg"},
-      TROEXO: {"name":"the rest of exo","awkey":"","png":""},
-      UEE: {"name":"Uee","awkey":"Uee","png":"https://asianwiki.com/images/c/cd/Uee-p3.jpg"},
-      WDH: {"name":"Woo Do Hwan","awkey":"Woo_Do-Hwan","png":"https://asianwiki.com/images/8/8c/Woo_Do-Hwan-1992-p1.jpg"},
-      YJG: {"name":"Yeo Jin Goo","awkey":"Yeo_Jin-Goo","png":"https://asianwiki.com/images/d/da/Yeo_Jin-Goo-The_Long_Way_Home-GV.jpg"},
-      YJT: {"name":"Yoo Ji Tae","awkey":"Yoo_Ji-Tae","png":"https://asianwiki.com/images/b/be/Yoo_Ji-Tae-1976-p1.jpeg"},
-      YKS: {"name":"Yoon Kyun Sang","awkey":"Yun_Kyun-Sang","png":"https://asianwiki.com/images/6/6a/Yoon_Gyun-Sang-p03.jpg"},
-      YSHEE: {"name":"Yoon So Hee","awkey":"Yoon_So-Hee","png":"https://asianwiki.com/images/1/19/Yoon_So-Hee-1993-p1.jpeg"},
-      YSHO: {"name":"Yoo Seung Ho","awkey":"Yoo_Seung-Ho","png":"https://asianwiki.com/images/d/d1/Yoo_Seung-Ho-01-01-2016.jpg"},
-    }
-    function getActor(actorkey) {
-      return actorkey in actors ? actors[actorkey].name : actorkey
-    }
-    let kdramas = {
-      AM: "Angry Mom",
-      BI: "Beauty Inside",
-      CU: "Cheer Up!",
-      CITT: "Cheese in the Trap",
-      CWPFN: "Clean With Passion For Now",
-      CLOY: "Crash Landing on You",
-      DOTS: "Descendants of the Sun",
-      D: "Doctors",
-      DH: "Dream High",
-      DH2: "Dream High 2",
-      E: "Entertainer",
-      END: "Exo Next Door",
-      HS: "High Society",
-      HDL: "Hotel Del Luna",
-      H: "Hwayugi",
-      IC: "Itaewon Class",
-      KMHM: "Kill Me, Heal Me",
-      MD: "Mad Dog",
-      MA: "Madame Antoine",
-      MLFTS: "My Love From the Star",
-      MLG: "My Lovely Girl",
-      MM: "My Mister",
-      MSH: "My Strange Hero",
-      OMG: "Oh My Ghostess",
-      OMT: "One More Time",
-      PT: "Page Turner",
-      PERSONA: "Persona",
-      PINNOCHIO: "Pinocchio",
-      QOT: "Queen of Tears",
-      TSG: "Secret Garden",
-      SI2YO: "She is 200 Years Old",
-      SKL: "Shopping King Louie",
-      SG: "Squid Game",
-      SWDBS: "Strong Woman Do Bong Soon",
-      SP: "Surplus Princess",
-      TP: "The Producers",
-      T: "Time",
-      UF: "Uncontrollably Fond",
-      W: "W",
-      WFKBJ: "Weightlifting Fairy Kim Bok Joo",
-      WYWS: "While You Were Sleeping",
-      S2: "Who Are You: School 2015",
-      TBI: "The Beauty Inside"
-    }
-    let pngs = {
-      CALENDAR: "https://icons.veryicon.com/png/o/miscellaneous/face-monochrome-icon/calendar-249.png",
-      CLOCK: "https://cdn-icons-png.flaticon.com/512/105/105798.png",
-      AUDIENCECHART: "https://cdn4.iconfinder.com/data/icons/charts-soft/512/graph_chart_audience_chart_people_business_group-512.png",
-      SCORE: "https://www.iconpacks.net/icons/2/free-rating-icon-2796-thumb.png",
-      CRYEMOJI: "https://cdn1.iconfinder.com/data/icons/emoji-set-glyph/100/emoji_crying_cry_tears_upset_sad-512.png",
-      PLOT: "https://static.thenounproject.com/png/2965948-200.png",
-      AVATAR: "https://icons.veryicon.com/png/o/miscellaneous/standard/avatar-15.png",
-      DIRECTING: "https://icons.iconarchive.com/icons/roundicons/100-free-solid/256/director-icon.png",
-      ACTINGMASKS: "https://static.thenounproject.com/png/2337401-200.png",
-      FASTFORWARD: "https://static-00.iconduck.com/assets.00/fast-forward-icon-512x284-wrx8cfns.png",
-      CARETRIGHT: "https://icons.veryicon.com/png/o/miscellaneous/mirror-icon/caretright-1.png",
-      CARETDOWN: "https://icons.veryicon.com/png/o/miscellaneous/mirror-icon/caretdown-1.png"
-    }
-
-    //indexes for kdrama reviews, sortnames, and headerpngs
-    let TITLE = 0
-    let YR = 1
-    let HRS = 2
-    let AUD = 3
-    let FEM = 4
-    let MALE = 5
-    let SUP = 6
-    let SCORE = 7
-    let OVERVIEW = 8
-    let CRYABILITY = 9
-    let PLOT = 10
-    let CHARACTER = 11
-    let DIRECTION = 12
-    let ACTING = 13
-    let ENDING = 14
-    let SORTEDITIND = 15
-    let AWKEY = 15
-    let PNG = 16
-    let sortable = (i) => {
-      return i != FEM && i != MALE && i != SUP && i != OVERVIEW
-    }
-
-    let sortnames = ["Title", "Year", "Length (Hours)", "Audience %", "Female", "Male", "Other leads", "Overall Score", "Overview", "Cryability", "Plot Score", "Character Score", "Direction Score", "Acting Score", "Ending Score", "#Edits"]
-    let sortdescs = ["series title", "original release year", "approximate total length in hours", "average share of the audience who watched this kdrama while it was airing (korean popularity/mainstream-ness), as a percentage", "female lead actress", "male lead actor", "other primary lead actors", "quality of the kdrama as a whole", "general summary of the premise, concept, and style", "likelihood of the kdrama to reduce you to tears, on average over the course of the entire series", "storyline strength, cohesion, and attraction - depth and care with which the plot points and subject matter are handled", "enjoyability (likability with exceptions) of the cast", "influence of choices made to frame the kdrama, such as editing, music, composition, etc.", "(minimal) thoughts on the contributions of the actors", "effectiveness and manner of the finale (last episode with exceptions) in concluding the storylines, conceptually and emotionally", "number of videos that the kdrama is included in on wyx tv (my kdrama edit youtube channel lol)"]
-    let headerpngs = ["NONE", pngs.CALENDAR, pngs.CLOCK, pngs.AUDIENCECHART, "NONE", "NONE", "NONE", pngs.SCORE, "NONE", pngs.CRYEMOJI, pngs.PLOT, pngs.AVATAR, pngs.DIRECTING, pngs.ACTINGMASKS, pngs.FASTFORWARD, "NONE"]
-    let kdramadetails = [
-        ["WYWS",2017,16,8.6,["SUZY"],["LJS"],["JHI","LSY"],11,"hong joo, a reporter, has dreams that show her snippets of the future, and she meets jae chan, a lawyer, who has the same ability. they work together to deal with a series of crimes.",6,"10 beautifully written, extremely well thought through. a really interesting premise. elegantly connects back to itself, and loose ends tie up smoothly and unexpectedly, showcasing the work and thought of the writing. nothing happens for no reason.","10 wonderful, great. i love them all. likeable, relatable, very human.","","10","","While_You_Were_Sleeping_(2017)","https://asianwiki.com/images/1/1f/While_You_Were_Sleeping-CP1-2.jpg"],
-        ["W",2016,16,12.9,["HHJ"],["LJS"],[],10,"kang chul, the main character of a comic illustrated by oh yeon joo's father, is unaware that he is not 'real'. yeon joo finds herself in his world.",7,"9 a wicked concept, definitely very interesting and engaging. plot is cool and really stimulating, makes you think. starts to get crazy after awhile.","10 a strong and full cast, really well developed supporting characters","","","","W:_Two_Worlds_Apart","https://asianwiki.com/images/e/e8/W_%28Korean_Drama%29-p1.jpg"],
-        ["CITT",2016,16,6.2,["KGE"],["PHJ"],["SKJ","LSK"],9.5,"seol, a poor, hard-working university student, starts dating jung, a wealthy and manipulative senior, further complicating her life. she also befriends in ho, who, along with his sister in ha, had once been close with jung.",4,"9 wonderful subtle depth. pride, mentality, possible mental illness?  deals with everyday things, digs deeper into people's motivations and such. open ended. tremendous rewatch value. made me feel a lot, not just at big dramatic moments but in the average, the ordinary, there is so much heart.","10 complex characters, the more i rewatch, the more i sympathize. character relationships are so realistic and they all feel like real, dynamic, interesting people. each character has such a great story, and no one cannot be understood to some extent. ","8 The script and direction is just very full, it never feels stale or boring. Also, some really great music.","9 characters are wonderfully backed by talented, enjoyable actors.","","Cheese_in_the_Trap","https://asianwiki.com/images/4/47/Cheese_in_the_Trap-p1.jpg"],
-        ["MD",2017,16,6.8,["RHY"],["YJT"],["WDH","JJY","KHSM"],9.5,"choi kang woo leads a group of independent investigators to try to solve insurance crimes and resulting coverups. min joon, with his own motivations, joins their group.",8,"8 very complex, makes you think. a little confusing; some things dont make sense. sweet, sad, hard-hitting, solid watch. kind of loses momentum towards the end; some stuff left unfinished. also, i love how much of a subplot the romance is. it's cute to see that plot develop slowly and gradually, but it's really nice that the love interest is not embedded into the premise of the show. ","10 the characters are endearing and easy to sympathize with, if there are a lot of characters to keep track of","","10 all the actors are really captivating and represent their characters well, and are all gorgeous","i know what i said but still, idk why they kept teasing us with min joon and ha ri towards the end, that was quite annoying","Mad_Dog","https://asianwiki.com/images/8/82/Mad_Dog-P1.jpg"],
-        ["H",2018,30,5.7,["OYS"],["LSGI"],["CSW"],9,"based on sunwukong. seon mi, who can see supernatural beings, finds that she is pursued by demons. son oh gong is obligated to protect her.","","8 a tragic, but grand love story. there's a lot of stuff that this one goes through. a little dark. Engaging. just so much","","9 fantastical and cool","","","A_Korean_Odyssey","https://asianwiki.com/images/8/87/A_Korean_Odyssey-P1.jpg"],
-        ["SG",2021,8.5,0,["JHY"],["LJJ"],["PHSOO"],9,"poor people are desperate for money, and are given an opportunity to make some. (gruesome, if that affects your watchability)",9,"9 super thoughtful and well designed concept details, and the way it affects and motivates characters. powerful, devastating, and really hard-hitting. quite painful and uncomfortable to watch, but in the best way. there are some weird subplots, but it doesn't take much away from the viewing of the show.","8 main characters are fairly simple, but fun and solid. the heart is in the relationships between them, which are just incredible. so much drama and tension, so full. the way they treat each other brings out such gritty realities, even if there's not much nuance to each character. this lack of complexity gets more unlikable with some background characters, but i think the ones at the forefront are still genuine enough.","9 well paced and exciting. engaging.","9 good performances overall. some weird things but to make a point, i guess.","7 maintains its momentum and message throughout, and i liked most of the finale, the lack of resolution was somewhat rewarding. twist villain was ... not appreciated. changed little, ineffective. mixed feelings about the teaser of a second season.","Squid_Game","https://asianwiki.com/images/0/0e/Squid_Game-p2.jpg"],
-        ["SWDBS",2017,16,7.9,["PBY"],["PHSIK"],[],8.5,"do bong soon, a small woman born with superhuman strength, becomes a bodyguard for ahn min hyuk, a wealthy ceo. recurring kidnappings in their neighborhood have become a particular threat.","","8 super cute and sweet, but also really dark and heavy. it's weird because there are two completely different story lines, one which is super cutesy and the other which is dark and a lot to take in. the tones are so contrasting, and yet the scenes cut back and forth between the two plots which makes it kinda strange. however, both are written really well, really entertaining and captivating to watch.","","","9 wonderful and attractive actors","","Strong_Girl_Bong-Soon","https://asianwiki.com/images/f/f4/Strong_Woman_Do_Bong-Soon-p2.jpg"],
-        ["MM",2018,21,5.612,["IU"],["LSG"],["PHSAN","SSB","ONR","KNR"],8.5,"lee ji an, an unsociable intern in her twenties, wiretaps the phone of her boss, park dong hoon, and keeps up with what's going on in his life.",5,"8 an enjoyable story, with a lot of life and heart. although set in many mundane experiences, very meaningful and profound. an interesting and well-built world, but slow and steady rather than dramatic. low rewatchability for me, because it requires a little bit of focused investment to get into the headspace of the show. (a little taken out of it that the wiretapped audio is perfect and clear, but it is what it is).","9 really fantastic main character perspectives. a lot of fun dynamics, playful interactions, and a well-used supporting cast. no bland characters - all just annoying enough to feel real and interesting. i wish we got to understand more about their feelings, but they're constantly crying (which no one reacts to by the way) and drinking and not responding when people ask them questions.","10 love the style. slow, but doesn't drag - flashbacks, text/kiss shots. not repetitive or predictable. feels continuous, and soft. subtle, but doesn't take itself too seriously, allowing freely used editing and camerawork. timing and progressions are great, and the show feels balanced.","9 strong and convincing. good overall.","9 really sweet. pulls out all the stops, yet feels natural. a good cry. not a spoiler so much as a non-spoiler, but i'm really glad no romantic plotline was pursued (itaewon ptsd). side characters' stories were kind of left open, which is fine i suppose. i wish we had a clearer idea of what happened with yunhui. i kind of expected the loan shark redemption, but it was only hinted at and not completed, which is alright i suppose. really happy to see the changes in the characters' lives by the end.","My_Mister","https://asianwiki.com/images/2/2d/My_Mister-CP111.jpg"],
-        ["SP",2014,10,0,["JBA"],["OJW"],["SJR","PJS"],8,"hani is a mermaid who comes above water to pursue a romantic interest. she moves into a shared house and tries to manage finding love in time.",5,"7 i loved this one! even though it's based off a popular story, it's still very unique as a drama.","9 upended kdrama stereotypes. none of the male characters were horrible and intolerable, and both male romantic interests were kind and good people, so much so that i didn't know who the main lead was. i love the friendships and supporting characters, and the characters are nice and rounded. ","","","","The_Idle_Mermaid","https://asianwiki.com/images/7/7d/The_Mermaid-p1.jpg"],
-        ["PINNOCHIO",2014,20,11.8,["PSHYE"],["LJS"],[],8,"in ha and dal po both become reporters. in ha hiccups if she lies, while her mother notoriously exaggerates for the sake of ratings, hurting many people, including dal po.","","9 a cool story about growth, mistakes, and the impact people with influence have on others. legacy, individuality, and familial ties. solid watch.","","","","","Pinocchio_(Korean_Drama)","https://asianwiki.com/images/0/0f/Pinocchio_%28Korean_Drama%29-p1.jpg"],
-        ["OMG",2015,16,4.4,["PBY"],["JJS"],["KSG","LJH"],8,"soon ae, a ghost who thinks she cannot rest because she died a young virgin, befriends bong soon, a shy chef, possessing her to help her pursue a crush, as details surrounding her death are revealed.",8,"8 kind of dark. some heavy stuff. the plot gets a lot deeper than what it starts off as. incredibly touching and heart-wrenching. a unique plot, i think. wonderful and lovely, very full.","8 very touching and genuine protagonists, and fleshed out, complex characters, and a nice cast of supporting characters ","8 a nice score, also.","","","Oh_My_Ghost","https://asianwiki.com/images/5/5f/Oh_My_Ghost-p1.jpg"],
-        ["TP",2015,20,13,["GHJ"],["CTH"],["IU","KSHM"],8,"a look into the careers and personal lives of tv variety producers, and an idol who gets caught up in their work.","","7 super cute! very funny, very sassy, and some deep stuff too. some stuff that happens is kinda strange, but a good watch and very enjoyable. a lot of charm","","","8 iu is always amazing.","","The_Producers","https://asianwiki.com/images/6/6d/The_Producers-p1.jpg"],
-        ["PERSONA",2019,1.5,0,["IU"],[],[],8,"a 4 episode drama, with each telling a different story starring IU, directed by a different director.",3,"8 interesting and unique little tales, quite engaging","9 very interesting and well developed with a lot of depth, given the short structure","9 i mean what can i say, the direction was the point","9 amazing","","Persona_(Netflix)","https://asianwiki.com/images/f/f5/Persona_%28Netflix%29-P1.jpg"],
-        ["CLOY",2019,24,12.5,["SYJ"],["HYUNBIN"],["SJHYE","KJHYUN"],8,"seri, a wealthy south korean business woman, accidentally finds herself in north korea, and military captain jeong hyeok helps protect her identity as she tries to find her way home.","","7 high stakes throughout, unpredictable enough to keep me interested, curious. more and more forced, underdeveloped, unorganic plot points - things happen just to happen, so the desire to watch things unfold is unsatisfied. especially because it's kind of misleading, brushing over resolutions of conflicts that had been set up to pursue different ones. confusing and seemingly contradictory development. very good at being funny, not so consistent when trying to be dramatic. overall, though, very interesting to consider perspectives of different environments and lifestyles, and really nice parallels.","7 some are much less fleshed out than others. quite a lot of characters, the main ones stand out well, and grow realistically, but some development doesn't stick, which feels frustrating. i really expected the characters to learn more throughout the series. a really full and enjoyable and entertaining group of characters, though relatively one dimensional, especially the supporting cast.","9 very clean and enjoyable. the framing, transitions, pacing keeps the show easily engaging, but not consistently. certain shots are really powerful, but there are a lot more potentially emotional scenes that could have been more compelling if capturing viewers' emotions had been more of a priority. ","7 decent, nothing too special, had more potential. kim jung hyun did a great job here. some really good backing characters","0 this show had so much more potential. the reason the relationship was so interesting was that we know they can never be together. i thought the tragedy of their relationship was the whole point, but they reunite so easily. it would've been much more interesting to explore the kind of loss that would be, and watch the characters spend their lives apart. i really thought that was the weight of the show. instead it was cheapened to fall into a fairly normal kdrama relationship. i also must mention that i am bitter about seung jun esp when seri almost died 2324 times","Crash_Landing_on_You","https://asianwiki.com/images/f/f8/Crash_Landing_on_You-P1.jpg"],
-        ["QOT",2024,24,24.9,["KJW"],["KSHM"],["PSH"],8,"right when hyun woo is getting ready to divorce his wife of 3 years, hae in, a ceo in her family company, she is diagnosed with a terminal illness and given 3 months to live.",6,"8 note!! first episode is very expositional, setting the stage. please watch at least through some of episode 2 before giving up.<br><br>thoroughly romantic, well centralized around an engaging and compelling love story. a reasonable set of minor plots, for a full but not overwhelming overall narrative. fun, funny, lovable, and engaging. well done antagonist(s)<br><br>primary general storyline is conceptually interesting - predictable enough to build a lot of anticipation, but still handled with some nuance, and several curveballs to pick back up some tension throughout the show.<br><br>screen time is really poorly allocated. many important plot points are not hit very well, not developed and given enough to say or explain - handled a little messily/fumbly, losing potential tension, and not as satisfying. too much time spent on cliches and minor characters that aren't strong enough to add anything. could've been overall more focused and impactful, and more intentionally paced.<br><br>momentum is not consistent but is brought back quickly enough, many times proving to be more capable than expected to maintain an interesting thread.","9 i think they were going for good things, and a lot of it came through - characters that are motivated and reasonable, not pawns to the plot.<br><br>heartbreaking when need be, but, especially for the main couple, you can see them struggle and fight and try, react to their circumstances. the devastation is in the inevitability, the reasonableness, the reality of their conflict, not characters just behaving in an infuriatingly plot-driven way (almost all the time).<br><br>throughout the runtime, you also get to see more of the characters actually liking each other. the show is full of people who actually care and are kind, easier to root for than usual i think. you see love resurfacing after being obfuscated by complicated dyamics, much more fun than a lot of shows where the love itself is destructive and ruinous.<br><br>touching depth, primarily in the leads - interesting positions for them to be in, and engaging characterizations to portray - pitiful, pathetic, prideful, helpless, in the best way.<br>the main antagonists are mostly just hateable though<br><br>too much crying. too much - oh they figured everything out, off screen! i'm glad they're not stupid, but it's not as satisfying.","","","7 i can respect the finale. idk if it's what i wanted but i respect the concept. nice and full circle - from ep1 with a marriage that has become like strangers to the finale of technical strangers with an undeniable depth of love. a new beginning. wish we got to see more of them being happy. i did enjoy the final conflict resolution.<br><br>so thankful eun sung dies","Queen_Of_Tears","https://asianwiki.com/images/5/53/Queen_Of_Tears-p.jpg"],
-        ["AM",2015,16,9.3,["KHSF"],["JHW"],["KYJ","JISOO","BARO"],7.5,"ah ran attends a school with extremely corrupt leadership and rampant bullying, including that at the hands of gang members. when she gets hurt, her mother, kang ja, pretends to be a student to uncover crimes taking place at school.",8,"8 heavy. built in a lot of serious topics, and it's interesting to see how it all plays out. definitely does not sound like the kind of drama the name would imply. very dramatic, a lot, all over the place, but memorable and entertaining.","8 redemption, which is always wonderful. some characters are super bland, and not that well put together, but there are strong ones to pull it through.","7 weird/bad/boring music choices. ","","","Angry_Mom","https://asianwiki.com/images/5/5e/Angry_Mom-cp.jpg"],
-        ["PT",2016,3,4.4,["KSHF"],["SJHA"],["JISOO"],7.5,"teenage pianists search for meaning in their craft.","","7 chill, good story. easy to watch.","8 strong, well-written characters","","8 great actors ","","Page_Turner","https://asianwiki.com/images/7/74/Page_Turner-p1.jpg"],
-        ["SKL",2016,16,9.5,["NJH"],["SIG"],[],7.5,"louie is a wealthy heir who lives lavishly, until he loses his memory and is supported by bok sil, a poor but bright woman from the countryside who lives frugally.","","7 a very cute drama with a lot of sweet moments. lighthearted and fun, easy to watch. practically no conflict.","7 a lot of funny characters","","","","Shopaholic_Louis","https://asianwiki.com/images/7/77/Shopping_King_Louie-p1.jpg"],
-        ["WFKBJ",2016,16,4.9,["LSK"],["NJHYUK"],[],7.5,"bok joo is a weightlifter, and joon hyung a swimmer, at the same university. they navigate student life, friendships, as they consider their futures.","","6 goes through a lot of topics. overall, charming and funny.","7 the romance plot is interesting and sweet sometimes, but also it's kind of cringey. ","","","","Weightlifting_Fairy_Kim_Bok-Joo","https://asianwiki.com/images/8/83/Weightlifting_Fairy_Kim_Bok-Joo-p1.jpg"],
-        ["MA",2016,16,0,["HYS"],["SUNGJOON"],[],7.5,"go hye rim, a fortune teller, is the subject of neighboring psychologist choi soo hyun's experiment to prove that true love cannot exist.","","7 an interesting commentary about the nature of love. kind of open ended. a cool premise. Interesting.","8 fun characters ","","","","Madame_Antoine:_The_Love_Therapist","https://asianwiki.com/images/d/d2/Madame_Antoine-p1.jpg"],
-        ["E",2016,18,7.8,["HYERI"],["JISUNG"],["KMH","CJA"],7.5,"suk ho forms an independent entertainment company, and forms an amateur band that he tries to champion to keep his company alive in the competitive and cutthroat industry.","","7 fun, lighthearted drama. a good comedy. happy, but there are also moments that are serious and important, concepts that have real-world implications and are meaningful.","7 the main characters are a cute, fun, happy bunch","","","","Entertainer_(Korean_Drama)","https://asianwiki.com/images/a/ae/Entertainer_%28Korean_Drama%29-p1.jpg"],
-        ["SI2YO",2015,1,0,["SJHYUN"],["JES"],[],7,"se yeon, an immortal, meets jung hoon, who saves her from a traffic accident.","","7 i had a vague about this drama and yet i remembered certain specific details so clearly, it was so hard but i found it with a lot of google searches. i don't think i ever even knew the name of this drama, bc i didnt recognize it at first, but the content was very memorable. a lot of stuff is packed into these few episodes, and there's a great story in this one as well.","","","","","","https://i.mydramalist.com/lWygec.jpg?v=1"],
-        ["OMT",2016,4,0,["YSHEE"],["L"],[],7,"tension arises in the relationship between yoo tan and his long-time girlfriend da in, and they find themselves caught in a time warp that repeats a tragic event.","","6 kind of confusing. a premise you've seen before, but it's decently well done. I was just surprised bc it was my first time seeing a netflix exclusive kdrama. I don't remember much.","","","","","One_More_Time","https://asianwiki.com/images/e/eb/One_More_Time-p1.jpg"],
-        ["HDL",2019,24,9.5,["IU"],["YJG"],[],7,"man wol is the owner of a hotel for ghosts. chan seong, a kind and intelligent man, is recruited to work for the hotel. they deal with several cases of individual ghosts causing trouble, as well as the reincarnations of characters from man wol's tragic past.",7,"7 very intriguing story, i love how we are fed bits of plots at a time that grow, and you get the idea that everything is much more complex than you'd see in the first flashback. though, several times i got quite confused as to what's going on. a very captivating show, though it could move much faster. a bit underwritten at times, and i really wanted more from the romantic line, and i wish there had been a more coherent, overarching story. ","7 chan seong is probably the nicest person to ever exist, to a practically unrealistic point. i wish he could have had more. man wol is an awesome character, and the supporting cast is also really entertaining.","7 lots of cool effects & transitions, but also a lot of excessively long scenes and shaky cameras. interesting in contrast to some really wonderful and cinematic shots. but, lots of charm, and just beautiful. amazing music and just incredibly aesthetic shots.","9 beautiful, reputable, interesting actors, all of them. falls short in some scenes.","","Hotel_Del_Luna","https://asianwiki.com/images/4/4c/Hotel_Del_Luna-GP.jpg"],
-        ["CU",2015,12,3.8,["JEJ"],["LWK"],["Ji Soo","CSB","N"],6.5,"the lowest and highest ranked students at a high school are told to form a cheerleading club.","","6 kind of bland. entertaining","7 good, redeemable characters, though i really couldn't get behind the premise of the romance. ","","","","Cheer_Up!_(Korean_Drama)","https://asianwiki.com/images/6/62/Cheer_Up%21_%28Korean_Drama%29-p1.jpg"],
-        ["S2",2015,16,7.1,["KSHF"],["NJHYUK"],["SUNGJAE"],6.5,"eun bi, a poor girl living in a foster home, and eun byul, who attends a prestigious private school, twins, both get into an accident, and eun bi finds herself living eun byuls life.","","7 a decent story","6 some of the characters made me really angry, esp ones that were supposed to be 'good' characters. some sweet supporting characters.","","","","Who_Are_You:_School_2015","https://asianwiki.com/images/b/b4/Who_Are_You-_School_2015-p1.jpg"],
-        ["IC",2020,19,16.5,["KDM","KNR"],["PSJ"],[],6.5,"saeroyi resolves to become successful without compromising his values, along with a group of friends that he builds.","","7 the concepts are not bad at all. could be very interesting overall, although it isn't thorough about the many issues it tries to tackle. simultaneously feels like a lot and nothing is happening. i think pacing manages to stay somewhat natural despite ridiculously convenient plot devices, and while the show slows down significantly, time feels full and unwasted, EXCEPT for far too many unnecessary flashbacks to scenes we literally just saw. it's very unsubtle, contrived, and generally predictable, but when it's not, it doesn't make any sense. the buildup the plot does pursue helps significantly in giving weight.","4 while not unlikable, the characters aren't recognizable, with motivations behind what they do, say, or feel. they're not continuous people with overarching story lines, they just perform an action for a disjointed scene, so you can't expect growth. i have no idea what characters want and can literally never tell what they're thinking. relationally, very little makes sense, it's just there to prop up the plot, and i am unconvinced that anyone cares - they simply coexist, and don't interact like real people. also they talk slow and there's far too much evil laughter. although they are kind of very funny sometimes.","7 not terrible but strange sometimes, with too static and focused direction, where if something happens everything else stops. still, some incredible progressions and really powerful scenes among predictable or weird shots, movements, transitions, and sound choices.","6 the actors bring some fun, but most are simply unconvincing, although i can't say how much of it is a function of the empty character design.","","Itaewon_Class","https://asianwiki.com/images/c/c8/Itaewon_Class-mp1.jpg"],
-        ["KMHM",2015,20,11,["HJE"],["JISUNG"],[],6,"a man with DID hires a live-in psychologist","","i do not recall any opinions","","","","","Kill_Me,_Heal_Me","https://asianwiki.com/images/2/2e/Kill_Me%2C_Heal_Me-p1.jpg"],
-        ["DOTS",2016,18,28.375,["SHK"],["SJK"],["JINGOO","KJW"],6,"a soldier and doctor try to reconcile their different values as they fall in love",9,"6 way overrated, in my opinion. kind of all over the place. some hard-hitting episodes, but mostly it just felt kinda rushed and packed, with not much room for the plot to breathe","","9 well directed and produced","","","Descendants_of_the_Sun","https://asianwiki.com/images/e/e3/Descendants_of_the_Sun-p1.jpg"],
-        ["UF",2016,20,9.1,["SUZY"],["KWB"],[],6,"tragically intertwined high school lovers, noh eul and joon young, meet again, when noh eul is tasked with filming a documentary of joon young, who's now a singer.",7,"6 all i remember is it was kind of cute, but not much happened.","","","","","Uncontrollably_Fond","https://asianwiki.com/images/f/f5/Uncontrollably_Fond-p1.jpg"],
-        ["BI",2018,16,4.3,["SHJ"],["LMK"],["LDH","AJH","MJI"],6,"se gye, an actress, transforms monthly into a different body, and is caught by seo do jae, a businessman, but he doesn't notice because he can't recognize different faces. they learn more about each other's lives and secrets, each protected by their own friends.","","7 very cute and decently put together. some glaring omissions/dumb mistakes. compressed subplots that are not well woven in. still, very charming, abundance of funny moments. a good overarching story, but not too well executed. cannot watch more than once.","7 a lot of lovable characters, but characters' logic is confusing and annoying somtimes. ","5 some weird and confusing direction choices (camera placement, shot duration, audio, blocking) that get frustrating and boring to watch. ","5 the acting is not the best. the male lead especially - i know he's acclaimed, but for most of this show seems emotionless and unexpressive. ","","The_Beauty_Inside_(Korean_Drama)","https://asianwiki.com/images/9/94/The_Beauty_Inside_%28Korean_Drama%29-P1.jpg"],
-        ["DH",2011,17,16.2,["SUZY"],["KSHM"],["TAECYEON","HEJ"],5,"students, aspiring to be idols, craft their singing and dancing at a performance arts school.","","i don't remember these that well, but they were kind of strange, if i remember. pretty mediocre and odd. The first one was much better than the second.","","","","","Dream_High_-_Korean_Drama","https://asianwiki.com/images/b/b0/DreamHigh-p3.jpg"],
-        ["MLFTS",2013,21,25,["JJH"],["KSHM"],[],5,"a celebrity meets and falls in love with a magical man",6,"8 this was ...sad. after the cringe part was over, i was pretty invested and sympathized a lot.","6 a lot of the main characters were annoying. the romance is cute, though","","","","My_Love_From_the_Star","https://asianwiki.com/images/6/61/You_Who_Came_From_the_Stars-p1.jpg"],
-        ["END",2015,4,0,["MGY"],["CHANYEOL"],["TROEXO"],5,"exo lives next to a girl who blushes","","5 i dont remember much, but weird. strange. funny, though.","","","","","","https://i.mydramalist.com/7rxqrc.jpg?v=1"],
-        ["MSH",2019,16,5.3,["JBA"],["YSHO"],["KDY"],5,"as an adult, bok soo, who had been unfairly expelled from high school, returns as a student to get his revenge.","","5 an entertaining watch if you have time to kill. a lot of scenes are poorly written and could have been a lot more impactful. funny, though, and kinda weird.","5 the redemptions don't make much sense, and some of the 'good' characters are mean and unforgiving. but, there are a plethora of characters to like.","","","","My_Strange_Hero","https://asianwiki.com/images/9/90/My_Strange_Hero-TP.jpg"],
-        ["TSG",2010,20,25.6,["HJW"],["HYUNBIN"],[],4,"a man and woman switch bodies","","4 i dont remember this well, the plot was kinda forgettable.","4 i didn't like the characters very much.","","","","Secret_Garden_(SBS-2010-Korean_Drama)","https://asianwiki.com/images/f/f3/Secret_Garden_%28SBS-2010-Korean_Drama%29-p3.jpg"],
-        ["CWPFN",2018,16,2.8,["KYJ"],["YKS"],["SJR"],4,"oh sol, a very messy young adult looking for work, gets a job at a cleaning company run by seon gyul, who is extremely particular about his work and cleanliness in general.","","4 very whimsical, exaggerated, overly dramatic, and fun. can get a bit much, kinda alot sometimes. spunky. there are a lot of details that don't make sense that bugged me, and some random overemphasized but underdeveloped plot lines. the romantic plot was really really awkward and annoying to watch almost for all of it. last couple eps: so many tropes that i was bored and unempathetic, and then the chronology and direction got muddled too.","4 underdeveloped main leads lack character and personality, so their interactions are very difficult to watch. supporting characters are much more interesting and entertaining, providing sweet relationship dynamics. but ugh this male lead makes me really annoyed. self-centered, rude, and inconsiderate, in addition to unceasing awkwardness. got better at like very very end. i endured this for 1) daniel 2) joo yeon 3) oh dol and 4) dad. i couldn't care less about main characters. ","8 visually pleasing, clean and nicely shot direction. ","","the last ep, although very drawn out and dumb in parts, and although it DID NOT round out my favorite subplot >:(, was pretty satisfying overall. felt good that it ended on a decent note.","Clean_With_Passion_For_Now","https://asianwiki.com/images/3/39/Clean_With_Passion_For_Now-P1.jpg"],
-        ["DH2",2012,16,8.3,["KSR"],["JINWOON"],["PJY","JB"],3,"students, aspiring to be idols, craft their singing and dancing at a performance arts school.","","5 i don't remember these that well, but they were kind of strange, if i remember. pretty mediocre and odd. The first one was much better than the second.","","","","","Dream_High_2","https://asianwiki.com/images/d/da/Dream_High_2-p2.jpg"],
-        ["T",2018,16,3.1,["SEOHYUN"],["KJHYUN"],["KJHAN","HSE"],2.5,"cheon soo ho finds himself indebted to seol ji hyun, and she stays bitter","","6 i mean the story is fine, it makes sense and it tries to do some stuff that's kind of cool","4 there were almost no likable characters at all. the main character is so rude with simply not enough justification, unredeemable in my eyes.","","","","The_Time","https://asianwiki.com/images/3/3b/Time_%28Korean_Drama%29-P1.jpg"],
-        ["HS",2015,16,9,["UEE"],["SUNGJOON"],["PHSIK","LJY"],2,"2 rich people and 2 poor people couple and uncouple","","5 fun takes on a successful relationship and what compatibility is and how to secure something","2 everyone is annoying. ","3 not very well produced.","","","High_Society","https://asianwiki.com/images/f/f4/High_Society-p1.jpg"],
-        ["MLG",2014,16,6.8,["KRYSTAL"],["RAIN"],["L","CYR"],1,"a trainee and pop star take advantage of each other","","3 i don't remember this one very well, but it was kind of difficult to get through. not that entertaining.","3 annoying characters whose actions are frustrating to watch","","","","My_Lovely_Girl","https://asianwiki.com/images/8/83/My_Lovely_Girl-p1.jpg"],
-        ["D",2016,20,19,["PSHYE"],["KRW"],["YKS","LSK"],1,"doctors hang out","","1 i stopped watching this one because i really could not stand it. so boring.","3 i really didn't like the characters.","","","","Doctors_(Korean_Drama)","https://asianwiki.com/images/7/7a/Doctors_%28Korean_Drama%29-p1.jpg"]
-    ]
-    let minYr = Math.min(...kdramadetails.map(detail => detail[YR]))
-    let maxYr = Math.max(...kdramadetails.map(detail => detail[YR]))
-
-    let edits = [
- {
-   "Title": "6/10",
-   "Character": "second female lead",
-   "kdramas": ["CITT","D","MLFTS","W"],
-   "Number": 1,
-   "Link": "https://www.youtube.com/watch?v=lfTfVItrOZI",
-   "Embed": "https://www.youtube.com/embed/lfTfVItrOZI?si=DgoHTkwg2vpDuFK8"
- },
- {
-   "Title": "complicated",
-   "Character": "couple",
-   "kdramas": ["MA","MLFTS","SWDBS","TBI"],
-   "Number": 2,
-   "Link": "https://www.youtube.com/watch?v=omK1Eo9quNU",
-   "Embed": "https://www.youtube.com/embed/omK1Eo9quNU?si=Kb_kLBr8QRxXdeJ9"
- },
- {
-   "Title": "dream it possible",
-   "Character": "single drama",
-   "kdramas": ["SP"],
-   "Number": 3,
-   "Link": "https://www.youtube.com/watch?v=CgB9qi9JLGo",
-   "Embed": "https://www.youtube.com/embed/CgB9qi9JLGo?si=-xy5s6ZRKbqmvaue"
- },
- {
-   "Title": "a love song from paris",
-   "Character": "second male lead",
-   "kdramas": ["CITT","OMG","CU","S2","SKL"],
-   "Number": 4,
-   "Link": "https://www.youtube.com/watch?v=cGpxh9iy9sw&t=22s",
-   "Embed": "https://www.youtube.com/embed/cGpxh9iy9sw?si=McFrTIAN-pMz-_3Q&amp;start=22"
- },
- {
-   "Title": "i like u",
-   "Character": "couple",
-   "kdramas": ["HS","H","WFKBJ","WYWS"],
-   "Number": 5,
-   "Link": "https://www.youtube.com/watch?v=MWKznmDXbjQ",
-   "Embed": "https://www.youtube.com/embed/MWKznmDXbjQ?si=gG4ypOeB14M76Rjz"
- },
- {
-   "Title": "defying gravity",
-   "Character": "female lead",
-   "kdramas": ["CU","CITT","HS","OMG","S2","SKL","WFKBJ","WYWS"],
-   "Number": 6,
-   "Link": "https://www.youtube.com/watch?v=C9kC8DwOy3o",
-   "Embed": "https://www.youtube.com/embed/C9kC8DwOy3o?si=QObB98j1uKoY0ekF"
- },
- {
-   "Title": "found/tonight",
-   "Character": "friends",
-   "kdramas": ["CITT","HS","H","MD","OMG","CU","S2","SKL","T","WFKBJ","WYWS"],
-   "Number": 7,
-   "Link": "https://www.youtube.com/watch?v=gvvxTfaTZLM",
-   "Embed": "https://www.youtube.com/embed/gvvxTfaTZLM?si=uPYaMUkIUXuQAu4-"
- },
- {
-   "Title": "lost stars",
-   "Character": "friends",
-   "kdramas": ["CITT","HS","H","MD","OMG","CU","S2","SKL","T","WFKBJ","WYWS"],
-   "Number": 8,
-   "Link": "https://www.youtube.com/watch?v=I1t-vjj3Q8k",
-   "Embed": "https://www.youtube.com/embed/I1t-vjj3Q8k?si=_k9Yne67O1UfOEAA"
- },
- {
-   "Title": "gangsta",
-   "Character": "male lead",
-   "kdramas": ["AM","HS","H","MD","OMG","S2","SKL","BI","T","WFKBJ","WYWS"],
-   "Number": 9,
-   "Link": "https://www.youtube.com/watch?v=ugQvbS5_g34",
-   "Embed": "https://www.youtube.com/embed/ugQvbS5_g34?si=nweFdsbLmxLZ9AKm"
- },
- {
-   "Title": "say",
-   "Character": "male lead",
-   "kdramas": ["AM","BI","HS","H","MD","OMG","CU","S2","SKL","T","WFKBJ","WYWS"],
-   "Number": 10,
-   "Link": "https://www.youtube.com/watch?v=c8eUhuswkak",
-   "Embed": "https://www.youtube.com/embed/c8eUhuswkak?si=sdcBPF3qZgTMfXQX"
- },
- {
-   "Title": "hall of fame",
-   "Character": "male lead",
-   "kdramas": ["AM","BI","HS","H","MD","OMG","CU","S2","SKL","T","WFKBJ"],
-   "Number": 11,
-   "Link": "https://www.youtube.com/watch?v=kl1CNxI4WPg",
-   "Embed": "https://www.youtube.com/embed/kl1CNxI4WPg?si=56iRJ0HEDWycm7R2"
- },
- {
-   "Title": "let me go",
-   "Character": "redeemed",
-   "kdramas": ["AM","BI","CU"],
-   "Number": 12,
-   "Link": "https://www.youtube.com/watch?v=0agcl6-XkyY",
-   "Embed": "https://www.youtube.com/embed/0agcl6-XkyY?si=djgzhkrNLt6C1kNq"
- },
- {
-   "Title": "dance with me",
-   "Character": "couple",
-   "kdramas": ["AM","BI","OMG","T"],
-   "Number": 13,
-   "Link": "https://www.youtube.com/watch?v=eakXUeDjtsE",
-   "Embed": "https://www.youtube.com/embed/eakXUeDjtsE?si=QkfMj2Hh0wXA9DN2"
- },
- {
-   "Title": "exhale",
-   "Character": "female lead",
-   "kdramas": ["AM","BI","H","S2"],
-   "Number": 14,
-   "Link": "https://www.youtube.com/watch?v=czmuok5QO5Y",
-   "Embed": "https://www.youtube.com/embed/czmuok5QO5Y?si=5BXcMOzzxeJkGOMu"
- },
- {
-   "Title": "seasonal depression",
-   "Character": "second female lead",
-   "kdramas": ["CU","OMG","T","WFKBJ"],
-   "Number": 15,
-   "Link": "https://www.youtube.com/watch?v=z2pTiGZ7rCs",
-   "Embed": "https://www.youtube.com/embed/z2pTiGZ7rCs?si=x0urKmr2RwNVyYdU"
- },
- {
-   "Title": "angel",
-   "Character": "couple",
-   "kdramas": ["BI","H","SKL","WFKBJ","WYWS"],
-   "Number": 16,
-   "Link": "https://www.youtube.com/watch?v=OFJBK_9jDY8",
-   "Embed": "https://www.youtube.com/embed/OFJBK_9jDY8?si=xK89-nkuYCHTx50B"
- },
- {
-   "Title": "villains",
-   "Character": "antagonist",
-   "kdramas": ["AM","BI","OMG","S2","T"],
-   "Number": 17,
-   "Link": "https://www.youtube.com/watch?v=0RYs2Tbz4Tk",
-   "Embed": "https://www.youtube.com/embed/0RYs2Tbz4Tk?si=jo_LB6QmJnlxP3-g"
- },
- {
-   "Title": "head above water",
-   "Character": "female lead",
-   "kdramas": ["AM","BI","OMG","WFKBJ"],
-   "Number": 18,
-   "Link": "https://www.youtube.com/watch?v=jpOWn4y9rIU",
-   "Embed": "https://www.youtube.com/embed/jpOWn4y9rIU?si=cldMKJOotVxgOAqp"
- },
- {
-   "Title": "soren",
-   "Character": "couple",
-   "kdramas": ["BI","MD","S2","SKL"],
-   "Number": 19,
-   "Link": "https://www.youtube.com/watch?v=Sn8teVoD_Xs",
-   "Embed": "https://www.youtube.com/embed/Sn8teVoD_Xs?si=EtGv-YGwn_rMQAnA"
- },
- {
-   "Title": "honeysea",
-   "Character": "couple",
-   "kdramas": ["BI","MD","OMG"],
-   "Number": 20,
-   "Link": "https://www.youtube.com/watch?v=3TWr-BR5Kr4",
-   "Embed": "https://www.youtube.com/embed/3TWr-BR5Kr4?si=Frk3r5QgXfSzYX36"
- },
- {
-   "Title": "see a victory",
-   "Character": "protagonists",
-   "kdramas": ["AM","BI","HDL"],
-   "Number": 21,
-   "Link": "https://www.youtube.com/watch?v=YRL3jImFLfE",
-   "Embed": "https://www.youtube.com/embed/YRL3jImFLfE?si=ec-4mZIpwt3MPrgb"
- },
- {
-   "Title": "sidelines",
-   "Character": "second male lead",
-   "kdramas": ["AM","HS","HDL","WFKBJ","WYWS"],
-   "Number": 22,
-   "Link": "https://www.youtube.com/watch?v=9saBcuHyrBs",
-   "Embed": "https://www.youtube.com/embed/9saBcuHyrBs?si=bKvPV3wWP1hz_CCJ"
- },
- {
-   "Title": "monster",
-   "Character": "antagonist",
-   "kdramas": ["AM","HDL","OMG","SKL"],
-   "Number": 23,
-   "Link": "https://www.youtube.com/watch?v=tJvJpad5bSk",
-   "Embed": "https://www.youtube.com/embed/tJvJpad5bSk?si=k0RQbccrnhB3_mnp"
- },
- {
-   "Title": "the way u look tonight",
-   "Character": "couple",
-   "kdramas": ["HDL"],
-   "Number": 24,
-   "Link": "https://www.youtube.com/watch?v=k2juv2_IAU0",
-   "Embed": "https://www.youtube.com/embed/k2juv2_IAU0?si=7TeKazaLscLhLeDo"
- },
- {
-   "Title": "grow as we go",
-   "Character": "couple",
-   "kdramas": ["HDL"],
-   "Number": 25,
-   "Link": "https://www.youtube.com/watch?v=fhr8mZRaShk",
-   "Embed": "https://www.youtube.com/embed/fhr8mZRaShk?si=JlDdC2Ion0Er49E4"
- },
- {
-   "Title": "talk to me",
-   "Character": "friends",
-   "kdramas": ["BI","HDL","MD","OMG","CU","S2","SKL"],
-   "Number": 26,
-   "Link": "https://www.youtube.com/watch?v=2HsBRe0hVKE",
-   "Embed": "https://www.youtube.com/embed/2HsBRe0hVKE?si=4lZ_8D5xE5Qs4Ppa"
- },
- {
-   "Title": "i knew you once",
-   "Character": "friends",
-   "kdramas": ["AM","BI","HDL","CU"],
-   "Number": 27,
-   "Link": "https://www.youtube.com/watch?v=ClHUsVWLNHs",
-   "Embed": "https://www.youtube.com/embed/ClHUsVWLNHs?si=sR5rEKtNCyxp2XLA"
- },
- {
-   "Title": "gentleman",
-   "Character": "male lead",
-   "kdramas": ["HDL"],
-   "Number": 28,
-   "Link": "https://www.youtube.com/watch?v=ryJB-TUf5jY",
-   "Embed": "https://www.youtube.com/embed/ryJB-TUf5jY?si=tu8EXI3gXab1y--R"
- },
- {
-   "Title": "in case you don’t live forever",
-   "Character": "family",
-   "kdramas": ["AM","BI","CITT","HDL","WFKBJ"],
-   "Number": 29,
-   "Link": "https://www.youtube.com/watch?v=N3AQIyLg3GA",
-   "Embed": "https://www.youtube.com/embed/N3AQIyLg3GA?si=R5NqSjTfAdznNwDo"
- },
- {
-   "Title": "it’s not for me to say",
-   "Character": "couple",
-   "kdramas": ["BI","HDL","CU","SKL"],
-   "Number": 30,
-   "Link": "https://www.youtube.com/watch?v=wdSeo-QboVY",
-   "Embed": "https://www.youtube.com/embed/wdSeo-QboVY?si=LLA-5jwr4lZ8pefK"
- },
- {
-   "Title": "are you bored yet",
-   "Character": "supporting cast",
-   "kdramas": ["AM","BI","HDL"],
-   "Number": 31,
-   "Link": "https://www.youtube.com/watch?v=ho0FnlN3Shc",
-   "Embed": "https://www.youtube.com/embed/ho0FnlN3Shc?si=pBiyJytJQUJ4AFtx"
- },
- {
-   "Title": "you don’t know me",
-   "Character": "antagonist",
-   "kdramas": ["BI","CITT","HDL","OMG","S2"],
-   "Number": 32,
-   "Link": "https://www.youtube.com/watch?v=ZdLex71-D8U",
-   "Embed": "https://www.youtube.com/embed/ZdLex71-D8U?si=QYx2RoVzKMplizG2"
- },
- {
-   "Title": "please don’t",
-   "Character": "womance",
-   "kdramas": ["AM","BI","HDL","OMG"],
-   "Number": 33,
-   "Link": "https://www.youtube.com/watch?v=Kexi6YcDWI0",
-   "Embed": "https://www.youtube.com/embed/Kexi6YcDWI0?si=Yn6E5Il02nLjCW82"
- },
- {
-   "Title": "blue",
-   "Character": "couple",
-   "kdramas": ["HDL"],
-   "Number": 34,
-   "Link": "https://www.youtube.com/watch?v=L-zll7alIlg",
-   "Embed": "https://www.youtube.com/embed/L-zll7alIlg?si=yfCfTO-ZdJTF-5SO"
- },
- {
-   "Title": "best friend",
-   "Character": "second male lead",
-   "kdramas": ["CITT"],
-   "Number": 35,
-   "Link": "https://www.youtube.com/watch?v=UwRjPhcX_DU",
-   "Embed": "https://www.youtube.com/embed/UwRjPhcX_DU?si=quRkTq5k7UGN1_xQ"
- },
- {
-   "Title": "adore",
-   "Character": "couple",
-   "kdramas": ["CITT","HDL"],
-   "Number": 36,
-   "Link": "https://www.youtube.com/watch?v=9FElmsfsPWQ",
-   "Embed": "https://www.youtube.com/embed/9FElmsfsPWQ?si=7py_CwqD8cMip937"
- },
- {
-   "Title": "snowglobe",
-   "Character": "couple",
-   "kdramas": ["CITT","HDL"],
-   "Number": 37,
-   "Link": "https://www.youtube.com/watch?v=Zj-JarltGcg",
-   "Embed": "https://www.youtube.com/embed/Zj-JarltGcg?si=EzRIeObVIXI0LbMG"
- },
- {
-   "Title": "i won't say i'm in love",
-   "Character": "female lead",
-   "kdramas": ["HDL"],
-   "Number": 38,
-   "Link": "https://www.youtube.com/watch?v=jyHaRJuO4SU",
-   "Embed": "https://www.youtube.com/embed/jyHaRJuO4SU?si=CJ1DsnZ9jl2_BVvK"
- },
- {
-   "Title": "sometimes",
-   "Character": "couple",
-   "kdramas": ["CITT"],
-   "Number": 39,
-   "Link": "https://www.youtube.com/watch?v=Caiys0xSEcM",
-   "Embed": "https://www.youtube.com/embed/Caiys0xSEcM?si=LvcMvvA_k9Du6VoP"
- },
- {
-   "Title": "i love you so",
-   "Character": "couple",
-   "kdramas": ["CITT"],
-   "Number": 40,
-   "Link": "https://www.youtube.com/watch?v=S0dTMlFj2bE",
-   "Embed": "https://www.youtube.com/embed/S0dTMlFj2bE?si=RHCb4ckCfaCrM7E4"
- },
- {
-   "Title": "long live",
-   "Character": "friends",
-   "kdramas": ["BI","CITT","HDL"],
-   "Number": 41,
-   "Link": "https://www.youtube.com/watch?v=PIfbHlAWDPE",
-   "Embed": "https://www.youtube.com/embed/PIfbHlAWDPE?si=Pbju6pavx33M3WK8"
- },
- {
-   "Title": "comfort crowd",
-   "Character": "bromance",
-   "kdramas": ["AM","BI","CITT","CLOY","HDL","MD","OMG"],
-   "Number": 42,
-   "Link": "https://www.youtube.com/watch?v=DQ6tfr0LuIk",
-   "Embed": "https://www.youtube.com/embed/DQ6tfr0LuIk?si=xT8XQrIRbsZh37GG"
- },
- {
-   "Title": "past life",
-   "Character": "redeemed",
-   "kdramas": ["CLOY"],
-   "Number": 43,
-   "Link": "https://www.youtube.com/watch?v=IlFaCRar4js",
-   "Embed": "https://www.youtube.com/embed/IlFaCRar4js?si=HuQfvszrDzFfB1xh"
- },
- {
-   "Title": "you",
-   "Character": "second female lead",
-   "kdramas": ["CITT","CLOY","H","OMG"],
-   "Number": 44,
-   "Link": "https://www.youtube.com/watch?v=q1QK7ncBsNQ",
-   "Embed": "https://www.youtube.com/embed/q1QK7ncBsNQ?si=YpndPeMbxUOSCTmd"
- },
- {
-   "Title": "put your records on",
-   "Character": "female lead",
-   "kdramas": ["HDL"],
-   "Number": null,
-   "Link": "",
-   "Embed": ""
- },
- {
-    "Title": "i like mondays",
-    "Character": "female lead",
-    "kdramas": ["HDL"],
-    "Number": 45,
-    "Link": "https://www.youtube.com/watch?v=tqdum1m--hA",
-    "Embed": "https://www.youtube.com/embed/tqdum1m--hA?si=sYCQX9JdLjCjVO2m"
+<script id="definevariables">
+  function compareAlph(a, b, ind) {
+    if (a[ind] < b[ind])
+      return -1;
+    if (a[ind] > b[ind])
+      return 1;
+    return 0;
   }
-].sort((a,b)=>compareAlph(a, b, "Title"))
 
-    let kdramastoedits = {} //kdramatitle -> [editindex, editindex, ...]
-    kdramadetails.forEach((kdramareview) => {
-      let kdramatitle = kdramareview[TITLE]
-      kdramastoedits[kdramatitle] = edits.map((edit, i) => ({i:i, kdramas:edit.kdramas})).filter(edit => edit.kdramas.includes(kdramatitle)).map(edit => edit.i)
-    })
+  let actors = {
+    AJH: { "name": "Ahn Jae Hyun", "awkey": "Ahn_Jae-Hyeon", "png": "https://asianwiki.com/images/9/95/Ahn_Jae-Hyeon-p02.jpg" },
+    BARO: { "name": "Baro", "awkey": "Baro", "png": "https://asianwiki.com/images/3/3f/Cha_Sun-Woo-1992-p1.jpeg" },
+    CHANYEOL: { "name": "Chanyeol", "awkey": "Chanyeol", "png": "https://asianwiki.com/images/2/21/Chanyeol-p1.jpg" },
+    CJA: { "name": "Chae Jung An", "awkey": "Chae_Jung-An", "png": "https://asianwiki.com/images/5/53/Chae_Jung-An-1977-p1.jpeg" },
+    CSB: { "name": "Chae Soo Bin", "awkey": "Chae_Soo-Bin", "png": "https://asianwiki.com/images/f/fa/Chae_Soo-Bin-p1.jpg" },
+    CSW: { "name": "Cha Seung Won", "awkey": "Cha_Seung-Won", "png": "https://asianwiki.com/images/b/ba/Cha_Seung-Won-p3.jpg" },
+    CTH: { "name": "Cha Tae Hyun", "awkey": "Cha_Tae-Hyun", "png": "https://asianwiki.com/images/0/06/Cha_Tae-Hyun-SlowVideo.jpg" },
+    CYR: { "name": "Cha Ye Ryun", "awkey": "Cha_Ye-Ryun", "png": "https://asianwiki.com/images/a/a1/Cha_Ye_Ryun-The_Tenor.jpg" },
+    GHJ: { "name": "Gong Hyo Jin", "awkey": "Kong_Hyo-Jin", "png": "https://asianwiki.com/images/5/5f/Kong_Hyo-Jin-12-03-2016.jpg" },
+    HEJ: { "name": "Ham Eun Jung", "awkey": "Ham_Eun-Jung", "png": "https://asianwiki.com/images/c/c1/Eun_Jung-p5.jpg" },
+    HHJ: { "name": "Han Hyo Joo", "awkey": "Han_Hyo-Joo", "png": "https://asianwiki.com/images/6/69/Han_Hyo-Joo-1987-p1.jpeg" },
+    HJE: { "name": "Hwang Jung Eum", "awkey": "Hwang_Jung-Eum", "png": "https://asianwiki.com/images/1/1c/Hwang_Jung-Eum-1985-p1.jpg" },
+    HJW: { "name": "Ha Ji Won", "awkey": "Ha_Ji-Won", "png": "https://asianwiki.com/images/6/65/Ha_Ji-Won-1978-p1.jpeg" },
+    HSE: { "name": "Hwang Seung eon", "awkey": "Hwang_Seung-Un", "png": "https://asianwiki.com/images/c/c7/Hwang_Seung-Un-1988-p1.jpg" },
+    HYERI: { "name": "Hyeri", "awkey": "Hyeri", "png": "https://asianwiki.com/images/0/0f/Hyeri-1994-p1.jpg" },
+    HYS: { "name": "Han Ye Seul", "awkey": "Han_Ye-Seul", "png": "https://asianwiki.com/images/8/86/Han_Ye-Seul-1982.jpg" },
+    HYUNBIN: { "name": "Hyun Bin", "awkey": "Hyun-Bin", "png": "https://asianwiki.com/images/7/76/Hyun-Bin-1982-p1.jpg" },
+    IU: { "name": "IU", "awkey": "IU", "png": "https://asianwiki.com/images/e/ea/IU-p3.jpg" },
+    JB: { "name": "JB", "awkey": "JB", "png": "https://asianwiki.com/images/9/9d/Jb.jpg" },
+    JBA: { "name": "Jo Bo Ah", "awkey": "Jo_Bo-Ah", "png": "https://asianwiki.com/images/e/e4/Jo_Bo-Ah-1991-p1.jpeg" },
+    JEJ: { "name": "Jung Eun Ji", "awkey": "Jung_Eun-Ji", "png": "https://asianwiki.com/images/8/8f/Jung_Eun-Ji-Apink-p02.jpg" },
+    JES: { "name": "Ji Eun Sung", "awkey": "Ji_Eun-Sung", "png": "https://asianwiki.com/images/3/38/Ji_Eun-Sung-p1.jpg" },
+    JHI: { "name": "Jung Hae In", "awkey": "Jung_Hae-In", "png": "https://asianwiki.com/images/b/b3/Jung_Hae-In-1988-p1.jpg" },
+    JHW: { "name": "Ji Hyun Woo", "awkey": "Ji_Hyun-Woo", "png": "https://asianwiki.com/images/d/da/Ji_Hyun-Woo-p001.jpg" },
+    JHY: { "name": "Jung Ho Yeon", "awkey": "Jung_Ho-Yeon_(1994)", "png": "https://asianwiki.com/images/c/c7/Jung_Ho-Yeon_1994-p1.jpg" },
+    JINGOO: { "name": "Jin Goo", "awkey": "Jin_Goo", "png": "https://asianwiki.com/images/9/99/Jin-Goo-p2.jpg" },
+    JINWOON: { "name": "Jinwoon", "awkey": "Jinwoon", "png": "https://asianwiki.com/images/3/33/Jeong_Jin-Woon-1991-p1.jpg" },
+    JISOO: { "name": "Ji soo", "awkey": "Ji_Soo", "png": "https://asianwiki.com/images/2/20/Ji_Soo-p1.jpg" },
+    JISUNG: { "name": "Ji Sung", "awkey": "Ji_Sung", "png": "https://asianwiki.com/images/1/16/Ji_Sung-p4.jpg" },
+    JJH: { "name": "Jun Ji Hyun", "awkey": "Gianna_Jun", "png": "https://asianwiki.com/images/f/fa/Gianna_Jun-p4.jpg" },
+    JJS: { "name": "Jo Jong Suk", "awkey": "Cho_Jung-Seok", "png": "https://asianwiki.com/images/2/28/Cho_Jung-Seok-10-25-2015.jpg" },
+    JJY: { "name": "Jo Jae Yoon", "awkey": "Jo_Jae-Yun", "png": "https://asianwiki.com/images/6/65/Jo_Jae-Yun-1974-p1.jpg" },
+    KDM: { "name": "Kim Da Mi", "awkey": "Kim_Da-Mi", "png": "https://asianwiki.com/images/2/25/Kim_Da-Mi-P1.jpg" },
+    KDY: { "name": "Kwak Dong Yeon", "awkey": "Kwak_Dong-Yeon", "png": "https://asianwiki.com/images/c/c3/Kwak_Dong-Yeon-1997-p1.jpg" },
+    KGE: { "name": "Kim Go Eun", "awkey": "Kim_Go-Eun", "png": "https://asianwiki.com/images/6/6f/Kim_Go-Eun-Coin_Locker_Girl-GV.jpg" },
+    KHSF: { "name": "Kim Hee Sun", "awkey": "Kim_Hee-Seon", "png": "https://asianwiki.com/images/f/f0/Kim_Hee-Seon-p3.jpg" },
+    KHSM: { "name": "Kim Hye Sung", "awkey": "Kim_Hye-Seong", "png": "https://asianwiki.com/images/d/d2/Kim_Hye-Seong-p02.jpg" },
+    KJHAN: { "name": "Kim Jun Han", "awkey": "Kim_Joon-Han_(1983)", "png": "https://asianwiki.com/images/5/5d/Kim_Joon-Han_%281983%29-p01.jpg" },
+    KJHYUN: { "name": "Kim Jung Hyun", "awkey": "Kim_Jung-Hyun_(1990)", "png": "https://asianwiki.com/images/c/cd/Kim_Jung-Hyun-1990-pr1.jpeg" },
+    KJW: { "name": "Kim Ji Won", "awkey": "Kim_Ji-Won_(1992)", "png": "https://asianwiki.com/images/7/7f/Kim_Ji-Won_%281992%29-p3.jpg" },
+    KMH: { "name": "Kang Min Hyuk", "awkey": "Kang_Min-Hyuk", "png": "https://asianwiki.com/images/8/81/Kang_Min-Hyuk-1991-p1.jpeg" },
+    KNR: { "name": "Kwon Na Ra", "awkey": "Kwon_Na-Ra", "png": "https://asianwiki.com/images/d/d0/Kwon_Na-Ra-1991-p1.jpeg" },
+    KRW: { "name": "Kim Rae Won", "awkey": "Kim_Rae-Won", "png": "https://asianwiki.com/images/9/9c/Kim_Rae-Won-P3.jpg" },
+    KRYSTAL: { "name": "Krystal", "awkey": "Krystal_(Jung_Soo-Jung)", "png": "https://asianwiki.com/images/1/1c/Krystal_%28Jung_Soo-Jung%29-p001.jpg" },
+    KSG: { "name": "Kim Seul Gi", "awkey": "Kim_Seul-Gi", "png": "https://asianwiki.com/images/7/75/Kim_Seul-Gi-1991-p1.jpg" },
+    KSHF: { "name": "Kim So Hyun", "awkey": "Kim_So-Hyun_(1999)", "png": "https://asianwiki.com/images/5/5e/Kim_So-Hyun-1999-p001.jpeg" },
+    KSHM: { "name": "Kim Soo Hyun", "awkey": "Kim_Soo-Hyun_(1988)", "png": "https://asianwiki.com/images/e/ec/Kim_Soo-Hyun-1988-p02.jpg" },
+    KSR: { "name": "Kang So Ra", "awkey": "Kang_So-Ra", "png": "https://asianwiki.com/images/d/d6/Kang_So-Ra-1990-p1.jpeg" },
+    KWB: { "name": "Kim Woo Bin", "awkey": "Kim_Woo-Bin", "png": "https://asianwiki.com/images/1/10/Kim_Woo-Bin-1989-p1.jpg" },
+    KYJ: { "name": "Kim Yoo Jung", "awkey": "Kim_You-Jung", "png": "https://asianwiki.com/images/2/23/Kim_You-Jung-1999-tp1.jpeg" },
+    L: { "name": "L", "awkey": "Kim_Myung-Soo_(L)", "png": "https://asianwiki.com/images/b/bf/Kim_Myung-Soo-L-1992-p1.jpg" },
+    LDH: { "name": "Lee Da Hee", "awkey": "Lee_Da-Hee", "png": "https://asianwiki.com/images/6/6a/Lee_Da-Hee-1985-p01.jpg" },
+    LJH: { "name": "Lim Ju Hwan", "awkey": "Lim_Ju-Hwan", "png": "https://asianwiki.com/images/3/35/Lim_Ju-Hwan-1982-pt1.jpg" },
+    LJJ: { "name": "Lee Jung Jae", "awkey": "Lee_Jung-Jae", "png": "https://asianwiki.com/images/2/21/Lee_Jung-Jae-Assassiantion-GV.jpg" },
+    LJS: { "name": "Lee Jong Suk", "awkey": "Lee_Jong-Suk", "png": "https://asianwiki.com/images/9/9a/Lee_Jong-Suk-1989-p1.jpg" },
+    LJY: { "name": "Lim Ji Yeon", "awkey": "Lim_Ji-Yeon", "png": "https://asianwiki.com/images/a/a7/Lim_Ji-Yeon-1990-p1.jpeg" },
+    LMK: { "name": "Lee Min Ki", "awkey": "Lee_Min-Ki", "png": "https://asianwiki.com/images/9/91/Lee_Min-Ki-1985-p1.jpg" },
+    LSG: { "name": "Lee Sun Gyun", "awkey": "Lee_Sun-Kyun", "png": "https://asianwiki.com/images/f/f4/Lee_Sun-Kyun-1975-p01.jpg" },
+    LSGI: { "name": "Lee Seung Gi", "awkey": "Lee_Seung-Gi", "png": "https://asianwiki.com/images/7/75/Lee_Seung-Ki-p2.jpg" },
+    LSK: { "name": "Lee Sung Kyung", "awkey": "Lee_Sung-Kyung", "png": "https://asianwiki.com/images/9/93/Lee_Sung-Kyung-1990-p1.jpg" },
+    LSY: { "name": "Lee Sang Yeob", "awkey": "Lee_Sang-Yeob", "png": "https://asianwiki.com/images/3/3d/Lee_Sang-Yeob-1983-p1.jpg" },
+    LWK: { "name": "Lee Won Keun", "awkey": "Lee_Won-Geun", "png": "https://asianwiki.com/images/6/6d/Lee_Won-Geun-p02.jpg" },
+    MGY: { "name": "Moon Ga Young", "awkey": "Mun_Ka-Young", "png": "https://asianwiki.com/images/7/7b/Mun_Ka-Young-1996-p1.jpeg" },
+    MJI: { "name": "Moon Ji In", "awkey": "Moon_Ji-In", "png": "https://asianwiki.com/images/5/5a/Moon_Ji-In-1986.jpg" },
+    N: { "name": "N", "awkey": "Cha_Hak-Yeon", "png": "https://asianwiki.com/images/9/92/Cha_Hak-Yeon-1990-p1.jpg" },
+    NJH: { "name": "Nam Ji Hyun", "awkey": "Nam_Ji-Hyun", "png": "https://asianwiki.com/images/9/93/Nam_Ji-Hyun-1995-p1.jpg" },
+    NJHYUK: { "name": "Nam Joo Hyuk", "awkey": "Nam_Joo-Hyuk", "png": "https://asianwiki.com/images/7/7c/Nam_Joo-Hyuk-PR002.jpg" },
+    OJW: { "name": "On Joo Wan", "awkey": "On_Joo-Wan", "png": "https://asianwiki.com/images/1/1e/On_Joo-Wan-1983-p1.jpeg" },
+    ONR: { "name": "Oh Na Ra", "awkey": "Oh_Na-Ra", "png": "https://asianwiki.com/images/3/34/Oh_Na-Ra-1974-p01.jpg" },
+    OYS: { "name": "Oh Yeon Seo", "awkey": "Oh_Yeon-Seo", "png": "https://asianwiki.com/images/7/78/Oh_Yeon-Seo-p2.jpg" },
+    PBY: { "name": "Park Bo Young", "awkey": "Park_Bo-Young", "png": "https://asianwiki.com/images/a/a9/Park_Bo-Young-1990-p1.jpg" },
+    PHJ: { "name": "Park Hae jin", "awkey": "Park_Hae-Jin", "png": "https://asianwiki.com/images/f/fd/Park_Hae-Jin-1983-p1.jpeg" },
+    PHSAN: { "name": "Park Ho San", "awkey": "Park_Ho-San", "png": "https://asianwiki.com/images/6/6d/Park_Ho-San-1972-p1.jpeg" },
+    PHSIK: { "name": "Park Hyung Sik", "awkey": "Park_Hyung-Sik", "png": "https://asianwiki.com/images/f/f7/Park_Hyung-Sik-1991-p01.jpg" },
+    PHSOO: { "name": "Park Hae Soo", "awkey": "Park_Hae-Soo", "png": "https://asianwiki.com/images/a/ac/Park_Hae-Soo-P2.jpg" },
+    PJS: { "name": "Park Ji Soo", "awkey": "Park_Ji-Soo", "png": "https://asianwiki.com/images/b/b3/Mai_Ratima-0004.jpg" },
+    PJY: { "name": "Park Ji Yeon", "awkey": "Park_Ji-Yeon_(T-ara)", "png": "https://asianwiki.com/images/7/7b/Park_Ji-Yeon-Tara-p1.jpg" },
+    PSH: { "name": "Park Sung Hoon", "awkey": "Park_Sung-Hoon_(1985)", "png": "https://asianwiki.com/images/7/7b/Park_Sung-Hoon_%281985%29-p02.jpg" },
+    PSHYE: { "name": "Park Shin Hye", "awkey": "Park_Shin-Hye", "png": "https://asianwiki.com/images/7/7d/Park_Shin-Hye-1990-p01.jpeg" },
+    PSJ: { "name": "Park Seo Joon", "awkey": "Park_Seo-Jun", "png": "https://asianwiki.com/images/5/58/Park_Seo-Jun-1988-p1.jpeg" },
+    RAIN: { "name": "Rain", "awkey": "Rain", "png": "https://asianwiki.com/images/b/bf/Rain-1982-p1.jpg" },
+    RHY: { "name": "Ryu Hwa Young", "awkey": "Ryu_Hwa-Young", "png": "https://asianwiki.com/images/a/a3/Hwa_Young-p1.jpg" },
+    SEOHYUN: { "name": "Seohyun", "awkey": "Seohyun", "png": "https://asianwiki.com/images/a/a7/Seohyun-p001.jpg" },
+    SHJ: { "name": "Seo Hyun Jin", "awkey": "Seo_Hyun-Jin_(1985)", "png": "https://asianwiki.com/images/6/69/Seo_Hyun-Jin_-_1985-p1.jpg" },
+    SHK: { "name": "Song Hye Ko", "awkey": "Song_Hye-Kyo", "png": "https://asianwiki.com/images/e/ec/Song_Hye-Kyo-BIFF-p2.jpg" },
+    SIG: { "name": "Seo In Guk", "awkey": "Seo_In-Guk", "png": "https://asianwiki.com/images/d/da/Seo_In-Guk-p2.jpg" },
+    SJHA: { "name": "Shin Jae Ha", "awkey": "Shin_Jae-Ha", "png": "https://asianwiki.com/images/5/5b/Shin_Jae-Ha-1993-p01.jpeg" },
+    SJHYE: { "name": "Seo Ji Hye", "awkey": "Seo_Ji-Hye", "png": "https://asianwiki.com/images/4/46/Seo_Ji-Hye-1984-p1.jpg" },
+    SJHYUN: { "name": "Son Ji Hyun", "awkey": "Nam_Ji-Hyun_(1990)", "png": "https://asianwiki.com/images/c/c6/Son_Ji-Hyun-1990-p1.jpg" },
+    SJK: { "name": "Song Joong Ki", "awkey": "Song_Joong-Ki", "png": "https://asianwiki.com/images/e/e8/Song_Joong-Ki-p002.jpeg" },
+    SJR: { "name": "Song Jae Rim", "awkey": "Song_Jae-Rim", "png": "https://asianwiki.com/images/c/cc/Song_Jae-Rim-1985-p1.jpeg" },
+    SKJ: { "name": "Seo Kang Joon", "awkey": "Seo_Kang-Joon", "png": "https://asianwiki.com/images/f/f6/Seo_Kang-Joon-p1.jpg" },
+    SSB: { "name": "Song Sae Byeok", "awkey": "Song_Sae-Byeok", "png": "https://asianwiki.com/images/1/1d/Song_Sae-Byeok-p2.jpg" },
+    SUNGJAE: { "name": "Sungjae", "awkey": "Yook_Sung-Jae", "png": "https://asianwiki.com/images/3/36/Yook_Sung-Jae-1995-P1.jpeg" },
+    SUNGJOON: { "name": "Sung Joon", "awkey": "Sung_Joon", "png": "https://asianwiki.com/images/b/b6/Sung_Joon-p02.jpg" },
+    SUZY: { "name": "Suzy", "awkey": "Bae_Suzy", "png": "https://asianwiki.com/images/d/d0/Bae_Suzy-PR002.jpg" },
+    SYJ: { "name": "Son Ye Jin", "awkey": "Son_Ye-Jin", "png": "https://asianwiki.com/images/c/cb/Son_Ye-Jin-1982-p1.jpeg" },
+    TAECYEON: { "name": "Taecyeon", "awkey": "TaecYeon", "png": "https://asianwiki.com/images/a/a4/TaecYeon-p03.jpg" },
+    TROEXO: { "name": "the rest of exo", "awkey": "", "png": "" },
+    UEE: { "name": "Uee", "awkey": "Uee", "png": "https://asianwiki.com/images/c/cd/Uee-p3.jpg" },
+    WDH: { "name": "Woo Do Hwan", "awkey": "Woo_Do-Hwan", "png": "https://asianwiki.com/images/8/8c/Woo_Do-Hwan-1992-p1.jpg" },
+    YJG: { "name": "Yeo Jin Goo", "awkey": "Yeo_Jin-Goo", "png": "https://asianwiki.com/images/d/da/Yeo_Jin-Goo-The_Long_Way_Home-GV.jpg" },
+    YJT: { "name": "Yoo Ji Tae", "awkey": "Yoo_Ji-Tae", "png": "https://asianwiki.com/images/b/be/Yoo_Ji-Tae-1976-p1.jpeg" },
+    YKS: { "name": "Yoon Kyun Sang", "awkey": "Yun_Kyun-Sang", "png": "https://asianwiki.com/images/6/6a/Yoon_Gyun-Sang-p03.jpg" },
+    YSHEE: { "name": "Yoon So Hee", "awkey": "Yoon_So-Hee", "png": "https://asianwiki.com/images/1/19/Yoon_So-Hee-1993-p1.jpeg" },
+    YSHO: { "name": "Yoo Seung Ho", "awkey": "Yoo_Seung-Ho", "png": "https://asianwiki.com/images/d/d1/Yoo_Seung-Ho-01-01-2016.jpg" },
+  }
+  function getActor(actorkey) {
+    return actorkey in actors ? actors[actorkey].name : actorkey
+  }
+  let kdramas = {
+    AM: "Angry Mom",
+    BI: "Beauty Inside",
+    CU: "Cheer Up!",
+    CITT: "Cheese in the Trap",
+    CWPFN: "Clean With Passion For Now",
+    CLOY: "Crash Landing on You",
+    DOTS: "Descendants of the Sun",
+    D: "Doctors",
+    DH: "Dream High",
+    DH2: "Dream High 2",
+    E: "Entertainer",
+    END: "Exo Next Door",
+    HS: "High Society",
+    HDL: "Hotel Del Luna",
+    H: "Hwayugi",
+    IC: "Itaewon Class",
+    KMHM: "Kill Me, Heal Me",
+    MD: "Mad Dog",
+    MA: "Madame Antoine",
+    MLFTS: "My Love From the Star",
+    MLG: "My Lovely Girl",
+    MM: "My Mister",
+    MSH: "My Strange Hero",
+    OMG: "Oh My Ghostess",
+    OMT: "One More Time",
+    PT: "Page Turner",
+    PERSONA: "Persona",
+    PINNOCHIO: "Pinocchio",
+    QOT: "Queen of Tears",
+    TSG: "Secret Garden",
+    SI2YO: "She is 200 Years Old",
+    SKL: "Shopping King Louie",
+    SG: "Squid Game",
+    SWDBS: "Strong Woman Do Bong Soon",
+    SP: "Surplus Princess",
+    TP: "The Producers",
+    T: "Time",
+    UF: "Uncontrollably Fond",
+    W: "W",
+    WFKBJ: "Weightlifting Fairy Kim Bok Joo",
+    WYWS: "While You Were Sleeping",
+    S2: "Who Are You: School 2015",
+    TBI: "The Beauty Inside"
+  }
+  let pngs = {
+    CALENDAR: "https://icons.veryicon.com/png/o/miscellaneous/face-monochrome-icon/calendar-249.png",
+    CLOCK: "https://cdn-icons-png.flaticon.com/512/105/105798.png",
+    AUDIENCECHART: "https://cdn4.iconfinder.com/data/icons/charts-soft/512/graph_chart_audience_chart_people_business_group-512.png",
+    SCORE: "https://www.iconpacks.net/icons/2/free-rating-icon-2796-thumb.png",
+    CRYEMOJI: "https://cdn1.iconfinder.com/data/icons/emoji-set-glyph/100/emoji_crying_cry_tears_upset_sad-512.png",
+    PLOT: "https://static.thenounproject.com/png/2965948-200.png",
+    AVATAR: "https://icons.veryicon.com/png/o/miscellaneous/standard/avatar-15.png",
+    DIRECTING: "https://icons.iconarchive.com/icons/roundicons/100-free-solid/256/director-icon.png",
+    ACTINGMASKS: "https://static.thenounproject.com/png/2337401-200.png",
+    FASTFORWARD: "https://static-00.iconduck.com/assets.00/fast-forward-icon-512x284-wrx8cfns.png",
+    CARETRIGHT: "https://icons.veryicon.com/png/o/miscellaneous/mirror-icon/caretright-1.png",
+    CARETDOWN: "https://icons.veryicon.com/png/o/miscellaneous/mirror-icon/caretdown-1.png"
+  }
+
+  //indexes for kdrama reviews, sortnames, and headerpngs
+  let TITLE = 0
+  let YR = 1
+  let HRS = 2
+  let AUD = 3
+  let FEM = 4
+  let MALE = 5
+  let SUP = 6
+  let SCORE = 7
+  let OVERVIEW = 8
+  let CRYABILITY = 9
+  let PLOT = 10
+  let CHARACTER = 11
+  let DIRECTION = 12
+  let ACTING = 13
+  let ENDING = 14
+  let SORTEDITIND = 15
+  let AWKEY = 15
+  let PNG = 16
+  let sortable = (i) => {
+    return i != FEM && i != MALE && i != SUP && i != OVERVIEW
+  }
+
+  let sortnames = ["Title", "Year", "Length (Hours)", "Audience %", "Female", "Male", "Other leads", "Overall Score", "Overview", "Cryability", "Plot Score", "Character Score", "Direction Score", "Acting Score", "Ending Score", "#Edits"]
+  let sortdescs = ["series title", "original release year", "approximate total length in hours", "average share of the audience who watched this kdrama while it was airing (korean popularity/mainstream-ness), as a percentage", "female lead actress", "male lead actor", "other primary lead actors", "quality of the kdrama as a whole", "general summary of the premise, concept, and style", "likelihood of the kdrama to reduce you to tears, on average over the course of the entire series", "storyline strength, cohesion, and attraction - depth and care with which the plot points and subject matter are handled", "enjoyability (likability with exceptions) of the cast", "influence of choices made to frame the kdrama, such as editing, music, composition, etc.", "(minimal) thoughts on the contributions of the actors", "effectiveness and manner of the finale (last episode with exceptions) in concluding the storylines, conceptually and emotionally", "number of videos that the kdrama is included in on wyx tv (my kdrama edit youtube channel lol)"]
+  let headerpngs = ["NONE", pngs.CALENDAR, pngs.CLOCK, pngs.AUDIENCECHART, "NONE", "NONE", "NONE", pngs.SCORE, "NONE", pngs.CRYEMOJI, pngs.PLOT, pngs.AVATAR, pngs.DIRECTING, pngs.ACTINGMASKS, pngs.FASTFORWARD, "NONE"]
+  let kdramadetails = [
+    ["WYWS", 2017, 16, 8.6, ["SUZY"], ["LJS"], ["JHI", "LSY"], 11, "hong joo, a reporter, has dreams that show her snippets of the future, and she meets jae chan, a lawyer, who has the same ability. they work together to deal with a series of crimes.", 6, "10 beautifully written, extremely well thought through. a really interesting premise. elegantly connects back to itself, and loose ends tie up smoothly and unexpectedly, showcasing the work and thought of the writing. nothing happens for no reason.", "10 wonderful, great. i love them all. likeable, relatable, very human.", "", "10", "", "While_You_Were_Sleeping_(2017)", "https://asianwiki.com/images/1/1f/While_You_Were_Sleeping-CP1-2.jpg"],
+    ["W", 2016, 16, 12.9, ["HHJ"], ["LJS"], [], 10, "kang chul, the main character of a comic illustrated by oh yeon joo's father, is unaware that he is not 'real'. yeon joo finds herself in his world.", 7, "9 a wicked concept, definitely very interesting and engaging. plot is cool and really stimulating, makes you think. starts to get crazy after awhile.", "10 a strong and full cast, really well developed supporting characters", "", "", "", "W:_Two_Worlds_Apart", "https://asianwiki.com/images/e/e8/W_%28Korean_Drama%29-p1.jpg"],
+    ["CITT", 2016, 16, 6.2, ["KGE"], ["PHJ"], ["SKJ", "LSK"], 9.5, "seol, a poor, hard-working university student, starts dating jung, a wealthy and manipulative senior, further complicating her life. she also befriends in ho, who, along with his sister in ha, had once been close with jung.", 4, "9 wonderful subtle depth. pride, mentality, possible mental illness?  deals with everyday things, digs deeper into people's motivations and such. open ended. tremendous rewatch value. made me feel a lot, not just at big dramatic moments but in the average, the ordinary, there is so much heart.", "10 complex characters, the more i rewatch, the more i sympathize. character relationships are so realistic and they all feel like real, dynamic, interesting people. each character has such a great story, and no one cannot be understood to some extent. ", "8 The script and direction is just very full, it never feels stale or boring. Also, some really great music.", "9 characters are wonderfully backed by talented, enjoyable actors.", "", "Cheese_in_the_Trap", "https://asianwiki.com/images/4/47/Cheese_in_the_Trap-p1.jpg"],
+    ["MD", 2017, 16, 6.8, ["RHY"], ["YJT"], ["WDH", "JJY", "KHSM"], 9.5, "choi kang woo leads a group of independent investigators to try to solve insurance crimes and resulting coverups. min joon, with his own motivations, joins their group.", 8, "8 very complex, makes you think. a little confusing; some things dont make sense. sweet, sad, hard-hitting, solid watch. kind of loses momentum towards the end; some stuff left unfinished. also, i love how much of a subplot the romance is. it's cute to see that plot develop slowly and gradually, but it's really nice that the love interest is not embedded into the premise of the show. ", "10 the characters are endearing and easy to sympathize with, if there are a lot of characters to keep track of", "", "10 all the actors are really captivating and represent their characters well, and are all gorgeous", "i know what i said but still, idk why they kept teasing us with min joon and ha ri towards the end, that was quite annoying", "Mad_Dog", "https://asianwiki.com/images/8/82/Mad_Dog-P1.jpg"],
+    ["H", 2018, 30, 5.7, ["OYS"], ["LSGI"], ["CSW"], 9, "based on sunwukong. seon mi, who can see supernatural beings, finds that she is pursued by demons. son oh gong is obligated to protect her.", "", "8 a tragic, but grand love story. there's a lot of stuff that this one goes through. a little dark. Engaging. just so much", "", "9 fantastical and cool", "", "", "A_Korean_Odyssey", "https://asianwiki.com/images/8/87/A_Korean_Odyssey-P1.jpg"],
+    ["SG", 2021, 8.5, 0, ["JHY"], ["LJJ"], ["PHSOO"], 9, "poor people are desperate for money, and are given an opportunity to make some. (gruesome, if that affects your watchability)", 9, "9 super thoughtful and well designed concept details, and the way it affects and motivates characters. powerful, devastating, and really hard-hitting. quite painful and uncomfortable to watch, but in the best way. there are some weird subplots, but it doesn't take much away from the viewing of the show.", "8 main characters are fairly simple, but fun and solid. the heart is in the relationships between them, which are just incredible. so much drama and tension, so full. the way they treat each other brings out such gritty realities, even if there's not much nuance to each character. this lack of complexity gets more unlikable with some background characters, but i think the ones at the forefront are still genuine enough.", "9 well paced and exciting. engaging.", "9 good performances overall. some weird things but to make a point, i guess.", "7 maintains its momentum and message throughout, and i liked most of the finale, the lack of resolution was somewhat rewarding. twist villain was ... not appreciated. changed little, ineffective. mixed feelings about the teaser of a second season.", "Squid_Game", "https://asianwiki.com/images/0/0e/Squid_Game-p2.jpg"],
+    ["SWDBS", 2017, 16, 7.9, ["PBY"], ["PHSIK"], [], 8.5, "do bong soon, a small woman born with superhuman strength, becomes a bodyguard for ahn min hyuk, a wealthy ceo. recurring kidnappings in their neighborhood have become a particular threat.", "", "8 super cute and sweet, but also really dark and heavy. it's weird because there are two completely different story lines, one which is super cutesy and the other which is dark and a lot to take in. the tones are so contrasting, and yet the scenes cut back and forth between the two plots which makes it kinda strange. however, both are written really well, really entertaining and captivating to watch.", "", "", "9 wonderful and attractive actors", "", "Strong_Girl_Bong-Soon", "https://asianwiki.com/images/f/f4/Strong_Woman_Do_Bong-Soon-p2.jpg"],
+    ["MM", 2018, 21, 5.612, ["IU"], ["LSG"], ["PHSAN", "SSB", "ONR", "KNR"], 8.5, "lee ji an, an unsociable intern in her twenties, wiretaps the phone of her boss, park dong hoon, and keeps up with what's going on in his life.", 5, "8 an enjoyable story, with a lot of life and heart. although set in many mundane experiences, very meaningful and profound. an interesting and well-built world, but slow and steady rather than dramatic. low rewatchability for me, because it requires a little bit of focused investment to get into the headspace of the show. (a little taken out of it that the wiretapped audio is perfect and clear, but it is what it is).", "9 really fantastic main character perspectives. a lot of fun dynamics, playful interactions, and a well-used supporting cast. no bland characters - all just annoying enough to feel real and interesting. i wish we got to understand more about their feelings, but they're constantly crying (which no one reacts to by the way) and drinking and not responding when people ask them questions.", "10 love the style. slow, but doesn't drag - flashbacks, text/kiss shots. not repetitive or predictable. feels continuous, and soft. subtle, but doesn't take itself too seriously, allowing freely used editing and camerawork. timing and progressions are great, and the show feels balanced.", "9 strong and convincing. good overall.", "9 really sweet. pulls out all the stops, yet feels natural. a good cry. not a spoiler so much as a non-spoiler, but i'm really glad no romantic plotline was pursued (itaewon ptsd). side characters' stories were kind of left open, which is fine i suppose. i wish we had a clearer idea of what happened with yunhui. i kind of expected the loan shark redemption, but it was only hinted at and not completed, which is alright i suppose. really happy to see the changes in the characters' lives by the end.", "My_Mister", "https://asianwiki.com/images/2/2d/My_Mister-CP111.jpg"],
+    ["SP", 2014, 10, 0, ["JBA"], ["OJW"], ["SJR", "PJS"], 8, "hani is a mermaid who comes above water to pursue a romantic interest. she moves into a shared house and tries to manage finding love in time.", 5, "7 i loved this one! even though it's based off a popular story, it's still very unique as a drama.", "9 upended kdrama stereotypes. none of the male characters were horrible and intolerable, and both male romantic interests were kind and good people, so much so that i didn't know who the main lead was. i love the friendships and supporting characters, and the characters are nice and rounded. ", "", "", "", "The_Idle_Mermaid", "https://asianwiki.com/images/7/7d/The_Mermaid-p1.jpg"],
+    ["PINNOCHIO", 2014, 20, 11.8, ["PSHYE"], ["LJS"], [], 8, "in ha and dal po both become reporters. in ha hiccups if she lies, while her mother notoriously exaggerates for the sake of ratings, hurting many people, including dal po.", "", "9 a cool story about growth, mistakes, and the impact people with influence have on others. legacy, individuality, and familial ties. solid watch.", "", "", "", "", "Pinocchio_(Korean_Drama)", "https://asianwiki.com/images/0/0f/Pinocchio_%28Korean_Drama%29-p1.jpg"],
+    ["OMG", 2015, 16, 4.4, ["PBY"], ["JJS"], ["KSG", "LJH"], 8, "soon ae, a ghost who thinks she cannot rest because she died a young virgin, befriends bong soon, a shy chef, possessing her to help her pursue a crush, as details surrounding her death are revealed.", 8, "8 kind of dark. some heavy stuff. the plot gets a lot deeper than what it starts off as. incredibly touching and heart-wrenching. a unique plot, i think. wonderful and lovely, very full.", "8 very touching and genuine protagonists, and fleshed out, complex characters, and a nice cast of supporting characters ", "8 a nice score, also.", "", "", "Oh_My_Ghost", "https://asianwiki.com/images/5/5f/Oh_My_Ghost-p1.jpg"],
+    ["TP", 2015, 20, 13, ["GHJ"], ["CTH"], ["IU", "KSHM"], 8, "a look into the careers and personal lives of tv variety producers, and an idol who gets caught up in their work.", "", "7 super cute! very funny, very sassy, and some deep stuff too. some stuff that happens is kinda strange, but a good watch and very enjoyable. a lot of charm", "", "", "8 iu is always amazing.", "", "The_Producers", "https://asianwiki.com/images/6/6d/The_Producers-p1.jpg"],
+    ["PERSONA", 2019, 1.5, 0, ["IU"], [], [], 8, "a 4 episode drama, with each telling a different story starring IU, directed by a different director.", 3, "8 interesting and unique little tales, quite engaging", "9 very interesting and well developed with a lot of depth, given the short structure", "9 i mean what can i say, the direction was the point", "9 amazing", "", "Persona_(Netflix)", "https://asianwiki.com/images/f/f5/Persona_%28Netflix%29-P1.jpg"],
+    ["CLOY", 2019, 24, 12.5, ["SYJ"], ["HYUNBIN"], ["SJHYE", "KJHYUN"], 8, "seri, a wealthy south korean business woman, accidentally finds herself in north korea, and military captain jeong hyeok helps protect her identity as she tries to find her way home.", "", "7 high stakes throughout, unpredictable enough to keep me interested, curious. more and more forced, underdeveloped, unorganic plot points - things happen just to happen, so the desire to watch things unfold is unsatisfied. especially because it's kind of misleading, brushing over resolutions of conflicts that had been set up to pursue different ones. confusing and seemingly contradictory development. very good at being funny, not so consistent when trying to be dramatic. overall, though, very interesting to consider perspectives of different environments and lifestyles, and really nice parallels.", "7 some are much less fleshed out than others. quite a lot of characters, the main ones stand out well, and grow realistically, but some development doesn't stick, which feels frustrating. i really expected the characters to learn more throughout the series. a really full and enjoyable and entertaining group of characters, though relatively one dimensional, especially the supporting cast.", "9 very clean and enjoyable. the framing, transitions, pacing keeps the show easily engaging, but not consistently. certain shots are really powerful, but there are a lot more potentially emotional scenes that could have been more compelling if capturing viewers' emotions had been more of a priority. ", "7 decent, nothing too special, had more potential. kim jung hyun did a great job here. some really good backing characters", "0 this show had so much more potential. the reason the relationship was so interesting was that we know they can never be together. i thought the tragedy of their relationship was the whole point, but they reunite so easily. it would've been much more interesting to explore the kind of loss that would be, and watch the characters spend their lives apart. i really thought that was the weight of the show. instead it was cheapened to fall into a fairly normal kdrama relationship. i also must mention that i am bitter about seung jun esp when seri almost died 2324 times", "Crash_Landing_on_You", "https://asianwiki.com/images/f/f8/Crash_Landing_on_You-P1.jpg"],
+    ["QOT", 2024, 24, 24.9, ["KJW"], ["KSHM"], ["PSH"], 8, "right when hyun woo is getting ready to divorce his wife of 3 years, hae in, a ceo in her family company, she is diagnosed with a terminal illness and given 3 months to live.", 6, "8 note!! first episode is very expositional, setting the stage. please watch at least through some of episode 2 before giving up.<br><br>thoroughly romantic, well centralized around an engaging and compelling love story. a reasonable set of minor plots, for a full but not overwhelming overall narrative. fun, funny, lovable, and engaging. well done antagonist(s)<br><br>primary general storyline is conceptually interesting - predictable enough to build a lot of anticipation, but still handled with some nuance, and several curveballs to pick back up some tension throughout the show.<br><br>screen time is really poorly allocated. many important plot points are not hit very well, not developed and given enough to say or explain - handled a little messily/fumbly, losing potential tension, and not as satisfying. too much time spent on cliches and minor characters that aren't strong enough to add anything. could've been overall more focused and impactful, and more intentionally paced.<br><br>momentum is not consistent but is brought back quickly enough, many times proving to be more capable than expected to maintain an interesting thread.", "9 i think they were going for good things, and a lot of it came through - characters that are motivated and reasonable, not pawns to the plot.<br><br>heartbreaking when need be, but, especially for the main couple, you can see them struggle and fight and try, react to their circumstances. the devastation is in the inevitability, the reasonableness, the reality of their conflict, not characters just behaving in an infuriatingly plot-driven way (almost all the time).<br><br>throughout the runtime, you also get to see more of the characters actually liking each other. the show is full of people who actually care and are kind, easier to root for than usual i think. you see love resurfacing after being obfuscated by complicated dyamics, much more fun than a lot of shows where the love itself is destructive and ruinous.<br><br>touching depth, primarily in the leads - interesting positions for them to be in, and engaging characterizations to portray - pitiful, pathetic, prideful, helpless, in the best way.<br>the main antagonists are mostly just hateable though<br><br>too much crying. too much - oh they figured everything out, off screen! i'm glad they're not stupid, but it's not as satisfying.", "", "", "7 i can respect the finale. idk if it's what i wanted but i respect the concept. nice and full circle - from ep1 with a marriage that has become like strangers to the finale of technical strangers with an undeniable depth of love. a new beginning. wish we got to see more of them being happy. i did enjoy the final conflict resolution.<br><br>so thankful eun sung dies", "Queen_Of_Tears", "https://asianwiki.com/images/5/53/Queen_Of_Tears-p.jpg"],
+    ["AM", 2015, 16, 9.3, ["KHSF"], ["JHW"], ["KYJ", "JISOO", "BARO"], 7.5, "ah ran attends a school with extremely corrupt leadership and rampant bullying, including that at the hands of gang members. when she gets hurt, her mother, kang ja, pretends to be a student to uncover crimes taking place at school.", 8, "8 heavy. built in a lot of serious topics, and it's interesting to see how it all plays out. definitely does not sound like the kind of drama the name would imply. very dramatic, a lot, all over the place, but memorable and entertaining.", "8 redemption, which is always wonderful. some characters are super bland, and not that well put together, but there are strong ones to pull it through.", "7 weird/bad/boring music choices. ", "", "", "Angry_Mom", "https://asianwiki.com/images/5/5e/Angry_Mom-cp.jpg"],
+    ["PT", 2016, 3, 4.4, ["KSHF"], ["SJHA"], ["JISOO"], 7.5, "teenage pianists search for meaning in their craft.", "", "7 chill, good story. easy to watch.", "8 strong, well-written characters", "", "8 great actors ", "", "Page_Turner", "https://asianwiki.com/images/7/74/Page_Turner-p1.jpg"],
+    ["SKL", 2016, 16, 9.5, ["NJH"], ["SIG"], [], 7.5, "louie is a wealthy heir who lives lavishly, until he loses his memory and is supported by bok sil, a poor but bright woman from the countryside who lives frugally.", "", "7 a very cute drama with a lot of sweet moments. lighthearted and fun, easy to watch. practically no conflict.", "7 a lot of funny characters", "", "", "", "Shopaholic_Louis", "https://asianwiki.com/images/7/77/Shopping_King_Louie-p1.jpg"],
+    ["WFKBJ", 2016, 16, 4.9, ["LSK"], ["NJHYUK"], [], 7.5, "bok joo is a weightlifter, and joon hyung a swimmer, at the same university. they navigate student life, friendships, as they consider their futures.", "", "6 goes through a lot of topics. overall, charming and funny.", "7 the romance plot is interesting and sweet sometimes, but also it's kind of cringey. ", "", "", "", "Weightlifting_Fairy_Kim_Bok-Joo", "https://asianwiki.com/images/8/83/Weightlifting_Fairy_Kim_Bok-Joo-p1.jpg"],
+    ["MA", 2016, 16, 0, ["HYS"], ["SUNGJOON"], [], 7.5, "go hye rim, a fortune teller, is the subject of neighboring psychologist choi soo hyun's experiment to prove that true love cannot exist.", "", "7 an interesting commentary about the nature of love. kind of open ended. a cool premise. Interesting.", "8 fun characters ", "", "", "", "Madame_Antoine:_The_Love_Therapist", "https://asianwiki.com/images/d/d2/Madame_Antoine-p1.jpg"],
+    ["E", 2016, 18, 7.8, ["HYERI"], ["JISUNG"], ["KMH", "CJA"], 7.5, "suk ho forms an independent entertainment company, and forms an amateur band that he tries to champion to keep his company alive in the competitive and cutthroat industry.", "", "7 fun, lighthearted drama. a good comedy. happy, but there are also moments that are serious and important, concepts that have real-world implications and are meaningful.", "7 the main characters are a cute, fun, happy bunch", "", "", "", "Entertainer_(Korean_Drama)", "https://asianwiki.com/images/a/ae/Entertainer_%28Korean_Drama%29-p1.jpg"],
+    ["SI2YO", 2015, 1, 0, ["SJHYUN"], ["JES"], [], 7, "se yeon, an immortal, meets jung hoon, who saves her from a traffic accident.", "", "7 i had a vague about this drama and yet i remembered certain specific details so clearly, it was so hard but i found it with a lot of google searches. i don't think i ever even knew the name of this drama, bc i didnt recognize it at first, but the content was very memorable. a lot of stuff is packed into these few episodes, and there's a great story in this one as well.", "", "", "", "", "", "https://i.mydramalist.com/lWygec.jpg?v=1"],
+    ["OMT", 2016, 4, 0, ["YSHEE"], ["L"], [], 7, "tension arises in the relationship between yoo tan and his long-time girlfriend da in, and they find themselves caught in a time warp that repeats a tragic event.", "", "6 kind of confusing. a premise you've seen before, but it's decently well done. I was just surprised bc it was my first time seeing a netflix exclusive kdrama. I don't remember much.", "", "", "", "", "One_More_Time", "https://asianwiki.com/images/e/eb/One_More_Time-p1.jpg"],
+    ["HDL", 2019, 24, 9.5, ["IU"], ["YJG"], [], 7, "man wol is the owner of a hotel for ghosts. chan seong, a kind and intelligent man, is recruited to work for the hotel. they deal with several cases of individual ghosts causing trouble, as well as the reincarnations of characters from man wol's tragic past.", 7, "7 very intriguing story, i love how we are fed bits of plots at a time that grow, and you get the idea that everything is much more complex than you'd see in the first flashback. though, several times i got quite confused as to what's going on. a very captivating show, though it could move much faster. a bit underwritten at times, and i really wanted more from the romantic line, and i wish there had been a more coherent, overarching story. ", "7 chan seong is probably the nicest person to ever exist, to a practically unrealistic point. i wish he could have had more. man wol is an awesome character, and the supporting cast is also really entertaining.", "7 lots of cool effects & transitions, but also a lot of excessively long scenes and shaky cameras. interesting in contrast to some really wonderful and cinematic shots. but, lots of charm, and just beautiful. amazing music and just incredibly aesthetic shots.", "9 beautiful, reputable, interesting actors, all of them. falls short in some scenes.", "", "Hotel_Del_Luna", "https://asianwiki.com/images/4/4c/Hotel_Del_Luna-GP.jpg"],
+    ["CU", 2015, 12, 3.8, ["JEJ"], ["LWK"], ["Ji Soo", "CSB", "N"], 6.5, "the lowest and highest ranked students at a high school are told to form a cheerleading club.", "", "6 kind of bland. entertaining", "7 good, redeemable characters, though i really couldn't get behind the premise of the romance. ", "", "", "", "Cheer_Up!_(Korean_Drama)", "https://asianwiki.com/images/6/62/Cheer_Up%21_%28Korean_Drama%29-p1.jpg"],
+    ["S2", 2015, 16, 7.1, ["KSHF"], ["NJHYUK"], ["SUNGJAE"], 6.5, "eun bi, a poor girl living in a foster home, and eun byul, who attends a prestigious private school, twins, both get into an accident, and eun bi finds herself living eun byuls life.", "", "7 a decent story", "6 some of the characters made me really angry, esp ones that were supposed to be 'good' characters. some sweet supporting characters.", "", "", "", "Who_Are_You:_School_2015", "https://asianwiki.com/images/b/b4/Who_Are_You-_School_2015-p1.jpg"],
+    ["IC", 2020, 19, 16.5, ["KDM", "KNR"], ["PSJ"], [], 6.5, "saeroyi resolves to become successful without compromising his values, along with a group of friends that he builds.", "", "7 the concepts are not bad at all. could be very interesting overall, although it isn't thorough about the many issues it tries to tackle. simultaneously feels like a lot and nothing is happening. i think pacing manages to stay somewhat natural despite ridiculously convenient plot devices, and while the show slows down significantly, time feels full and unwasted, EXCEPT for far too many unnecessary flashbacks to scenes we literally just saw. it's very unsubtle, contrived, and generally predictable, but when it's not, it doesn't make any sense. the buildup the plot does pursue helps significantly in giving weight.", "4 while not unlikable, the characters aren't recognizable, with motivations behind what they do, say, or feel. they're not continuous people with overarching story lines, they just perform an action for a disjointed scene, so you can't expect growth. i have no idea what characters want and can literally never tell what they're thinking. relationally, very little makes sense, it's just there to prop up the plot, and i am unconvinced that anyone cares - they simply coexist, and don't interact like real people. also they talk slow and there's far too much evil laughter. although they are kind of very funny sometimes.", "7 not terrible but strange sometimes, with too static and focused direction, where if something happens everything else stops. still, some incredible progressions and really powerful scenes among predictable or weird shots, movements, transitions, and sound choices.", "6 the actors bring some fun, but most are simply unconvincing, although i can't say how much of it is a function of the empty character design.", "", "Itaewon_Class", "https://asianwiki.com/images/c/c8/Itaewon_Class-mp1.jpg"],
+    ["KMHM", 2015, 20, 11, ["HJE"], ["JISUNG"], [], 6, "a man with DID hires a live-in psychologist", "", "i do not recall any opinions", "", "", "", "", "Kill_Me,_Heal_Me", "https://asianwiki.com/images/2/2e/Kill_Me%2C_Heal_Me-p1.jpg"],
+    ["DOTS", 2016, 18, 28.375, ["SHK"], ["SJK"], ["JINGOO", "KJW"], 6, "a soldier and doctor try to reconcile their different values as they fall in love", 9, "6 way overrated, in my opinion. kind of all over the place. some hard-hitting episodes, but mostly it just felt kinda rushed and packed, with not much room for the plot to breathe", "", "9 well directed and produced", "", "", "Descendants_of_the_Sun", "https://asianwiki.com/images/e/e3/Descendants_of_the_Sun-p1.jpg"],
+    ["UF", 2016, 20, 9.1, ["SUZY"], ["KWB"], [], 6, "tragically intertwined high school lovers, noh eul and joon young, meet again, when noh eul is tasked with filming a documentary of joon young, who's now a singer.", 7, "6 all i remember is it was kind of cute, but not much happened.", "", "", "", "", "Uncontrollably_Fond", "https://asianwiki.com/images/f/f5/Uncontrollably_Fond-p1.jpg"],
+    ["BI", 2018, 16, 4.3, ["SHJ"], ["LMK"], ["LDH", "AJH", "MJI"], 6, "se gye, an actress, transforms monthly into a different body, and is caught by seo do jae, a businessman, but he doesn't notice because he can't recognize different faces. they learn more about each other's lives and secrets, each protected by their own friends.", "", "7 very cute and decently put together. some glaring omissions/dumb mistakes. compressed subplots that are not well woven in. still, very charming, abundance of funny moments. a good overarching story, but not too well executed. cannot watch more than once.", "7 a lot of lovable characters, but characters' logic is confusing and annoying somtimes. ", "5 some weird and confusing direction choices (camera placement, shot duration, audio, blocking) that get frustrating and boring to watch. ", "5 the acting is not the best. the male lead especially - i know he's acclaimed, but for most of this show seems emotionless and unexpressive. ", "", "The_Beauty_Inside_(Korean_Drama)", "https://asianwiki.com/images/9/94/The_Beauty_Inside_%28Korean_Drama%29-P1.jpg"],
+    ["DH", 2011, 17, 16.2, ["SUZY"], ["KSHM"], ["TAECYEON", "HEJ"], 5, "students, aspiring to be idols, craft their singing and dancing at a performance arts school.", "", "i don't remember these that well, but they were kind of strange, if i remember. pretty mediocre and odd. The first one was much better than the second.", "", "", "", "", "Dream_High_-_Korean_Drama", "https://asianwiki.com/images/b/b0/DreamHigh-p3.jpg"],
+    ["MLFTS", 2013, 21, 25, ["JJH"], ["KSHM"], [], 5, "a celebrity meets and falls in love with a magical man", 6, "8 this was ...sad. after the cringe part was over, i was pretty invested and sympathized a lot.", "6 a lot of the main characters were annoying. the romance is cute, though", "", "", "", "My_Love_From_the_Star", "https://asianwiki.com/images/6/61/You_Who_Came_From_the_Stars-p1.jpg"],
+    ["END", 2015, 4, 0, ["MGY"], ["CHANYEOL"], ["TROEXO"], 5, "exo lives next to a girl who blushes", "", "5 i dont remember much, but weird. strange. funny, though.", "", "", "", "", "", "https://i.mydramalist.com/7rxqrc.jpg?v=1"],
+    ["MSH", 2019, 16, 5.3, ["JBA"], ["YSHO"], ["KDY"], 5, "as an adult, bok soo, who had been unfairly expelled from high school, returns as a student to get his revenge.", "", "5 an entertaining watch if you have time to kill. a lot of scenes are poorly written and could have been a lot more impactful. funny, though, and kinda weird.", "5 the redemptions don't make much sense, and some of the 'good' characters are mean and unforgiving. but, there are a plethora of characters to like.", "", "", "", "My_Strange_Hero", "https://asianwiki.com/images/9/90/My_Strange_Hero-TP.jpg"],
+    ["TSG", 2010, 20, 25.6, ["HJW"], ["HYUNBIN"], [], 4, "a man and woman switch bodies", "", "4 i dont remember this well, the plot was kinda forgettable.", "4 i didn't like the characters very much.", "", "", "", "Secret_Garden_(SBS-2010-Korean_Drama)", "https://asianwiki.com/images/f/f3/Secret_Garden_%28SBS-2010-Korean_Drama%29-p3.jpg"],
+    ["CWPFN", 2018, 16, 2.8, ["KYJ"], ["YKS"], ["SJR"], 4, "oh sol, a very messy young adult looking for work, gets a job at a cleaning company run by seon gyul, who is extremely particular about his work and cleanliness in general.", "", "4 very whimsical, exaggerated, overly dramatic, and fun. can get a bit much, kinda alot sometimes. spunky. there are a lot of details that don't make sense that bugged me, and some random overemphasized but underdeveloped plot lines. the romantic plot was really really awkward and annoying to watch almost for all of it. last couple eps: so many tropes that i was bored and unempathetic, and then the chronology and direction got muddled too.", "4 underdeveloped main leads lack character and personality, so their interactions are very difficult to watch. supporting characters are much more interesting and entertaining, providing sweet relationship dynamics. but ugh this male lead makes me really annoyed. self-centered, rude, and inconsiderate, in addition to unceasing awkwardness. got better at like very very end. i endured this for 1) daniel 2) joo yeon 3) oh dol and 4) dad. i couldn't care less about main characters. ", "8 visually pleasing, clean and nicely shot direction. ", "", "the last ep, although very drawn out and dumb in parts, and although it DID NOT round out my favorite subplot >:(, was pretty satisfying overall. felt good that it ended on a decent note.", "Clean_With_Passion_For_Now", "https://asianwiki.com/images/3/39/Clean_With_Passion_For_Now-P1.jpg"],
+    ["DH2", 2012, 16, 8.3, ["KSR"], ["JINWOON"], ["PJY", "JB"], 3, "students, aspiring to be idols, craft their singing and dancing at a performance arts school.", "", "5 i don't remember these that well, but they were kind of strange, if i remember. pretty mediocre and odd. The first one was much better than the second.", "", "", "", "", "Dream_High_2", "https://asianwiki.com/images/d/da/Dream_High_2-p2.jpg"],
+    ["T", 2018, 16, 3.1, ["SEOHYUN"], ["KJHYUN"], ["KJHAN", "HSE"], 2.5, "cheon soo ho finds himself indebted to seol ji hyun, and she stays bitter", "", "6 i mean the story is fine, it makes sense and it tries to do some stuff that's kind of cool", "4 there were almost no likable characters at all. the main character is so rude with simply not enough justification, unredeemable in my eyes.", "", "", "", "The_Time", "https://asianwiki.com/images/3/3b/Time_%28Korean_Drama%29-P1.jpg"],
+    ["HS", 2015, 16, 9, ["UEE"], ["SUNGJOON"], ["PHSIK", "LJY"], 2, "2 rich people and 2 poor people couple and uncouple", "", "5 fun takes on a successful relationship and what compatibility is and how to secure something", "2 everyone is annoying. ", "3 not very well produced.", "", "", "High_Society", "https://asianwiki.com/images/f/f4/High_Society-p1.jpg"],
+    ["MLG", 2014, 16, 6.8, ["KRYSTAL"], ["RAIN"], ["L", "CYR"], 1, "a trainee and pop star take advantage of each other", "", "3 i don't remember this one very well, but it was kind of difficult to get through. not that entertaining.", "3 annoying characters whose actions are frustrating to watch", "", "", "", "My_Lovely_Girl", "https://asianwiki.com/images/8/83/My_Lovely_Girl-p1.jpg"],
+    ["D", 2016, 20, 19, ["PSHYE"], ["KRW"], ["YKS", "LSK"], 1, "doctors hang out", "", "1 i stopped watching this one because i really could not stand it. so boring.", "3 i really didn't like the characters.", "", "", "", "Doctors_(Korean_Drama)", "https://asianwiki.com/images/7/7a/Doctors_%28Korean_Drama%29-p1.jpg"]
+  ]
+  let showcolumns = [true, false, false, false, true, true, true, false, true, false, false, false, false, false, false]
+  let minYr = Math.min(...kdramadetails.map(detail => detail[YR]))
+  let maxYr = Math.max(...kdramadetails.map(detail => detail[YR]))
+
+  let edits = [
+    {
+      "Title": "6/10",
+      "Character": "second female lead",
+      "kdramas": ["CITT", "D", "MLFTS", "W"],
+      "Number": 1,
+      "Link": "https://www.youtube.com/watch?v=lfTfVItrOZI",
+      "Embed": "https://www.youtube.com/embed/lfTfVItrOZI?si=DgoHTkwg2vpDuFK8"
+    },
+    {
+      "Title": "complicated",
+      "Character": "couple",
+      "kdramas": ["MA", "MLFTS", "SWDBS", "TBI"],
+      "Number": 2,
+      "Link": "https://www.youtube.com/watch?v=omK1Eo9quNU",
+      "Embed": "https://www.youtube.com/embed/omK1Eo9quNU?si=Kb_kLBr8QRxXdeJ9"
+    },
+    {
+      "Title": "dream it possible",
+      "Character": "single drama",
+      "kdramas": ["SP"],
+      "Number": 3,
+      "Link": "https://www.youtube.com/watch?v=CgB9qi9JLGo",
+      "Embed": "https://www.youtube.com/embed/CgB9qi9JLGo?si=-xy5s6ZRKbqmvaue"
+    },
+    {
+      "Title": "a love song from paris",
+      "Character": "second male lead",
+      "kdramas": ["CITT", "OMG", "CU", "S2", "SKL"],
+      "Number": 4,
+      "Link": "https://www.youtube.com/watch?v=cGpxh9iy9sw&t=22s",
+      "Embed": "https://www.youtube.com/embed/cGpxh9iy9sw?si=McFrTIAN-pMz-_3Q&amp;start=22"
+    },
+    {
+      "Title": "i like u",
+      "Character": "couple",
+      "kdramas": ["HS", "H", "WFKBJ", "WYWS"],
+      "Number": 5,
+      "Link": "https://www.youtube.com/watch?v=MWKznmDXbjQ",
+      "Embed": "https://www.youtube.com/embed/MWKznmDXbjQ?si=gG4ypOeB14M76Rjz"
+    },
+    {
+      "Title": "defying gravity",
+      "Character": "female lead",
+      "kdramas": ["CU", "CITT", "HS", "OMG", "S2", "SKL", "WFKBJ", "WYWS"],
+      "Number": 6,
+      "Link": "https://www.youtube.com/watch?v=C9kC8DwOy3o",
+      "Embed": "https://www.youtube.com/embed/C9kC8DwOy3o?si=QObB98j1uKoY0ekF"
+    },
+    {
+      "Title": "found/tonight",
+      "Character": "friends",
+      "kdramas": ["CITT", "HS", "H", "MD", "OMG", "CU", "S2", "SKL", "T", "WFKBJ", "WYWS"],
+      "Number": 7,
+      "Link": "https://www.youtube.com/watch?v=gvvxTfaTZLM",
+      "Embed": "https://www.youtube.com/embed/gvvxTfaTZLM?si=uPYaMUkIUXuQAu4-"
+    },
+    {
+      "Title": "lost stars",
+      "Character": "friends",
+      "kdramas": ["CITT", "HS", "H", "MD", "OMG", "CU", "S2", "SKL", "T", "WFKBJ", "WYWS"],
+      "Number": 8,
+      "Link": "https://www.youtube.com/watch?v=I1t-vjj3Q8k",
+      "Embed": "https://www.youtube.com/embed/I1t-vjj3Q8k?si=_k9Yne67O1UfOEAA"
+    },
+    {
+      "Title": "gangsta",
+      "Character": "male lead",
+      "kdramas": ["AM", "HS", "H", "MD", "OMG", "S2", "SKL", "BI", "T", "WFKBJ", "WYWS"],
+      "Number": 9,
+      "Link": "https://www.youtube.com/watch?v=ugQvbS5_g34",
+      "Embed": "https://www.youtube.com/embed/ugQvbS5_g34?si=nweFdsbLmxLZ9AKm"
+    },
+    {
+      "Title": "say",
+      "Character": "male lead",
+      "kdramas": ["AM", "BI", "HS", "H", "MD", "OMG", "CU", "S2", "SKL", "T", "WFKBJ", "WYWS"],
+      "Number": 10,
+      "Link": "https://www.youtube.com/watch?v=c8eUhuswkak",
+      "Embed": "https://www.youtube.com/embed/c8eUhuswkak?si=sdcBPF3qZgTMfXQX"
+    },
+    {
+      "Title": "hall of fame",
+      "Character": "male lead",
+      "kdramas": ["AM", "BI", "HS", "H", "MD", "OMG", "CU", "S2", "SKL", "T", "WFKBJ"],
+      "Number": 11,
+      "Link": "https://www.youtube.com/watch?v=kl1CNxI4WPg",
+      "Embed": "https://www.youtube.com/embed/kl1CNxI4WPg?si=56iRJ0HEDWycm7R2"
+    },
+    {
+      "Title": "let me go",
+      "Character": "redeemed",
+      "kdramas": ["AM", "BI", "CU"],
+      "Number": 12,
+      "Link": "https://www.youtube.com/watch?v=0agcl6-XkyY",
+      "Embed": "https://www.youtube.com/embed/0agcl6-XkyY?si=djgzhkrNLt6C1kNq"
+    },
+    {
+      "Title": "dance with me",
+      "Character": "couple",
+      "kdramas": ["AM", "BI", "OMG", "T"],
+      "Number": 13,
+      "Link": "https://www.youtube.com/watch?v=eakXUeDjtsE",
+      "Embed": "https://www.youtube.com/embed/eakXUeDjtsE?si=QkfMj2Hh0wXA9DN2"
+    },
+    {
+      "Title": "exhale",
+      "Character": "female lead",
+      "kdramas": ["AM", "BI", "H", "S2"],
+      "Number": 14,
+      "Link": "https://www.youtube.com/watch?v=czmuok5QO5Y",
+      "Embed": "https://www.youtube.com/embed/czmuok5QO5Y?si=5BXcMOzzxeJkGOMu"
+    },
+    {
+      "Title": "seasonal depression",
+      "Character": "second female lead",
+      "kdramas": ["CU", "OMG", "T", "WFKBJ"],
+      "Number": 15,
+      "Link": "https://www.youtube.com/watch?v=z2pTiGZ7rCs",
+      "Embed": "https://www.youtube.com/embed/z2pTiGZ7rCs?si=x0urKmr2RwNVyYdU"
+    },
+    {
+      "Title": "angel",
+      "Character": "couple",
+      "kdramas": ["BI", "H", "SKL", "WFKBJ", "WYWS"],
+      "Number": 16,
+      "Link": "https://www.youtube.com/watch?v=OFJBK_9jDY8",
+      "Embed": "https://www.youtube.com/embed/OFJBK_9jDY8?si=xK89-nkuYCHTx50B"
+    },
+    {
+      "Title": "villains",
+      "Character": "antagonist",
+      "kdramas": ["AM", "BI", "OMG", "S2", "T"],
+      "Number": 17,
+      "Link": "https://www.youtube.com/watch?v=0RYs2Tbz4Tk",
+      "Embed": "https://www.youtube.com/embed/0RYs2Tbz4Tk?si=jo_LB6QmJnlxP3-g"
+    },
+    {
+      "Title": "head above water",
+      "Character": "female lead",
+      "kdramas": ["AM", "BI", "OMG", "WFKBJ"],
+      "Number": 18,
+      "Link": "https://www.youtube.com/watch?v=jpOWn4y9rIU",
+      "Embed": "https://www.youtube.com/embed/jpOWn4y9rIU?si=cldMKJOotVxgOAqp"
+    },
+    {
+      "Title": "soren",
+      "Character": "couple",
+      "kdramas": ["BI", "MD", "S2", "SKL"],
+      "Number": 19,
+      "Link": "https://www.youtube.com/watch?v=Sn8teVoD_Xs",
+      "Embed": "https://www.youtube.com/embed/Sn8teVoD_Xs?si=EtGv-YGwn_rMQAnA"
+    },
+    {
+      "Title": "honeysea",
+      "Character": "couple",
+      "kdramas": ["BI", "MD", "OMG"],
+      "Number": 20,
+      "Link": "https://www.youtube.com/watch?v=3TWr-BR5Kr4",
+      "Embed": "https://www.youtube.com/embed/3TWr-BR5Kr4?si=Frk3r5QgXfSzYX36"
+    },
+    {
+      "Title": "see a victory",
+      "Character": "protagonists",
+      "kdramas": ["AM", "BI", "HDL"],
+      "Number": 21,
+      "Link": "https://www.youtube.com/watch?v=YRL3jImFLfE",
+      "Embed": "https://www.youtube.com/embed/YRL3jImFLfE?si=ec-4mZIpwt3MPrgb"
+    },
+    {
+      "Title": "sidelines",
+      "Character": "second male lead",
+      "kdramas": ["AM", "HS", "HDL", "WFKBJ", "WYWS"],
+      "Number": 22,
+      "Link": "https://www.youtube.com/watch?v=9saBcuHyrBs",
+      "Embed": "https://www.youtube.com/embed/9saBcuHyrBs?si=bKvPV3wWP1hz_CCJ"
+    },
+    {
+      "Title": "monster",
+      "Character": "antagonist",
+      "kdramas": ["AM", "HDL", "OMG", "SKL"],
+      "Number": 23,
+      "Link": "https://www.youtube.com/watch?v=tJvJpad5bSk",
+      "Embed": "https://www.youtube.com/embed/tJvJpad5bSk?si=k0RQbccrnhB3_mnp"
+    },
+    {
+      "Title": "the way u look tonight",
+      "Character": "couple",
+      "kdramas": ["HDL"],
+      "Number": 24,
+      "Link": "https://www.youtube.com/watch?v=k2juv2_IAU0",
+      "Embed": "https://www.youtube.com/embed/k2juv2_IAU0?si=7TeKazaLscLhLeDo"
+    },
+    {
+      "Title": "grow as we go",
+      "Character": "couple",
+      "kdramas": ["HDL"],
+      "Number": 25,
+      "Link": "https://www.youtube.com/watch?v=fhr8mZRaShk",
+      "Embed": "https://www.youtube.com/embed/fhr8mZRaShk?si=JlDdC2Ion0Er49E4"
+    },
+    {
+      "Title": "talk to me",
+      "Character": "friends",
+      "kdramas": ["BI", "HDL", "MD", "OMG", "CU", "S2", "SKL"],
+      "Number": 26,
+      "Link": "https://www.youtube.com/watch?v=2HsBRe0hVKE",
+      "Embed": "https://www.youtube.com/embed/2HsBRe0hVKE?si=4lZ_8D5xE5Qs4Ppa"
+    },
+    {
+      "Title": "i knew you once",
+      "Character": "friends",
+      "kdramas": ["AM", "BI", "HDL", "CU"],
+      "Number": 27,
+      "Link": "https://www.youtube.com/watch?v=ClHUsVWLNHs",
+      "Embed": "https://www.youtube.com/embed/ClHUsVWLNHs?si=sR5rEKtNCyxp2XLA"
+    },
+    {
+      "Title": "gentleman",
+      "Character": "male lead",
+      "kdramas": ["HDL"],
+      "Number": 28,
+      "Link": "https://www.youtube.com/watch?v=ryJB-TUf5jY",
+      "Embed": "https://www.youtube.com/embed/ryJB-TUf5jY?si=tu8EXI3gXab1y--R"
+    },
+    {
+      "Title": "in case you don’t live forever",
+      "Character": "family",
+      "kdramas": ["AM", "BI", "CITT", "HDL", "WFKBJ"],
+      "Number": 29,
+      "Link": "https://www.youtube.com/watch?v=N3AQIyLg3GA",
+      "Embed": "https://www.youtube.com/embed/N3AQIyLg3GA?si=R5NqSjTfAdznNwDo"
+    },
+    {
+      "Title": "it’s not for me to say",
+      "Character": "couple",
+      "kdramas": ["BI", "HDL", "CU", "SKL"],
+      "Number": 30,
+      "Link": "https://www.youtube.com/watch?v=wdSeo-QboVY",
+      "Embed": "https://www.youtube.com/embed/wdSeo-QboVY?si=LLA-5jwr4lZ8pefK"
+    },
+    {
+      "Title": "are you bored yet",
+      "Character": "supporting cast",
+      "kdramas": ["AM", "BI", "HDL"],
+      "Number": 31,
+      "Link": "https://www.youtube.com/watch?v=ho0FnlN3Shc",
+      "Embed": "https://www.youtube.com/embed/ho0FnlN3Shc?si=pBiyJytJQUJ4AFtx"
+    },
+    {
+      "Title": "you don’t know me",
+      "Character": "antagonist",
+      "kdramas": ["BI", "CITT", "HDL", "OMG", "S2"],
+      "Number": 32,
+      "Link": "https://www.youtube.com/watch?v=ZdLex71-D8U",
+      "Embed": "https://www.youtube.com/embed/ZdLex71-D8U?si=QYx2RoVzKMplizG2"
+    },
+    {
+      "Title": "please don’t",
+      "Character": "womance",
+      "kdramas": ["AM", "BI", "HDL", "OMG"],
+      "Number": 33,
+      "Link": "https://www.youtube.com/watch?v=Kexi6YcDWI0",
+      "Embed": "https://www.youtube.com/embed/Kexi6YcDWI0?si=Yn6E5Il02nLjCW82"
+    },
+    {
+      "Title": "blue",
+      "Character": "couple",
+      "kdramas": ["HDL"],
+      "Number": 34,
+      "Link": "https://www.youtube.com/watch?v=L-zll7alIlg",
+      "Embed": "https://www.youtube.com/embed/L-zll7alIlg?si=yfCfTO-ZdJTF-5SO"
+    },
+    {
+      "Title": "best friend",
+      "Character": "second male lead",
+      "kdramas": ["CITT"],
+      "Number": 35,
+      "Link": "https://www.youtube.com/watch?v=UwRjPhcX_DU",
+      "Embed": "https://www.youtube.com/embed/UwRjPhcX_DU?si=quRkTq5k7UGN1_xQ"
+    },
+    {
+      "Title": "adore",
+      "Character": "couple",
+      "kdramas": ["CITT", "HDL"],
+      "Number": 36,
+      "Link": "https://www.youtube.com/watch?v=9FElmsfsPWQ",
+      "Embed": "https://www.youtube.com/embed/9FElmsfsPWQ?si=7py_CwqD8cMip937"
+    },
+    {
+      "Title": "snowglobe",
+      "Character": "couple",
+      "kdramas": ["CITT", "HDL"],
+      "Number": 37,
+      "Link": "https://www.youtube.com/watch?v=Zj-JarltGcg",
+      "Embed": "https://www.youtube.com/embed/Zj-JarltGcg?si=EzRIeObVIXI0LbMG"
+    },
+    {
+      "Title": "i won't say i'm in love",
+      "Character": "female lead",
+      "kdramas": ["HDL"],
+      "Number": 38,
+      "Link": "https://www.youtube.com/watch?v=jyHaRJuO4SU",
+      "Embed": "https://www.youtube.com/embed/jyHaRJuO4SU?si=CJ1DsnZ9jl2_BVvK"
+    },
+    {
+      "Title": "sometimes",
+      "Character": "couple",
+      "kdramas": ["CITT"],
+      "Number": 39,
+      "Link": "https://www.youtube.com/watch?v=Caiys0xSEcM",
+      "Embed": "https://www.youtube.com/embed/Caiys0xSEcM?si=LvcMvvA_k9Du6VoP"
+    },
+    {
+      "Title": "i love you so",
+      "Character": "couple",
+      "kdramas": ["CITT"],
+      "Number": 40,
+      "Link": "https://www.youtube.com/watch?v=S0dTMlFj2bE",
+      "Embed": "https://www.youtube.com/embed/S0dTMlFj2bE?si=RHCb4ckCfaCrM7E4"
+    },
+    {
+      "Title": "long live",
+      "Character": "friends",
+      "kdramas": ["BI", "CITT", "HDL"],
+      "Number": 41,
+      "Link": "https://www.youtube.com/watch?v=PIfbHlAWDPE",
+      "Embed": "https://www.youtube.com/embed/PIfbHlAWDPE?si=Pbju6pavx33M3WK8"
+    },
+    {
+      "Title": "comfort crowd",
+      "Character": "bromance",
+      "kdramas": ["AM", "BI", "CITT", "CLOY", "HDL", "MD", "OMG"],
+      "Number": 42,
+      "Link": "https://www.youtube.com/watch?v=DQ6tfr0LuIk",
+      "Embed": "https://www.youtube.com/embed/DQ6tfr0LuIk?si=xT8XQrIRbsZh37GG"
+    },
+    {
+      "Title": "past life",
+      "Character": "redeemed",
+      "kdramas": ["CLOY"],
+      "Number": 43,
+      "Link": "https://www.youtube.com/watch?v=IlFaCRar4js",
+      "Embed": "https://www.youtube.com/embed/IlFaCRar4js?si=HuQfvszrDzFfB1xh"
+    },
+    {
+      "Title": "you",
+      "Character": "second female lead",
+      "kdramas": ["CITT", "CLOY", "H", "OMG"],
+      "Number": 44,
+      "Link": "https://www.youtube.com/watch?v=q1QK7ncBsNQ",
+      "Embed": "https://www.youtube.com/embed/q1QK7ncBsNQ?si=YpndPeMbxUOSCTmd"
+    },
+    {
+      "Title": "put your records on",
+      "Character": "female lead",
+      "kdramas": ["HDL"],
+      "Number": null,
+      "Link": "",
+      "Embed": ""
+    },
+    {
+      "Title": "i like mondays",
+      "Character": "female lead",
+      "kdramas": ["HDL"],
+      "Number": 45,
+      "Link": "https://www.youtube.com/watch?v=tqdum1m--hA",
+      "Embed": "https://www.youtube.com/embed/tqdum1m--hA?si=sYCQX9JdLjCjVO2m"
+    }
+  ].sort((a, b) => compareAlph(a, b, "Title"))
+
+  let kdramastoedits = {} //kdramatitle -> [editindex, editindex, ...]
+  kdramadetails.forEach((kdramareview) => {
+    let kdramatitle = kdramareview[TITLE]
+    kdramastoedits[kdramatitle] = edits.map((edit, i) => ({ i: i, kdramas: edit.kdramas })).filter(edit => edit.kdramas.includes(kdramatitle)).map(edit => edit.i)
+  })
+</script>
+
+<head id="stylesholder">
+  <style id="gencolorstyles">
+    html,
+    body {
+      background-color: #083915;
+      height: 100%;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    html,
+    body,
+    a {
+      color: white;
+    }
+
+    #search img,
+    #github,
+    #youtube {
+      filter: invert(1);
+    }
+
+    th,
+    td,
+    #kdramareviewdetails a {
+      padding: 2px;
+      color: black;
+    }
+
+    .color0 {
+      background-color: lightblue;
+    }
+
+    .color1 {
+      background-color: lightyellow;
+    }
+
+    th {
+      background-color: #a3ecb6;
+      position: sticky;
+      top: 0;
+    }
+  </style>
+  <style id="genlayoutstyles">
+    #search {
+      height: 81px;
+      overflow: hidden;
+
+
+      display: flex;
+      align-items: baseline;
+    }
+
+    #tableholder {
+      height: calc(100% - 111px);
+      overflow: auto;
+    }
+
+    #footer {
+      height: 30px;
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+    }
+  </style>
+  <style id="specstyles">
+    #detailsparkinglot,
+    #modalparkinglot {
+      display: none;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+
+    #actorimg {
+      max-width: 60%;
+      max-height: 400px;
+      width: auto;
+      height: auto;
+    }
+
+    #kdramaposter {
+      max-width: 100%;
+      max-height: 400px;
+      width: auto;
+      height: auto;
+    }
+
+    #reset {
+      width: 30px;
+      height: 30px;
+    }
+
+    #settings {
+      float: right;
+      margin: 10px;
+      width: 30px;
+      height: 30px;
+    }
+
+    #github,
+    #youtube {
+      margin: 5px;
+    }
+
+    #search>div {
+      display: inline-block;
+      margin: 2px;
+    }
+
+    #kdramareviewsimg,
+    #kdramareviewstext {
+      display: inline-block;
+      padding: 10px;
+    }
+
+    #kdramareviewstext {
+      max-height: 500px;
+      overflow: auto;
+    }
+
+    #kdramareviewsimg {
+      text-align: center;
+    }
+
+    #kdramareviewdetails {
+      background-color: #f1d8f6;
+      color: black;
+    }
+
+    #actordetails>div,
+    #kdramareviewdetails {
+      display: flex;
+      align-items: center;
+    }
+
+    #actordetails>div>* {
+      padding: 10px;
+    }
+
+    @media (min-width: 1000px) {
+      #filterdetails {
+        display: flex;
+        align-items: center;
+      }
+
+      #editdetails,
+      #actordetails {
+        width: 50%;
+        display: inline-block;
+      }
+
+      #editdetails {
+        float: right;
+      }
+    }
+
+    #editdetails>iframe {
+      width: 98%;
+      height: 300px;
+    }
+
+    body,
+    table {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 14px;
+    }
+  </style>
+  <style id="sortedstyle">
+    #dummyrule {
+      color: black
+    }
+  </style>
+  <style id="modalstyles">
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(8, 57, 21, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      width: 80%;
+      max-height: 80%;
+      overflow: auto;
+      color: black;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    #coldefs {
+      background-color: #a3ecb6;
+      margin: 5px;
+      padding: 5px;
+    }
+
+    #coldefs>div {
+      display: flex;
+      align-items: center;
+      text-align: left;
+      padding: 0px;
+      margin: 5px;
+    }
+
+    #coldefs>div>* {
+      margin-top: 0px;
+      margin-bottom: 0px;
+      display: inline-block;
+    }
+
+    hr {
+      border-bottom: black;
+      height: 0;
+    }
+  </style>
+  <style id="doublerangeslider">
+    body {
+      place-items: center;
+    }
+
+    #doublerangeslider {
+      width: 200px;
+    }
+
+    #minyear {
+      top: -17px;
+    }
+
+    #maxyear {
+      top: -33px;
+    }
+
+    #doublerangeslider input[type="range"] {
+      appearance: none;
+      position: relative;
+      pointer-events: none;
+      background-color: transparent;
+    }
+
+    #doublerangeslider input[type="range"]::-webkit-slider-thumb {
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    #doublerangeslider * {
+      width: 100%;
+      /* border: 1px solid white; */
+    }
+
+    .slider-track {
+      width: 100%;
+      height: 10px;
+      margin: auto;
+      margin-top: 5px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body id="page">
+  <script id="createelementfunctions">
+    function createElement(tag, innerHTML) {
+      let ele = document.createElement(tag)
+      ele.innerHTML = innerHTML
+      return ele
+    }
+    function createOption(val, desc) {
+      let opt = createElement("option", desc)
+      opt.value = val
+      return opt
+    }
   </script>
 
-  <head id="stylesholder">
-    <style id="gencolorstyles">
-      html, body {
-        background-color: #083915;
-        height: 100%;
-        margin-top: 0;
-        margin-bottom: 0;
+  <div id="infomodal" class="modal" onclick="document.getElementById('infomodal').style.display = 'none';">
+    <div class="modal-content" onclick="event.stopPropagation()"></div>
+    <script>
+      let showPopupOnHeaderClick = true;
+      let modal = document.getElementById('infomodal')
+      function togglePopupController(e) {
+        showPopupOnHeaderClick = !showPopupOnHeaderClick
+        showSettings()
+        e.stopPropagation();
       }
-      html, body, a {
-        color: white;
-      }
-      #search img, #github, #youtube {
-        filter: invert(1);
-      }
-      th, td, #kdramareviewdetails a {
-        padding: 2px;
-        color: black;
-      }
-      .color0 {
-        background-color: lightblue;
-      }
-      .color1 {
-        background-color: lightyellow;
-      }
-      th {
-        background-color: #a3ecb6;
-        position: sticky;
-        top: 0;
-      }
-    </style>
-    <style id="genlayoutstyles">
-      #search {
-        height: 81px;
-        overflow: auto;
-      }
-      #tableholder {
-        height: calc(100% - 111px);
-        overflow: auto;
-      }
-      #footer {
-        height: 30px;
-        position: absolute;
-        bottom: 0;
-        display: flex;
-        align-items: center;
-      }
-    </style>
-    <style id="specstyles">
-      #detailsparkinglot, #modalparkinglot {
-        display: none;
-      }
-      img {
-        width: 20px;
-        height: 20px;
-      }
-      #actorimg {
-        max-width:60%;
-        max-height:400px;
-        width: auto;
-        height: auto;
-      }
-      #kdramaposter {
-        max-width:100%;
-        max-height:400px;
-        width: auto;
-        height: auto;
-      }
-      #reset {
-        width: 30px;
-        height: 30px;
-      }
-      #settings {
-        float: right;
-        margin: 10px;
-        width: 30px;
-        height: 30px;
-      }
-      #github, #youtube {
-        margin: 5px;
-      }
-      #search>div {
-        display: inline-block;
-      }
-      #kdramareviewsimg, #kdramareviewstext {
-        display: inline-block;
-        padding: 10px;
-      }
-      #kdramareviewstext {
-        max-height: 500px;
-        overflow: auto;
-      }
-      #kdramareviewsimg {
-        text-align: center;
-      }
-      #kdramareviewdetails {
-        background-color: #f1d8f6;
-        color: black;
-      }
-      #actordetails > div, #kdramareviewdetails {
-        display: flex;
-        align-items: center;
-      }
-      #actordetails > div > * {
-        padding: 10px;
-      }
-      
-      @media (min-width: 1000px) {
-        #filterdetails {
-          display: flex;
-          align-items: center;
-        }
-        #editdetails, #actordetails {
-          width: 50%;
-          display: inline-block;
-        }
-        #editdetails {
-          float: right;
-        }
-      }
-      #editdetails > iframe {
-        width: 98%;
-        height: 300px;
-      }
-      body, table {
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-size: 14px;
-      }
-    </style>
-    <style id="sortedstyle">
-      #dummyrule {color: black}
-    </style>
-    <style id="modalstyles">
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        padding-top: 100px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(8,57,21,0.4);
-      }      
-      .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        width: 80%;
-        max-height: 80%;
-        overflow: auto;
-        color: black;
-        text-align: center;
-        font-size: 14px;
-      }
-      #coldefs {
-        background-color: #a3ecb6;
-        margin: 5px;
-        padding: 5px;
-      }
-      #coldefs > div {
-        display: flex;
-        align-items: center;
-        text-align: left;
-        padding: 0px;
-        margin:5px;
-      }
-      #coldefs > div > * {
-        margin-top: 0px;
-        margin-bottom: 0px;
-        display: inline-block;
-      }
-      hr {
-        border-bottom: black;
-        height: 0;
-      }
-    </style>
-  </head>
-
-  <body id="page">
-    <script id="createelementfunctions">
-      function createElement(tag, innerHTML) {
-        let ele = document.createElement(tag)
-        ele.innerHTML = innerHTML
-        return ele
-      }
-      function createOption(val, desc) {
-        let opt = createElement("option", desc)
-        opt.value = val
-        return opt
+      function closepopup() {
+        modal.style.display = "none";
       }
     </script>
+    <div id="modalparkinglot">
+      <div id="settingscontent">
+        <b>Kdramas According to Crystal</b><br>
+        Managed reference sheet of opinions and edits of all the kdramas I've watched<br>
+        Note, some kdrama scores are missing or unexplained, as several of these reviews were written retroactively
+        and/or a very long time ago. Sorry not sorry.<br>
+        <br><br>
 
-    <div id="infomodal" class="modal"
-      onclick="document.getElementById('infomodal').style.display = 'none';"
-    >
-      <div class="modal-content" onclick="event.stopPropagation()"></div>
-      <script>
-        let showPopupOnHeaderClick = true;
-        let modal = document.getElementById('infomodal')
-        function togglePopupController(e) {
-          showPopupOnHeaderClick=!showPopupOnHeaderClick
-          showSettings()
-          e.stopPropagation();
-        }
-        function closepopup() {
-          modal.style.display = "none";
-        }
-      </script>
-      <div id="modalparkinglot">
-        <div id="settingscontent">
-          <b>Kdramas According to Crystal</b><br>
-          Managed reference sheet of opinions and edits of all the kdramas I've watched<br>
-          Note, some kdrama scores are missing or unexplained, as several of these reviews were written retroactively and/or a very long time ago. Sorry not sorry.<br>
-          <br><br>
+        Interact with the table to sort, filter, and see more info!<br>
+        Click on header &#x2192;
+        <b> <span id="headerclickresult"></span></b>
 
-          Interact with the table to sort, filter, and see more info!<br>
-          Click on header &#x2192; 
-          <b> <span id="headerclickresult"></span></b>
+        <button onclick="togglePopupController(event)" style="margin-left:5px">change</button>
 
-          <button onclick="togglePopupController(event)" style="margin-left:5px">change</button>
-
-          <div id="coldefs">
-            <b>Table Column Definitions</b><br>
-            <hr>
-          </div>
-          <button onclick="closepopup()">Close Popup</button>
-          <script id="populateColdefs">
-            for (let i = 0; i < sortnames.length; i++) {
-              sortpng = headerpngs[i]
-              document.getElementById("coldefs").appendChild(createElement("div", 
-                ((sortpng != "NONE") ? 
-                  "<img src='"+sortpng+"' style='margin-right:5px'/>" : 
-                  "<p style='width:20px;margin-right:5px'/>&#x2022;</p>") +
-                "<p><b>" + sortnames[i] + "</b>" +
-                (((i >= CRYABILITY && i <= ENDING) || i == SCORE) ? " - out of ten" : "") +
-                ": " + sortdescs[i] + "</p>"
-              ))
-            }
-          </script>
+        <div id="coldefs">
+          <b>Table Column Definitions</b><br>
+          <hr>
         </div>
-      </div>
-    </div>
-
-    <div id="search">
-      <div id="filterEditDiv">
-        As featured in edit <img src="https://icons.veryicon.com/png/o/miscellaneous/taoist-music/clear-26.png"
-          onclick="document.getElementById('editdd').value='';filtertable();populateEditDetails()"><br>
-        <select id="editdd" onchange="filtertable();populateEditDetails()">
-          <option value="">All edits</option>
-        </select>
-        <script id="populateeditdd">
-          edits.forEach((edit, i) => {
-            document.getElementById("editdd").appendChild(createOption(i, edit.Title))
-          })
-        </script>
-      </div>
-
-      <div id="sortDiv">
-        Sort by <br>
-        <select id="sortdd" onchange="populateTable()"></select>
-        <script id="populatesortdd">
-          sortnames.forEach((sortname, i) => {
-            if (sortable(i))
-              document.getElementById("sortdd").appendChild(createOption(i, sortname))
-          })
-          document.getElementById("sortdd").value = SCORE
-        </script>
-      </div>
-
-      <div id="filterActorDiv">
-        Find actor <img src="https://icons.veryicon.com/png/o/miscellaneous/taoist-music/clear-26.png"
-          onclick="document.getElementById('actordd').value='';filtertable();populateActorDetails()"> <br>
-        <select id="actordd" onchange="filtertable();populateActorDetails()">
-          <option value="">All actors</option>
-        </select>
-        <script id="populateactordd">
-          for (let actor in actors) {
-            document.getElementById("actordd").appendChild(createOption(actor, actors[actor].name))
+        <button onclick="closepopup()">Close Popup</button>
+        <script id="populateColdefs">
+          for (let i = 0; i < sortnames.length; i++) {
+            sortpng = headerpngs[i]
+            document.getElementById("coldefs").appendChild(createElement("div",
+              ((sortpng != "NONE") ?
+                "<img src='" + sortpng + "' style='margin-right:5px'/>" :
+                "<p style='width:20px;margin-right:5px'/>&#x2022;</p>") +
+              "<p><b>" + sortnames[i] + "</b>" +
+              (((i >= CRYABILITY && i <= ENDING) || i == SCORE) ? " - out of ten" : "") +
+              ": " + sortdescs[i] + "</p>"
+            ))
           }
         </script>
       </div>
+    </div>
+  </div>
 
-      <div id="minYearDiv">
-        Min Year <span id="minyrfb"></span> <br>
-        <input id="minyear" onchange="updminyr()" type="range">
-      </div>
-      <div id="maxYearDiv">
-        Max Year <span id="maxyrfb"></span> <br>
-        <input id="maxyear" onchange="updmaxyr()" type="range">
-      </div>
-      <div id="showResultsDiv">
-        Show results <span id="numresultsfb">1</span><br>
-        <input id="numresults" onchange="updnumresults()" type="range" min="1">
-      </div>
+  <div id="search">
+    <div id="filterEditDiv">
+      As featured in edit <img src="https://icons.veryicon.com/png/o/miscellaneous/taoist-music/clear-26.png"
+        onclick="document.getElementById('editdd').value='';filtertable();populateEditDetails()"><br>
+      <select id="editdd" onchange="filtertable();populateEditDetails()">
+        <option value="">All edits</option>
+      </select>
+      <script id="populateeditdd">
+        edits.forEach((edit, i) => {
+          document.getElementById("editdd").appendChild(createOption(i, edit.Title))
+        })
+      </script>
+    </div>
 
-      <img id='reset' src="https://www.svgrepo.com/download/334208/reset.svg" onclick="resettable()">
-      <img id="settings" src="https://www.svgrepo.com/show/526221/settings.svg"
-        onclick="showSettings()">
-      <script id="setInfoModal">
-        function showSettings() {      
+    <div id="sortDiv">
+      Sort by <br>
+      <select id="sortdd" onchange="populateTable();populateModal(event.currentTarget.value);"></select>
+      <script id="populatesortdd">
+
+        sortnames.forEach((sortname, i) => {
+          if (sortable(i))
+            document.getElementById("sortdd").appendChild(createOption(i, sortname))
+        })
+
+        function populateModal(sorti) {
+          let sortname = sortnames[sorti]
+          let sortpng = headerpngs[sorti]
+          let sortdesc = sortdescs[sorti]
           modal.style.display = "block";
+
           modalcontent = document.getElementsByClassName('modal-content')[0]
           document.getElementById("modalparkinglot").appendChild(document.getElementById("settingscontent"))
           modalcontent.innerHTML = ""
-          modalcontent.appendChild(document.getElementById("settingscontent"))
-          document.getElementById("headerclickresult").innerHTML = showPopupOnHeaderClick ? "see info popup" : "sort table by stat"
-        }
 
+
+
+
+          headerhtml = ""
+          if (sortpng != "NONE") {
+            headerhtml += "<img src='" + sortpng + "' style='margin-right:5px'/>"
+          }
+          headerhtml += sortname
+          if ((sorti >= CRYABILITY && sorti <= ENDING) || sorti == SCORE)
+            headerhtml += " - out of ten"
+          modalcontent.appendChild(createElement("h3", headerhtml))
+          modalcontent.innerHTML += sortdesc
+          modalcontent.innerHTML += "<hr>"
+          modalcontent.innerHTML += "#1 on this list: " + kdramas[kdramadetails[0][TITLE]];
+
+          let val = kdramadetails[0][sorti]
+
+          if ((sorti >= CRYABILITY && sorti < ENDING)) {
+            modalcontent.innerHTML += "<br>" + (val == "" ? "No " + sortname + " listed." : sortname + ":<br>" + val)
+          } else if (sorti == ENDING) {
+
+            modalcontent.appendChild(getEndingDiv(kdramadetails[0]))
+          }
+          else if (sorti == SORTEDITIND) {
+            let numedits = kdramastoedits[kdramadetails[0][TITLE]].length
+            modalcontent.innerHTML += "<br>Featured in " + (numedits + " wyx tv edits")
+          } else if (sorti == HRS) {
+            modalcontent.innerHTML += "<br>" + (val == "" ? "No " + sortname + " listed." : val + " hours")
+          } else if (sorti == AUD) {
+            modalcontent.innerHTML += "<br>" + (val == "" ? "No " + sortname + " listed." : val + "% audience share")
+          } else if (sorti == YR) {
+            modalcontent.innerHTML += "<br>" + (val == "" ? "No " + sortname + " listed." : val)
+          } else if (sorti == SCORE) {
+            modalcontent.innerHTML += "<br>" + (val == "" ? "No " + sortname + " listed." : sortname + ": " + val)
+          }
+
+          modalcontent.appendChild(document.createElement("br"))
+          modalcontent.appendChild(document.createElement("br"))
+
+          let closebutton = createElement("button", "Just close popup")
+          closebutton.onclick = closepopup
+          modalcontent.appendChild(closebutton)
+
+          let closebuttonAndexpandfirst = createElement("button", "Close & see more about " + kdramas[kdramadetails[0][TITLE]])
+          closebuttonAndexpandfirst.onclick = () => {
+            closepopup();
+            document.getElementById("exp_" + kdramas[kdramadetails[0][TITLE]].replaceAll(" ", "_").replaceAll(",", "")).click()
+          }
+          modalcontent.appendChild(closebuttonAndexpandfirst)
+
+          modalcontent.appendChild(document.createElement("br"))
+          let noMorePopupsButton = createElement("button", "Close & stop showing popups")
+          noMorePopupsButton.onclick = () => {
+            showPopupOnHeaderClick = false;
+            closepopup()
+          }
+          noMorePopupsButton.style.marginTop = "5px"
+          modalcontent.appendChild(noMorePopupsButton)
+        }
+        populateModal(SCORE);
       </script>
     </div>
 
-    <div id="tableholder">
-      <table id="detailsparkinglot">
-        <tr id="kdramareviewdetailsholder">
-          <td colspan="17" ><div id="kdramareviewdetails">
-            <div id="kdramareviewstext">
-              <b><span id="kdramareviewdetails_title"></span></b> |
-              <span id="kdramareviewdetails_subtitle"></span>
-              <br><hr>
-              <span id="kdramareviewdetails_content"></span>
-            </div>
-            <div id="kdramareviewsimg"></div>
-          </div></td>
-        </tr>
-      </table>
-      <table>
-        <thead>
-          <tr id="tableheader"><th>#</th></tr>
-        </thead>
-        <script id="populatethead">
-          let tr = document.getElementById("tableheader")
-          headerpngs.forEach((headerpng, i) => {
-            if (headerpng == "NONE") {
-              if (!sortable(i))
-                tr.appendChild(createElement("th", "<span>" + sortnames[i] + "</span>"))
-              else
-                tr.appendChild(createElement("th", "<span onclick=\"setSort('" + i + "')\">" + sortnames[i] + "</span>"))
-            } else {
-              tr.appendChild(createElement("th", "<img src='" + headerpng + "' onclick=\"setSort('" + i + "')\">"))
-            }
-          })
-        </script>
-        <tbody id="content"></tbody>
-      </table>
-      <div id="filterdetails">
-        <div id="actordetails"></div>
-        <div id="editdetails"></div>
-        
-      </div>
+    <div id="filterActorDiv">
+      Find actor <img src="https://icons.veryicon.com/png/o/miscellaneous/taoist-music/clear-26.png"
+        onclick="document.getElementById('actordd').value='';filtertable();populateActorDetails()"> <br>
+      <select id="actordd" onchange="filtertable();populateActorDetails()">
+        <option value="">All actors</option>
+      </select>
+      <script id="populateactordd">
+        for (let actor in actors) {
+          document.getElementById("actordd").appendChild(createOption(actor, actors[actor].name))
+        }
+      </script>
     </div>
 
-    <div id="footer">
-      made by Crystal Wen, to recommend kdramas and keep track of my videos. beware controversial opinions and bad edits.
-      sources of truth (in regards to this chart):
-      <a href="https://github.com/coderystal/kdramastats/tree/main/v1" target="_blank"><img id="github"
-          src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"></a>
-      <a href="https://www.youtube.com/channel/UC6CkVOVhu8dKzJNfiGxtfoA" target="_blank"><img id="youtube"
-          src="https://cdn-icons-png.flaticon.com/512/152/152810.png"></a>
+
+    <div id="doublerangeslider">
+      <span id="minyearfb"></span> - <span id="maxyearfb"></span>
+      <br>
+      <div class="slider-track"></div>
+      <input type="range" id="minyear" oninput="slideOne()" />
+      <input type="range" id="maxyear" oninput="slideTwo()" />
     </div>
 
-  </body>
+    <div id="showResultsDiv">
+      Show results <span id="numresultsfb">1</span><br>
+      <input id="numresults" onchange="updnumresults()" type="range" min="1">
+    </div>
 
-  <script id="textformattingfuncs">
-    function boldText(str, bold) {
-      return (bold ? "<b>" : "") + str + (bold ? "</b>" : "")
-    }
-  </script>
-  <script id="kdramadetailfuncs">
-    function getLabeledSectionIfExists(str, label) {
-      return (str == "") ? "" : (label + ": " + str + "<br><hr>")
-    }
-    function getKdramaSubtitle(kdrama) {
-      return "<b>" + kdrama[SCORE] + "/10</b><br> "+ kdrama[YR] + " | " + kdrama[HRS] + " hrs | " +
-        kdrama[AUD] + "% audience share | Starring " + 
-        kdrama[FEM].map(actor => getActor(actor)).join(" and ") + 
-        ((kdrama[FEM].length == 0 || kdrama[MALE].length == 0) ? "" : " opposite ") +
-        kdrama[MALE].map(actor => getActor(actor)).join(" and ") +
-        (kdrama[SUP].length == 0 ? "" : (", along with " + kdrama[SUP].map(actor => getActor(actor)).join(", ")))
-    }
-    function getKdramaReview(kdrama) {
-      return getLabeledSectionIfExists(kdrama[PLOT], "Plot") +
-        getLabeledSectionIfExists(kdrama[CHARACTER], "Characters") +
-        getLabeledSectionIfExists(kdrama[DIRECTION], "Direction") +
-        getLabeledSectionIfExists(kdrama[ACTING], "Acting")
-    }
-    function getEndingDiv(kdrama) {
-      let div = document.createElement("div")
-      let endFirstTok = getScoreFromKdrama(kdrama, ENDING)
-      let firstTokExists = endFirstTok != -1
-      if (kdrama[ENDING] != "")
-        div.innerHTML = "Ending: " + (firstTokExists ? endFirstTok : "") + " "
-      let span = document.createElement("span")
-
-      span.style.backgroundColor = "black"
-      span.onmousedown = () => { span.style.backgroundColor = "floralwhite" }
-      span.ontouchstart = () => { span.style.backgroundColor = "floralwhite" }
-      span.onmouseup = () => { span.style.backgroundColor = "black" }
-      span.ontouchend = () => { span.style.backgroundColor = "black" }
-      span.onmouseleave = () => { span.style.backgroundColor = "black" }
-      span.innerHTML = getReviewFromKdrama(kdrama, ENDING)
-      div.appendChild(span)
-      return div
-    }
-    function getEditsDiv(kdrama) {
-      let div = document.createElement("div")
-      let numedits = kdramastoedits[kdrama[TITLE]].length
-      if (numedits == 0)
-        div.innerHTML = "Not yet featured in a wyx tv edit."
-      else
-        div.innerHTML = "Featured in " + numedits + " wyx tv edit" + (numedits == 1 ? "" : "s") + ": "
-      kdramastoedits[kdrama[TITLE]].forEach((editInd) => {
-        let btn = document.createElement("button")
-        btn.innerHTML = edits[editInd].Title
-        btn.onclick = () => {
-          document.getElementById("editdd").value = editInd
-          filtertable()
-          populateEditDetails()
-        }
-        div.appendChild(btn)
-      })
-      return div
-    }
-    function getExpandedTitle() {
-      return document.getElementById("kdramareviewdetails_title").innerHTML
-    }
-    function parkKdramaDetails() {
-      document.getElementById("detailsparkinglot").appendChild(document.getElementById("kdramareviewdetailsholder"))
-    }
-  </script>
-  <script id="sortfuncs">
-    function getDoubleSort(sortedDiff, a, b, primarySortInd) {
-      if (sortedDiff != 0) 
-        return sortedDiff
-      //secondary sort is score if primary is not score, otherwise plot
-      if (primarySortInd != SCORE)
-        return b[SCORE] - a[SCORE]
-      return getScoreFromKdrama(b,PLOT) - getScoreFromKdrama(a,PLOT)
-    }
-    function compareNumFromKdramaObj(a, b, ind) {
-      return getDoubleSort(b[ind] - a[ind], a, b, ind)
-    }
-    function getScoreFromString(str) {
-      let tok = str.split(" ")[0]
-      if (tok == "" || isNaN(tok)) {
-        return -1
-      }
-      return parseInt(tok)
-    }
-    function getReviewFromString(str) {
-      let toklen = str.split(" ")[0].length
-      return str.substring(getScoreFromString(str) == -1 ? 0 : toklen)
-    }
-    function getScoreFromKdrama(kdrama, ind) {
-      return getScoreFromString(kdrama[ind])
-    }
-    function getReviewFromKdrama(kdrama, ind) {
-      return getReviewFromString(kdrama[ind])
-    }
-    function compareScore(a, b, ind) {
-      return getDoubleSort(getScoreFromKdrama(b, ind) - getScoreFromKdrama(a, ind), a, b, ind)
-    }
-    
-    function compareNumEdits(a, b) {
-      return kdramastoedits[b[TITLE]].length - kdramastoedits[a[TITLE]].length
-    }
-    function compareTitle(a, b) { return compareAlph(a, b, TITLE) }
-    function compareAudScore(a, b) { return compareNumFromKdramaObj(a, b, AUD) }
-    function compareOverallScore(a, b) { return compareNumFromKdramaObj(a, b, SCORE) }
-    function compareCryability(a, b) { return compareNumFromKdramaObj(a, b, CRYABILITY) }
-    function compareYear(a, b) { return compareNumFromKdramaObj(a, b, YR) }
-    function compareHours(a, b) { return compareNumFromKdramaObj(a, b, HRS) }
-    function comparePlot(a, b) { return compareScore(a, b, PLOT) }
-    function compareCharacter(a, b) { return compareScore(a, b, CHARACTER) }
-    function compareDirection(a, b) { return compareScore(a, b, DIRECTION) }
-    function compareActing(a, b) { return compareScore(a, b, ACTING) }
-    function compareEnding(a, b) { return compareScore(a, b, ENDING) }
-
-    function sortkdramadetailsvariable() {
-      let compare
-      let sorti = document.getElementById("sortdd").value
-      switch (parseInt(sorti)) {
-        case AUD: compare = compareAudScore; break;
-        case SCORE: compare = compareOverallScore; break;
-        case CRYABILITY: compare = compareCryability; break;
-        case TITLE: compare = compareTitle; break;
-        case YR: compare = compareYear; break;
-        case HRS: compare = compareHours; break;
-        case SORTEDITIND: compare = compareNumEdits; break;
-        case PLOT: compare = comparePlot; break;
-        case CHARACTER: compare = compareCharacter; break;
-        case DIRECTION: compare = compareDirection; break;
-        case ACTING: compare = compareActing; break;
-        case ENDING: compare = compareEnding; break;
-      }
-
-      kdramadetails.sort(compare)
-      addSortStyle(sorti)
-    }
-  </script>
-  <script id="updateviewfuncs">
-    let content = document.getElementById("content")
-    resettable()
-
-    window.addEventListener('keyup', function(e) {
-        if (e.key === "Escape") { // escape key maps to keycode `27`
-          closepopup();
-        }
-    });
-    function setSort(sorti) {
-      if (showPopupOnHeaderClick) {
-        let sortname = sortnames[sorti]
-        let sortpng = headerpngs[sorti]
-        let sortdesc = sortdescs[sorti]
+    <img id='reset' src="https://www.svgrepo.com/download/334208/reset.svg" onclick="resettable()">
+    <img id="settings" src="https://www.svgrepo.com/show/526221/settings.svg" onclick="showSettings()">
+    <script id="setInfoModal">
+      function showSettings() {
         modal.style.display = "block";
-        
         modalcontent = document.getElementsByClassName('modal-content')[0]
         document.getElementById("modalparkinglot").appendChild(document.getElementById("settingscontent"))
         modalcontent.innerHTML = ""
-
-        headerhtml = ""
-        if (sortpng != "NONE") {
-          headerhtml += "<img src='"+sortpng+"' style='margin-right:5px'/>"
-        }
-        headerhtml += sortname 
-        if ((sorti >= CRYABILITY && sorti <= ENDING) || sorti == SCORE)
-          headerhtml += " - out of ten"
-        modalcontent.appendChild(createElement("h3", headerhtml))
-        modalcontent.innerHTML += sortdesc
-        modalcontent.innerHTML += "<hr>"
-        if ((sorti >= CRYABILITY && sorti <= ENDING)) {
-          modalcontent.innerHTML += kdramas[kdramadetails[0][TITLE]]+" " +sortname+ " (currently sorted at the top of this list)<br>";
-          let score = kdramadetails[0][sorti]
-          modalcontent.innerHTML += score == "" ? "None listed." : score
-        }
-        modalcontent.innerHTML += "<br><br>"
-
-        let sortbutton = createElement("button", "Sort By " + sortname)
-        sortbutton.onclick = () => {
-          document.getElementById("sortdd").value = sorti
-          populateTable()
-          closepopup()
-        }
-        sortbutton.style.marginRight = "10px"
-        modalcontent.appendChild(sortbutton)
-
-        let closebutton = createElement("button", "Close Popup")
-        closebutton.onclick = closepopup
-        modalcontent.appendChild(closebutton)
-        modalcontent.appendChild(document.createElement("br"))
-        let noMorePopupsButton = createElement("button", "Don't show me these popups")
-        noMorePopupsButton.onclick = () => {
-          showPopupOnHeaderClick = false;
-          closepopup()
-        }
-        noMorePopupsButton.style.marginTop = "5px"
-        modalcontent.appendChild(noMorePopupsButton)
-      } else {
-        document.getElementById("sortdd").value = sorti
-        populateTable()
+        modalcontent.appendChild(document.getElementById("settingscontent"))
+        document.getElementById("headerclickresult").innerHTML = showPopupOnHeaderClick ? "see info popup" : "sort table by stat"
       }
+
+    </script>
+  </div>
+
+  <div id="tableholder">
+    <table id="detailsparkinglot">
+      <tr id="kdramareviewdetailsholder">
+        <td colspan="16">
+          <div id="kdramareviewdetails">
+            <div id="kdramareviewstext">
+              <b><span id="kdramareviewdetails_title"></span></b> |
+              <span id="kdramareviewdetails_subtitle"></span>
+              <br>
+              <hr>
+              <span id="kdramareviewdetails_content"></span>
+            </div>
+            <div id="kdramareviewsimg"></div>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <thead>
+        <tr id="tableheader"></tr>
+      </thead>
+      <tbody id="content"></tbody>
+    </table>
+    <div id="filterdetails">
+      <div id="actordetails"></div>
+      <div id="editdetails"></div>
+
+    </div>
+  </div>
+
+  <div id="footer">
+    made by Crystal Wen, to recommend kdramas and keep track of my videos. beware controversial opinions and bad edits.
+    sources of truth (in regards to this chart):
+    <a href="https://github.com/coderystal/kdramastats/tree/main/v1" target="_blank"><img id="github"
+        src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"></a>
+    <a href="https://www.youtube.com/channel/UC6CkVOVhu8dKzJNfiGxtfoA" target="_blank"><img id="youtube"
+        src="https://cdn-icons-png.flaticon.com/512/152/152810.png"></a>
+  </div>
+
+</body>
+
+<script id="textformattingfuncs">
+  function boldText(str, bold) {
+    return (bold ? "<b>" : "") + str + (bold ? "</b>" : "")
+  }
+</script>
+<script id="kdramadetailfuncs">
+  function getLabeledSectionIfExists(str, label) {
+    return (str == "") ? "" : (label + ": " + str + "<br><hr>")
+  }
+  function getKdramaSubtitle(kdrama) {
+    return "<b>" + kdrama[SCORE] + "/10</b><br> " + kdrama[YR] + " | " + kdrama[HRS] + " hrs | " +
+      kdrama[AUD] + "% audience share | Starring " +
+      kdrama[FEM].map(actor => getActor(actor)).join(" and ") +
+      ((kdrama[FEM].length == 0 || kdrama[MALE].length == 0) ? "" : " opposite ") +
+      kdrama[MALE].map(actor => getActor(actor)).join(" and ") +
+      (kdrama[SUP].length == 0 ? "" : (", along with " + kdrama[SUP].map(actor => getActor(actor)).join(", ")))
+  }
+  function getKdramaReview(kdrama) {
+    return getLabeledSectionIfExists(kdrama[PLOT], "Plot") +
+      getLabeledSectionIfExists(kdrama[CHARACTER], "Characters") +
+      getLabeledSectionIfExists(kdrama[DIRECTION], "Direction") +
+      getLabeledSectionIfExists(kdrama[ACTING], "Acting")
+  }
+  function getEndingDiv(kdrama) {
+    let div = document.createElement("div")
+    let endFirstTok = getScoreFromKdrama(kdrama, ENDING)
+    let firstTokExists = endFirstTok != -1
+    if (kdrama[ENDING] != "")
+      div.innerHTML = "Ending: " + (firstTokExists ? endFirstTok : "") + " "
+    let span = document.createElement("span")
+
+    span.style.backgroundColor = "black"
+    span.onmousedown = () => { span.style.backgroundColor = "floralwhite" }
+    span.ontouchstart = () => { span.style.backgroundColor = "floralwhite" }
+    span.onmouseup = () => { span.style.backgroundColor = "black" }
+    span.ontouchend = () => { span.style.backgroundColor = "black" }
+    span.onmouseleave = () => { span.style.backgroundColor = "black" }
+    span.innerHTML = getReviewFromKdrama(kdrama, ENDING)
+    div.appendChild(span)
+    return div
+  }
+  function getEditsDiv(kdrama) {
+    let div = document.createElement("div")
+    let numedits = kdramastoedits[kdrama[TITLE]].length
+    if (numedits == 0)
+      div.innerHTML = "Not yet featured in a wyx tv edit."
+    else
+      div.innerHTML = "Featured in " + numedits + " wyx tv edit" + (numedits == 1 ? "" : "s") + ": "
+    kdramastoedits[kdrama[TITLE]].forEach((editInd) => {
+      let btn = document.createElement("button")
+      btn.innerHTML = edits[editInd].Title
+      btn.onclick = () => {
+        document.getElementById("editdd").value = editInd
+        filtertable()
+        populateEditDetails()
+      }
+      div.appendChild(btn)
+    })
+    return div
+  }
+  function getExpandedTitle() {
+    return document.getElementById("kdramareviewdetails_title").innerHTML
+  }
+  function parkKdramaDetails() {
+    document.getElementById("detailsparkinglot").appendChild(document.getElementById("kdramareviewdetailsholder"))
+  }
+</script>
+<script id="sortfuncs">
+  function getDoubleSort(sortedDiff, a, b, primarySortInd) {
+    if (sortedDiff != 0)
+      return sortedDiff
+    //secondary sort is score if primary is not score, otherwise plot
+    if (primarySortInd != SCORE)
+      return b[SCORE] - a[SCORE]
+    return getScoreFromKdrama(b, PLOT) - getScoreFromKdrama(a, PLOT)
+  }
+  function compareNumFromKdramaObj(a, b, ind) {
+    return getDoubleSort(b[ind] - a[ind], a, b, ind)
+  }
+  function getScoreFromString(str) {
+    let tok = str.split(" ")[0]
+    if (tok == "" || isNaN(tok)) {
+      return -1
     }
-    function addSortStyle(sorti) {
-        var style = document.getElementById('sortedstyle');
-        style.sheet.deleteRule(0)
-        style.sheet.insertRule("tr > td:nth-child("+(parseInt(sorti)+2)+") {background-color: #f1d8f6}")
+    return parseInt(tok)
+  }
+  function getReviewFromString(str) {
+    let toklen = str.split(" ")[0].length
+    return str.substring(getScoreFromString(str) == -1 ? 0 : toklen)
+  }
+  function getScoreFromKdrama(kdrama, ind) {
+    return getScoreFromString(kdrama[ind])
+  }
+  function getReviewFromKdrama(kdrama, ind) {
+    return getReviewFromString(kdrama[ind])
+  }
+  function compareScore(a, b, ind) {
+    return getDoubleSort(getScoreFromKdrama(b, ind) - getScoreFromKdrama(a, ind), a, b, ind)
+  }
+
+  function compareNumEdits(a, b) {
+    return kdramastoedits[b[TITLE]].length - kdramastoedits[a[TITLE]].length
+  }
+  function compareTitle(a, b) { return compareAlph(a, b, TITLE) }
+  function compareAudScore(a, b) { return compareNumFromKdramaObj(a, b, AUD) }
+  function compareOverallScore(a, b) { return compareNumFromKdramaObj(a, b, SCORE) }
+  function compareCryability(a, b) { return compareNumFromKdramaObj(a, b, CRYABILITY) }
+  function compareYear(a, b) { return compareNumFromKdramaObj(a, b, YR) }
+  function compareHours(a, b) { return compareNumFromKdramaObj(a, b, HRS) }
+  function comparePlot(a, b) { return compareScore(a, b, PLOT) }
+  function compareCharacter(a, b) { return compareScore(a, b, CHARACTER) }
+  function compareDirection(a, b) { return compareScore(a, b, DIRECTION) }
+  function compareActing(a, b) { return compareScore(a, b, ACTING) }
+  function compareEnding(a, b) { return compareScore(a, b, ENDING) }
+
+  function sortkdramadetailsvariable() {
+    let compare
+    let sorti = document.getElementById("sortdd").value
+    showcolumns = [true, false, false, false, true, true, true, false, true, false, false, false, false, false, false]
+    showcolumns[sorti] = true
+    switch (parseInt(sorti)) {
+      case AUD: compare = compareAudScore; break;
+      case SCORE: compare = compareOverallScore; break;
+      case CRYABILITY: compare = compareCryability; break;
+      case TITLE: compare = compareTitle; break;
+      case YR: compare = compareYear; break;
+      case HRS: compare = compareHours; break;
+      case SORTEDITIND: compare = compareNumEdits; break;
+      case PLOT: compare = comparePlot; break;
+      case CHARACTER: compare = compareCharacter; break;
+      case DIRECTION: compare = compareDirection; break;
+      case ACTING: compare = compareActing; break;
+      case ENDING: compare = compareEnding; break;
     }
-    function checkSortVal(i) {
-      return document.getElementById("sortdd").value == i
+
+    kdramadetails.sort(compare)
+    addSortStyle(sorti)
+  }
+</script>
+<script id="updateviewfuncs">
+  let content = document.getElementById("content")
+  resettable()
+
+  window.addEventListener('keyup', function (e) {
+    if (e.key === "Escape") { // escape key maps to keycode `27`
+      closepopup();
     }
+  });
+  function setSort(sorti) {
+    if (showPopupOnHeaderClick) {
+      populateModal(sorti)
+    } else {
+      document.getElementById("sortdd").value = sorti
+      populateTable()
+    }
+  }
+  function addSortStyle(sorti) {
+    var style = document.getElementById('sortedstyle');
+    // style.sheet.deleteRule(0)
+    // style.sheet.insertRule("tr > td:nth-child("+(parseInt(sorti)+2)+") {background-color: #f1d8f6}")
+  }
+  function checkSortVal(i) {
+    return document.getElementById("sortdd").value == i
+  }
 
-    function populateTable() {
-      let expandedTitle = getExpandedTitle()
-      //park expanded details for now, so it doesn't get cleared out
-      parkKdramaDetails()
-      //clear table body rows
-      content.innerHTML = ""
-      sortkdramadetailsvariable()
-      // populate each kdrama table row, bolded value for sorted attribute
-      kdramadetails.forEach((kdrama, i) => {
-        let tr = document.createElement("tr")
-        tr.id = "tr" + i
-        tr.appendChild(createElement("td",""))
-        let titletd = createElement("td", boldText(kdramas[kdrama[TITLE]], checkSortVal(TITLE)) + " ")
-        let btn = document.createElement("img")
-        btn.src = pngs.CARETRIGHT
-        btn.id = "exp_" + kdramas[kdrama[TITLE]].replaceAll(" ", "_").replaceAll(",", "")
-        btn.onclick = () => {
-          if (btn.src == pngs.CARETRIGHT) {
-            let titlespan = document.getElementById("kdramareviewdetails_title")
-            let oldtitle = titlespan.innerHTML
-            if (oldtitle != "") {
-              document.getElementById("exp_" + oldtitle.replaceAll(" ", "_").replaceAll(",", "")).src = pngs.CARETRIGHT
-            }
-            titlespan.innerHTML = kdramas[kdrama[TITLE]]
-            document.getElementById("kdramareviewdetails_subtitle").innerHTML = getKdramaSubtitle(kdrama)
+  function slideOne() {
+    if (parseInt(document.getElementById("maxyear").value) - parseInt(document.getElementById("minyear").value) <= 0) {
+      document.getElementById("minyear").value = parseInt(document.getElementById("maxyear").value);
+    }
+    document.getElementById("minyearfb").textContent = document.getElementById("minyear").value;
+    fillColor();
+    filtertable()
+  }
+  function slideTwo() {
+    if (parseInt(document.getElementById("maxyear").value) - parseInt(document.getElementById("minyear").value) <= 0) {
+      document.getElementById("maxyear").value = parseInt(document.getElementById("minyear").value);
+    }
+    document.getElementById("maxyearfb").textContent = document.getElementById("maxyear").value;
+    fillColor();
+    filtertable()
+  }
+  function fillColor() {
+    let yrs = maxYr - minYr + 1
+    percent1 = Math.floor(((document.getElementById("minyear").value - minYr) / (maxYr - minYr)) * 100);
+    percent2 = Math.ceil(((document.getElementById("maxyear").value - minYr) / (maxYr - minYr)) * 100);
+    document.querySelector(".slider-track").style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #3264fe ${percent1}% , #3264fe ${percent2}%, #dadae5 ${percent2}%)`
+  }
 
-            let details = document.getElementById("kdramareviewdetails_content")
-            details.innerHTML = getKdramaReview(kdrama)
-            details.appendChild(getEndingDiv(kdrama))
-            details.appendChild(getEditsDiv(kdrama))
-
-            tr.parentNode.insertBefore(document.getElementById("kdramareviewdetailsholder"), tr.nextSibling);
-            btn.src = pngs.CARETDOWN
-
-            document.getElementById("kdramareviewstext").style.width="70%"
-            document.getElementById("kdramareviewsimg").style.width="28%"
-            let asianwikikey = kdrama[AWKEY]
-            document.getElementById("kdramareviewsimg").innerHTML = "<a id='actorlink' href='https://asianwiki.com/"+asianwikikey+"#Trailers' target='_blank'>AsianWiki: " + asianwikikey.replaceAll("_"," ") + "</a><br>" +
-              "<img id='kdramaposter' src='"+kdrama[PNG]+"''>"
-          } else {
-            document.getElementById("kdramareviewdetails_title").innerHTML = ""
-            document.getElementById("kdramareviewdetails_subtitle").innerHTML = ""
-            document.getElementById("kdramareviewdetails_content").innerHTML = ""
-            document.getElementById("detailsparkinglot").appendChild(document.getElementById("kdramareviewdetailsholder"))
-            btn.src = pngs.CARETRIGHT
-          }
+  function populateTable() {
+    let expandedTitle = getExpandedTitle()
+    //park expanded details for now, so it doesn't get cleared out
+    parkKdramaDetails()
+    //clear table body rows
+    content.innerHTML = ""
+    sortkdramadetailsvariable()
+    // populate each kdrama table row, bolded value for sorted attribute
+    let tr = document.getElementById("tableheader")
+    tr.innerHTML = ""
+    tr.appendChild(createElement("th", "#"))
+    headerpngs.forEach((headerpng, i) => {
+      if (showcolumns[i]) {
+        if (headerpng == "NONE") {
+          if (!sortable(i))
+            tr.appendChild(createElement("th", "<span>" + sortnames[i] + "</span>"))
+          else
+            tr.appendChild(createElement("th", "<span onclick=\"setSort('" + i + "')\">" + sortnames[i] + "</span>"))
+        } else {
+          tr.appendChild(createElement("th", "<img src='" + headerpng + "' onclick=\"setSort('" + i + "')\">"))
         }
-        titletd.appendChild(btn)
-        tr.appendChild(titletd)
-        tr.appendChild(createElement("td", boldText(kdrama[YR], checkSortVal(YR))))
-        tr.appendChild(createElement("td", boldText(kdrama[HRS], checkSortVal(HRS))))
-        tr.appendChild(createElement("td", boldText(kdrama[AUD]+"%", checkSortVal(AUD))))
-        let actortypes = [FEM, MALE, SUP]
-        actortypes.forEach((actortype) => {
+      }
+    })
+
+    kdramadetails.forEach((kdrama, i) => {
+      let tr = document.createElement("tr")
+      tr.id = "tr" + i
+      tr.appendChild(createElement("td", ""))
+      let sorted = checkSortVal(TITLE)
+      let titletd = createElement("td", boldText(kdramas[kdrama[TITLE]], sorted) + " ")
+      if (sorted)
+        titletd.style.backgroundColor = "#f1d8f6"
+      let btn = document.createElement("img")
+      btn.src = pngs.CARETRIGHT
+      btn.id = "exp_" + kdramas[kdrama[TITLE]].replaceAll(" ", "_").replaceAll(",", "")
+      btn.onclick = () => {
+        if (btn.src == pngs.CARETRIGHT) {
+          let titlespan = document.getElementById("kdramareviewdetails_title")
+          let oldtitle = titlespan.innerHTML
+          if (oldtitle != "") {
+            document.getElementById("exp_" + oldtitle.replaceAll(" ", "_").replaceAll(",", "")).src = pngs.CARETRIGHT
+          }
+          titlespan.innerHTML = kdramas[kdrama[TITLE]]
+          document.getElementById("kdramareviewdetails_subtitle").innerHTML = getKdramaSubtitle(kdrama)
+
+          let details = document.getElementById("kdramareviewdetails_content")
+          details.innerHTML = getKdramaReview(kdrama)
+          details.appendChild(getEndingDiv(kdrama))
+          details.appendChild(getEditsDiv(kdrama))
+
+          tr.parentNode.insertBefore(document.getElementById("kdramareviewdetailsholder"), tr.nextSibling);
+          btn.src = pngs.CARETDOWN
+
+          document.getElementById("kdramareviewstext").style.width = "70%"
+          document.getElementById("kdramareviewsimg").style.width = "28%"
+          let asianwikikey = kdrama[AWKEY]
+          document.getElementById("kdramareviewsimg").innerHTML = "<a id='actorlink' href='https://asianwiki.com/" + asianwikikey + "#Trailers' target='_blank'>AsianWiki: " + asianwikikey.replaceAll("_", " ") + "</a><br>" +
+            "<img id='kdramaposter' src='" + kdrama[PNG] + "''>"
+        } else {
+          document.getElementById("kdramareviewdetails_title").innerHTML = ""
+          document.getElementById("kdramareviewdetails_subtitle").innerHTML = ""
+          document.getElementById("kdramareviewdetails_content").innerHTML = ""
+          document.getElementById("detailsparkinglot").appendChild(document.getElementById("kdramareviewdetailsholder"))
+          btn.src = pngs.CARETRIGHT
+        }
+      }
+      titletd.appendChild(btn)
+      tr.appendChild(titletd)
+
+      function createTD(attr) {
+        let sorted = checkSortVal(attr)
+        let td = createElement("td", boldText(kdrama[attr], sorted))
+        if (sorted)
+          td.style.backgroundColor = "#f1d8f6"
+        return td
+      }
+      if (showcolumns[YR])
+        tr.appendChild(createTD(YR))
+      if (showcolumns[HRS])
+        tr.appendChild(createTD(HRS))
+      if (showcolumns[AUD]) {
+        let audTD = createTD(AUD)
+        audTD.innerHTML += "%"
+        tr.appendChild(audTD)
+      }
+      let actortypes = [FEM, MALE, SUP]
+      actortypes.forEach((actortype) => {
+        if (showcolumns[actortype]) {
           let td = document.createElement("td")
           kdrama[actortype].forEach((actor) => {
             let btn = createElement("button", getActor(actor))
@@ -1265,170 +1432,179 @@
             td.appendChild(btn)
           })
           tr.appendChild(td)
-        })
-        tr.appendChild(createElement("td", boldText(kdrama[SCORE], checkSortVal(SCORE))))
+        }
+      })
+      if (showcolumns[SCORE])
+        tr.appendChild(createTD(SCORE))
+      if (showcolumns[OVERVIEW])
         tr.appendChild(createElement("td", kdrama[OVERVIEW]))
-        tr.appendChild(createElement("td", boldText(kdrama[CRYABILITY], checkSortVal(CRYABILITY))))
-        let scoretypes = [PLOT, CHARACTER, DIRECTION, ACTING, ENDING]
-        scoretypes.forEach((scoretype) => {
+      if (showcolumns[CRYABILITY])
+        tr.appendChild(createTD(CRYABILITY))
+      let scoretypes = [PLOT, CHARACTER, DIRECTION, ACTING, ENDING]
+      scoretypes.forEach((scoretype) => {
+        if (showcolumns[scoretype]) {
           let score = getScoreFromString(kdrama[scoretype])
-          tr.appendChild(createElement("td", boldText(score != -1 ? score : "", checkSortVal(scoretype))))
-        })
-        tr.appendChild(createElement("td", boldText(kdramastoedits[kdrama[TITLE]].length, checkSortVal(SORTEDITIND))))
-
-        content.appendChild(tr)
-      })
-      // no results notification row
-      let nonerow = createElement("tr", "<td colSpan='16'>No results for this search.<br><button onclick='resettable()'>Reset filters</button></td>")
-      nonerow.id = "nonerow"
-      document.getElementById("content").appendChild(nonerow)
-      // hide rows according to search, place details and no results notifications
-      filtertable()
-    }
-    
-    function matchesactor(kdrama, actor) {
-      return actor == "" || kdrama[FEM].includes(actor) || kdrama[MALE].includes(actor) || kdrama[SUP].includes(actor)
-    }
-    function matchesyear(kdrama, minyr, maxyr) {
-      return minyr <= kdrama[YR] && kdrama[YR] <= maxyr
-    }
-    function matchesedit(kdrama, edit) {
-      return edit == "" || kdramastoedits[kdrama[TITLE]].includes(parseInt(edit))
-    }
-    function filtertable() {
-      let numresults = document.getElementById('numresults').value
-      let showingall = numresults == document.getElementById('numresultsfb').innerHTML.split(" / ")[1]
-      let numfiltered = 0;
-
-      let actor = document.getElementById("actordd").value
-      let minyr = document.getElementById("minyear").value
-      let maxyr = document.getElementById("maxyear").value
-      let edit = document.getElementById("editdd").value
-
-      let nextcolor = 0
-      kdramadetails.forEach((kdrama, i) => {
-        let shown = false
-        if (matchesactor(kdrama, actor) && matchesyear(kdrama, minyr, maxyr) && matchesedit(kdrama, edit)) {
-          numfiltered++
-          if (showingall || numfiltered <= numresults) {
-            document.getElementById("tr"+i).style.display = ""
-            document.getElementById("tr"+i).classList.add("color" + nextcolor)
-            nextcolor = (nextcolor + 1) % 2
-            document.getElementById("tr"+i).classList.remove("color" + nextcolor)
-            shown = true;
-            document.querySelector("#tr" + i + " > td").innerHTML = numfiltered
-          }
-        }
-        if (shown) {
-          if (kdramas[kdrama[TITLE]] == getExpandedTitle()) {
-            let tr = document.getElementById("tr"+i)
-            document.getElementById("exp_" + getExpandedTitle().replaceAll(" ", "_").replaceAll(",", "")).src = pngs.CARETDOWN
-            tr.parentNode.insertBefore(document.getElementById("kdramareviewdetailsholder"), tr.nextSibling);
-          }
-        } else {
-          document.getElementById("tr"+i).style.display = "none"
-          if (kdramas[kdrama[TITLE]] == getExpandedTitle()) {
-            document.getElementById("exp_" + getExpandedTitle().replaceAll(" ", "_").replaceAll(",", "")).src = pngs.CARETRIGHT
-            parkKdramaDetails()
-          }
+          let sorted = checkSortVal(scoretype)
+          let td = createElement("td", boldText(score != -1 ? score : "", sorted))
+          if (sorted)
+            td.style.backgroundColor = "#f1d8f6"
+          tr.appendChild(td)
         }
       })
-      document.getElementById('numresults').max = numfiltered
-      if (showingall)
-        numresults = numfiltered
-      document.getElementById('numresults').value = Math.min(numresults, numfiltered)
-      document.getElementById("numresultsfb").innerHTML = Math.min(numresults, numfiltered) + " / " + numfiltered
-      document.getElementById("nonerow").style.display = numfiltered == 0 ? "" : "none"
-    }
+      if (showcolumns[SORTEDITIND]) {
 
-    function populateActorDetails() {
-      
-      let actor = document.getElementById("actordd").value
-      document.getElementById("actordetails").innerHTML = ""
-      let div = document.createElement("div")
-      let text = document.createElement("div")
-      text.innerHTML = (actor in actors ? actors[actor].name : actor) + "<br>"
-      if (actor in actors) {
-        text.innerHTML += "<a id='actorlink' href='https://asianwiki.com/"+actors[actor].awkey+"' target='_blank'>AsianWiki: " + actors[actor].awkey.replaceAll("_", " ") + "</a>"
-        let img = document.createElement("img")
-        img.src = actors[actor].png
-        img.id = "actorimg"
-        div.appendChild(img)
+        let sorted = checkSortVal(SORTEDITIND)
+        let td = createElement("td", boldText(kdramastoedits[kdrama[TITLE]].length, sorted))
+        if (sorted)
+          td.style.backgroundColor = "#f1d8f6"
+        tr.appendChild(td)
       }
-      else {
-        if (actor != "")
-          text.innerHTML += " - no details yet"
+
+      content.appendChild(tr)
+    })
+    // no results notification row
+    let nonerow = createElement("tr", "<td colSpan='16' style='color:white;'>No results for this search.<br><button onclick='resettable()'>Reset filters</button></td>")
+    nonerow.id = "nonerow"
+    document.getElementById("content").appendChild(nonerow)
+    // hide rows according to search, place details and no results notifications
+
+
+    slideOne();
+    slideTwo();
+  }
+
+  function matchesactor(kdrama, actor) {
+    return actor == "" || kdrama[FEM].includes(actor) || kdrama[MALE].includes(actor) || kdrama[SUP].includes(actor)
+  }
+  function matchesyear(kdrama, minyr, maxyr) {
+    return minyr <= kdrama[YR] && kdrama[YR] <= maxyr
+  }
+  function matchesedit(kdrama, edit) {
+    return edit == "" || kdramastoedits[kdrama[TITLE]].includes(parseInt(edit))
+  }
+  function filtertable() {
+    let numresults = document.getElementById('numresults').value
+    let showingall = numresults == document.getElementById('numresultsfb').innerHTML.split(" / ")[1]
+    let numfiltered = 0;
+
+    let actor = document.getElementById("actordd").value
+    let minyr = document.getElementById("minyear").value
+    let maxyr = document.getElementById("maxyear").value
+    let edit = document.getElementById("editdd").value
+
+    let nextcolor = 0
+    kdramadetails.forEach((kdrama, i) => {
+      let shown = false
+      if (matchesactor(kdrama, actor) && matchesyear(kdrama, minyr, maxyr) && matchesedit(kdrama, edit)) {
+        numfiltered++
+        if (showingall || numfiltered <= numresults) {
+          document.getElementById("tr" + i).style.display = ""
+          document.getElementById("tr" + i).classList.add("color" + nextcolor)
+          nextcolor = (nextcolor + 1) % 2
+          document.getElementById("tr" + i).classList.remove("color" + nextcolor)
+          shown = true;
+          document.querySelector("#tr" + i + " > td").innerHTML = numfiltered
+        }
       }
+      if (shown) {
+        if (kdramas[kdrama[TITLE]] == getExpandedTitle()) {
+          let tr = document.getElementById("tr" + i)
+          document.getElementById("exp_" + getExpandedTitle().replaceAll(" ", "_").replaceAll(",", "")).src = pngs.CARETDOWN
+          tr.parentNode.insertBefore(document.getElementById("kdramareviewdetailsholder"), tr.nextSibling);
+        }
+      } else {
+        document.getElementById("tr" + i).style.display = "none"
+        if (kdramas[kdrama[TITLE]] == getExpandedTitle()) {
+          document.getElementById("exp_" + getExpandedTitle().replaceAll(" ", "_").replaceAll(",", "")).src = pngs.CARETRIGHT
+          parkKdramaDetails()
+        }
+      }
+    })
+    document.getElementById('numresults').max = numfiltered
+    if (showingall)
+      numresults = numfiltered
+    document.getElementById('numresults').value = Math.min(numresults, numfiltered)
+    document.getElementById("numresultsfb").innerHTML = Math.min(numresults, numfiltered) + " / " + numfiltered
+    document.getElementById("nonerow").style.display = numfiltered == 0 ? "" : "none"
+  }
+
+  function populateActorDetails() {
+
+    let actor = document.getElementById("actordd").value
+    document.getElementById("actordetails").innerHTML = ""
+    let div = document.createElement("div")
+    let text = document.createElement("div")
+    text.innerHTML = (actor in actors ? actors[actor].name : actor) + "<br>"
+    if (actor in actors) {
+      text.innerHTML += "<a id='actorlink' href='https://asianwiki.com/" + actors[actor].awkey + "' target='_blank'>AsianWiki: " + actors[actor].awkey.replaceAll("_", " ") + "</a>"
+      let img = document.createElement("img")
+      img.src = actors[actor].png
+      img.id = "actorimg"
+      div.appendChild(img)
+    }
+    else {
       if (actor != "")
-        text.innerHTML += "<br><br>" + 
-              " <button id='clearactorlink' onclick=\"document.getElementById('actordd').value='';filtertable();populateActorDetails();\">Clear actor filter</button>"
-      div.appendChild(text)
-      document.getElementById("actordetails").appendChild(div)
+        text.innerHTML += " - no details yet"
     }
-    function getEditDetail(edit) {
-      return "<a href='" + edit.Link + "' target='_blank'>" + edit.Title + " (wyx tv edit #" + edit.Number + ")</a><br>" +
-        "featuring <b>" + edit.Character + "</b> archetypes from " + edit.kdramas.length + " drama" + (edit.kdramas.length == 1 ? "" : "s") + ":<br>" + 
-        edit.kdramas.map(kdrama => kdramas[kdrama]).join(", ")
+    if (actor != "")
+      text.innerHTML += "<br><br>" +
+        " <button id='clearactorlink' onclick=\"document.getElementById('actordd').value='';filtertable();populateActorDetails();\">Clear actor filter</button>"
+    div.appendChild(text)
+    document.getElementById("actordetails").appendChild(div)
+  }
+  function getEditDetail(edit) {
+    return "<a href='" + edit.Link + "' target='_blank'>" + edit.Title + " (wyx tv edit #" + edit.Number + ")</a><br>" +
+      "featuring <b>" + edit.Character + "</b> archetypes from " + edit.kdramas.length + " drama" + (edit.kdramas.length == 1 ? "" : "s") + ":<br>" +
+      edit.kdramas.map(kdrama => kdramas[kdrama]).join(", ")
 
-    }
-    function populateEditDetails() {
-      let edit = document.getElementById("editdd").value
-      editdetails.innerHTML = ""
-      if (edit != "") {
-        let editdetails = document.getElementById("editdetails")
-        let embeddededit = document.createElement("iframe")
-        embeddededit.src = edits[edit].Embed
+  }
+  function populateEditDetails() {
+    let edit = document.getElementById("editdd").value
+    editdetails.innerHTML = ""
+    if (edit != "") {
+      let editdetails = document.getElementById("editdetails")
+      let embeddededit = document.createElement("iframe")
+      embeddededit.src = edits[edit].Embed
 
 
-        embeddededit.title="YouTube video player" 
-        embeddededit.frameBorder=0
-        embeddededit.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        embeddededit.referrerPolicy="strict-origin-when-cross-origin" 
-        embeddededit.allowFullScreen = true
+      embeddededit.title = "YouTube video player"
+      embeddededit.frameBorder = 0
+      embeddededit.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      embeddededit.referrerPolicy = "strict-origin-when-cross-origin"
+      embeddededit.allowFullScreen = true
 
-        editdetails.appendChild(embeddededit)
-        editdetails.innerHTML += "<br>" + getEditDetail(edits[edit]) + 
+      editdetails.appendChild(embeddededit)
+      editdetails.innerHTML += "<br>" + getEditDetail(edits[edit]) +
         "<br><br><button onclick=\"document.getElementById('editdd').value='';filtertable();populateEditDetails();\">Clear edit filter</button>"
-      }
     }
+  }
 
-    function updnumresults() {
-      filtertable()
-      document.getElementById("numresultsfb").innerHTML = document.getElementById("numresults").value + " / " + document.getElementById("numresults").max
-    }
+  function updnumresults() {
+    filtertable()
+    document.getElementById("numresultsfb").innerHTML = document.getElementById("numresults").value + " / " + document.getElementById("numresults").max
+  }
 
-    function updminyr() {
-      document.getElementById("minyrfb").innerHTML = document.getElementById("minyear").value,
-      document.getElementById("maxyear").min = document.getElementById("minyear").value,
-      filtertable()
-    }
-    function updmaxyr() {
-      document.getElementById("maxyrfb").innerHTML = document.getElementById("maxyear").value
-      document.getElementById("minyear").max = document.getElementById("maxyear").value
-      filtertable()
-    }
+  function resettable() {
+    document.getElementById("actordd").value = ""
+    document.getElementById("editdd").value = ""
 
-    function resettable() {
-      document.getElementById("actordd").value = ""
-      document.getElementById("editdd").value = ""
+    document.getElementById("minyear").min = minYr
+    document.getElementById("minyear").max = maxYr
+    document.getElementById("minyear").value = minYr
+    document.getElementById("maxyear").min = minYr
+    document.getElementById("maxyear").max = maxYr
+    document.getElementById("maxyear").value = maxYr
 
-      document.getElementById("minyear").min = minYr
-      document.getElementById("minyear").max = maxYr
-      document.getElementById("minyear").value = minYr
-      document.getElementById("minyrfb").innerHTML = minYr
-      document.getElementById("maxyear").min = minYr
-      document.getElementById("maxyear").max = maxYr
-      document.getElementById("maxyear").value = maxYr
-      document.getElementById("maxyrfb").innerHTML = maxYr
+    document.getElementById("numresults").max = kdramadetails.length
+    document.getElementById('numresults').value = kdramadetails.length
+    document.getElementById("numresultsfb").innerHTML = kdramadetails.length + " / " + kdramadetails.length
 
-      document.getElementById("numresults").max = kdramadetails.length
-      document.getElementById('numresults').value = kdramadetails.length
-      document.getElementById("numresultsfb").innerHTML = kdramadetails.length + " / " + kdramadetails.length
-
-      document.getElementById("kdramareviewdetails_title").innerHTML = ""
-      populateTable()
-      populateActorDetails()
-      populateEditDetails()
-    }
-  </script>
+    document.getElementById("kdramareviewdetails_title").innerHTML = ""
+    document.getElementById("sortdd").value = SCORE
+    populateTable()
+    populateModal(SCORE);
+    populateActorDetails()
+    populateEditDetails()
+  }
+</script>
 </html>
