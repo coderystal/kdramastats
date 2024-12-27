@@ -202,8 +202,8 @@
     return i != FEM && i != MALE && i != SUP && i != OVERVIEW
   }
 
-  let sortnames = ["Title", "Year", "Length (Hours)", "Audience %", "Female", "Male", "Other leads", "Overall Score", "Overview", "Cryability", "Plot Score", "Character Score", "Direction Score", "Acting Score", "Ending Score", "#Edits"]
-  let sortdescs = ["series title", "original release year", "approximate total length in hours", "average share of the audience who watched this kdrama while it was airing (korean popularity/mainstream-ness), as a percentage", "female lead actress", "male lead actor", "other primary lead actors", "quality of the kdrama as a whole", "general summary of the premise, concept, and style", "likelihood of the kdrama to reduce you to tears, on average over the course of the entire series", "storyline strength, cohesion, and attraction - depth and care with which the plot points and subject matter are handled", "enjoyability (likability with exceptions) of the cast", "influence of choices made to frame the kdrama, such as editing, music, composition, etc.", "(minimal) thoughts on the contributions of the actors", "effectiveness and manner of the finale (last episode with exceptions) in concluding the storylines, conceptually and emotionally", "number of videos that the kdrama is included in on wyx tv (my kdrama edit youtube channel lol)"]
+  let sortnames = ["Title", "Year", "Length (Hours)", "Audience %", "Actors", "Male", "Other leads", "Overall Score", "Overview", "Cryability", "Plot Score", "Character Score", "Direction Score", "Acting Score", "Ending Score", "#Edits"]
+  let sortdescs = ["series title", "original release year", "approximate total length in hours", "average share of the audience who watched this kdrama while it was airing (korean popularity/mainstream-ness), as a percentage", "primary lead actors", "male lead actor", "other primary lead actors", "quality of the kdrama as a whole", "general summary of the premise, concept, and style", "likelihood of the kdrama to reduce you to tears, on average over the course of the entire series", "storyline strength, cohesion, and attraction - depth and care with which the plot points and subject matter are handled", "enjoyability (likability with exceptions) of the cast", "influence of choices made to frame the kdrama, such as editing, music, composition, etc.", "(minimal) thoughts on the contributions of the actors", "effectiveness and manner of the finale (last episode with exceptions) in concluding the storylines, conceptually and emotionally", "number of videos that the kdrama is included in on wyx tv (my kdrama edit youtube channel lol)"]
   let headerpngs = ["NONE", pngs.CALENDAR, pngs.CLOCK, pngs.AUDIENCECHART, "NONE", "NONE", "NONE", pngs.SCORE, "NONE", pngs.CRYEMOJI, pngs.PLOT, pngs.AVATAR, pngs.DIRECTING, pngs.ACTINGMASKS, pngs.FASTFORWARD, "NONE"]
   let kdramadetails = [
     ["WYWS", 2017, 16, 8.6, ["SUZY"], ["LJS"], ["JHI", "LSY"], 11, "hong joo, a reporter, has dreams that show her snippets of the future, and she meets jae chan, a lawyer, who has the same ability. they work together to deal with a series of crimes.", 6, "10 beautifully written, extremely well thought through. a really interesting premise. elegantly connects back to itself, and loose ends tie up smoothly and unexpectedly, showcasing the work and thought of the writing. nothing happens for no reason.", "10 wonderful, great. i love them all. likeable, relatable, very human.", "", "10", "", "While_You_Were_Sleeping_(2017)", "https://asianwiki.com/images/1/1f/While_You_Were_Sleeping-CP1-2.jpg"],
@@ -249,7 +249,6 @@
     ["MLG", 2014, 16, 6.8, ["KRYSTAL"], ["RAIN"], ["L", "CYR"], 1, "a trainee and pop star take advantage of each other", "", "3 i don't remember this one very well, but it was kind of difficult to get through. not that entertaining.", "3 annoying characters whose actions are frustrating to watch", "", "", "", "My_Lovely_Girl", "https://asianwiki.com/images/8/83/My_Lovely_Girl-p1.jpg"],
     ["D", 2016, 20, 19, ["PSHYE"], ["KRW"], ["YKS", "LSK"], 1, "doctors hang out", "", "1 i stopped watching this one because i really could not stand it. so boring.", "3 i really didn't like the characters.", "", "", "", "Doctors_(Korean_Drama)", "https://asianwiki.com/images/7/7a/Doctors_%28Korean_Drama%29-p1.jpg"]
   ]
-  let showcolumns = [true, false, false, false, true, true, true, false, true, false, false, false, false, false, false]
   let minYr = Math.min(...kdramadetails.map(detail => detail[YR]))
   let maxYr = Math.max(...kdramadetails.map(detail => detail[YR]))
 
@@ -703,6 +702,16 @@
       display: none;
     }
 
+    #coldefthead th {
+      border: 1px solid black;
+    }
+    #coldefholder table {
+      background-color: white;
+      padding: 10px;
+      border-radius: 20px;
+      margin: auto;
+    }
+
     img {
       width: 20px;
       height: 20px;
@@ -723,13 +732,6 @@
     }
 
     #reset {
-      width: 30px;
-      height: 30px;
-    }
-
-    #settings {
-      float: right;
-      margin: 10px;
       width: 30px;
       height: 30px;
     }
@@ -801,6 +803,11 @@
       font-family: Verdana, Geneva, Tahoma, sans-serif;
       font-size: 14px;
     }
+    .questionicon {
+      height: 14px;
+      width: 14px;
+      margin-left: 5px;
+    }
   </style>
   <style id="sortedstyle">
     #dummyrule {
@@ -825,11 +832,12 @@
       margin: auto;
       padding: 20px;
       width: 80%;
-      max-height: 80%;
+      max-height: 60%;
       overflow: auto;
       color: black;
       text-align: center;
       font-size: 14px;
+      position: relative;
     }
 
     #coldefs {
@@ -837,8 +845,61 @@
       margin: 5px;
       padding: 5px;
     }
+    #coldef {
+      display: block;
+      min-height: 40px;
+    }
+    
 
-    #coldefs>div {
+    @media (min-width: 1000px) {
+      #coldefsections {
+        display: flex;
+        align-items: start;
+      }
+      #coldefholder, #settingskdrama1holder {
+        width: 50%;
+        box-sizing: border-box;
+        display: inline-block;
+      }
+      @media (min-width: 1200px) {
+        #coldefholder, #settingskdrama1holder {
+          width: 50%;
+        }
+      }
+      @media (max-width: 1200px) {
+        #coldefholder {
+          width: 40%;
+        }
+        #settingskdrama1holder {
+          width: 60%;
+        }
+      }
+    }
+    @media (max-width: 1000px) {
+      #coldefholder, #settingskdrama1holder {
+        display: block;
+      }
+      @media (min-width: 600px) {
+        #coldefholder {
+          column-count: 2;
+        }
+      }
+      @media (min-width: 800px) {
+        #coldefholder {
+          column-count: 3;
+        }
+      }
+    }
+
+    #settingskdrama1holder {
+      background-color: white;
+      margin: 5px;
+      padding: 15px;
+      padding-top: 5px;
+      border-radius: 20px;
+    }
+
+    #coldefholder>div {
       display: flex;
       align-items: center;
       text-align: left;
@@ -846,7 +907,7 @@
       margin: 5px;
     }
 
-    #coldefs>div>* {
+    #coldefholder>div>* {
       margin-top: 0px;
       margin-bottom: 0px;
       display: inline-block;
@@ -916,49 +977,192 @@
   </script>
 
   <div id="infomodal" class="modal" onclick="document.getElementById('infomodal').style.display = 'none';">
-    <div class="modal-content" onclick="event.stopPropagation()"></div>
+    <div class="modal-content" onclick="event.stopPropagation()">
+    </div>
     <script>
       let showPopupOnHeaderClick = true;
+      let hideColumnOnResort = true;
       let modal = document.getElementById('infomodal')
       function togglePopupController(e) {
         showPopupOnHeaderClick = !showPopupOnHeaderClick
         showSettings()
-        e.stopPropagation();
       }
       function closepopup() {
         modal.style.display = "none";
       }
     </script>
     <div id="modalparkinglot">
-      <div id="settingscontent">
-        <b>Kdramas According to Crystal</b><br>
-        Managed reference sheet of opinions and edits of all the kdramas I've watched<br>
-        Note, some kdrama scores are missing or unexplained, as several of these reviews were written retroactively
-        and/or a very long time ago. Sorry not sorry.<br>
-        <br><br>
+      <div id="settingscontent" style="position: relative;">
 
-        Interact with the table to sort, filter, and see more info!<br>
-        Click on header &#x2192;
-        <b> <span id="headerclickresult"></span></b>
+        <img src="https://www.svgrepo.com/show/526221/settings.svg"><br>
+        <b>Kdramas Kdocumented - a watch history by coderystal</b><br>
+        Note, several of these reviews were written retroactively and/or a very long time ago. Sorry not sorry for any missing or unexplained reviews.<br>
+        <br>
+        Click outside this popup to view the full interactive table!<br>
 
-        <button onclick="togglePopupController(event)" style="margin-left:5px">change</button>
-
+        <br>
+        
+        
+        <script>
+          function showAllColumns(event) {
+            sortnames.forEach((sortname, i) => {
+              let checkbox = document.getElementById('show' + i + 'Input')
+              if (i != MALE && i != SUP && !checkbox.checked)
+                checkbox.click();
+            })
+            event.stopPropagation()
+          }
+          function hideMiscColumns(event) {
+            sortnames.forEach((sortname, i) => {
+              let checkbox = document.getElementById('show' + i + 'Input')
+              if (i != MALE && i != SUP && i != OVERVIEW && checkbox.checked)
+                checkbox.click();
+            })
+            event.stopPropagation()
+          }
+        </script>
+        
         <div id="coldefs">
-          <b>Table Column Definitions</b><br>
-          <hr>
+          <div id="coldef"></div>
+          <div id="coldefsections">
+            <div id="coldefholder">
+              <table>
+                <thead id="coldefthead">
+                  <tr>
+                    <td colspan="5" style="background-color: lightgrey; padding: 4px">
+                      <div style="float: left" onclick="document.getElementById('hideonresortInput').click()">
+                        <img onclick="showAllColumns(event)" src="https://static-00.iconduck.com/assets.00/select-all-icon-512x512-h7e41rpz.png">
+                        <img style="margin-left: 7px;" onclick="hideMiscColumns(event)" src="https://static-00.iconduck.com/assets.00/select-all-off-icon-512x512-tyyanu6q.png">
+                      </div>
+                      <div style="float: right" onclick="hideColumnOnResort = !hideColumnOnResort; showSettings(); event.stopPropagation();">
+                        <input type="checkbox" id="hideonresortInput" onclick="hideColumnOnResort = !hideColumnOnResort; showSettings(); event.stopPropagation();">
+                        hide when unsorting
+                      </div>
+                    </td>
+                  </tr>
+                </thead>
+                <tbody id="coldeftbody">
+                  
+                </tbody>
+              </table>
+
+
+            </div>
+            <div id="settingskdrama1holder">
+              <div id="settingskdrama1"></div>
+              <div onclick="document.getElementById('showpopupInput').click()">
+                <input type="checkbox" id="showpopupInput" onclick="togglePopupController(event)">show this card on sort and on header click<br></div>
+            </div>
+          </div>
         </div>
-        <button onclick="closepopup()">Close Popup</button>
         <script id="populateColdefs">
+
+          let coldefthead = document.getElementById("coldefthead")
+          let coldeftheadtr = document.createElement("tr")
+          coldefthead.appendChild(coldeftheadtr)
+          
+          coldeftheadtr.appendChild(createElement("th", "<img src='https://cdn4.iconfinder.com/data/icons/flat-design-word-processing-set-5/24/table-column-512.png'>"))
+          coldeftheadtr.appendChild(createElement("th", "<img src='https://cdn-icons-png.flaticon.com/512/7183/7183242.png'>"))
+          coldeftheadtr.appendChild(createElement("th", "<img src='https://freeiconshop.com/wp-content/uploads/edd/image-outline-filled.png'>"))
+          let featureth = createElement("th", "feature")
+          featureth.colSpan = 2
+          coldeftheadtr.appendChild(featureth)
+
+          
+          let coldeftbody = document.getElementById("coldeftbody")
+          
+
           for (let i = 0; i < sortnames.length; i++) {
-            sortpng = headerpngs[i]
-            document.getElementById("coldefs").appendChild(createElement("div",
-              ((sortpng != "NONE") ?
-                "<img src='" + sortpng + "' style='margin-right:5px'/>" :
-                "<p style='width:20px;margin-right:5px'/>&#x2022;</p>") +
-              "<p><b>" + sortnames[i] + "</b>" +
-              (((i >= CRYABILITY && i <= ENDING) || i == SCORE) ? " - out of ten" : "") +
-              ": " + sortdescs[i] + "</p>"
-            ))
+            if (i != MALE && i != SUP) {
+              let coldeftr = document.createElement("tr")
+              coldeftbody.appendChild(coldeftr)
+
+              sortpng = headerpngs[i]
+
+              let attrdiv = document.createElement("div")
+
+              let checkbox = document.createElement("input")
+              checkbox.type = "checkbox"
+              checkbox.id = "show" + i + "Input"
+              checkbox.onclick = (event) => {
+                showcolumns[i] = !showcolumns[i]
+                populateTable();
+                event.stopPropagation()
+              }
+              // attrdiv.appendChild(checkbox)
+              let checkboxtd = document.createElement("td")
+              checkboxtd.appendChild(checkbox)
+              coldeftr.appendChild(checkboxtd)
+
+              let radio = document.createElement("input")
+              radio.type = "radio"
+              radio.id = "sort" + i + "Input"
+              radio.name = "sortradio"
+              radio.value = sortnames[i]
+              if (i == FEM || i == OVERVIEW)
+                radio.disabled = true
+              radio.onclick = () => {
+                document.getElementById("sortdd").value = i
+                populateTable();
+              }
+              // attrdiv.appendChild(radio)
+              let radiotd = document.createElement("td")
+              radiotd.appendChild(radio)
+              coldeftr.appendChild(radiotd)
+
+              if (sortpng != "NONE") {
+                let img = createElement("img")
+                img.src = sortpng
+                img.style.marginRight = "5px"
+                // attrdiv.appendChild(img)
+                let imgtd = document.createElement("td")
+                imgtd.appendChild(img)
+                coldeftr.appendChild(imgtd)
+              } else {
+                let spaceholder = createElement("p","&#x2022;")
+                spaceholder.style='width:20px;margin-right:5px'
+                // attrdiv.appendChild(spaceholder)
+                let imgtd = document.createElement("td")
+                coldeftr.appendChild(imgtd)
+              }
+              
+              let attrname = createElement("p", "<b>" + sortnames[i] + "</b>" +
+              (((i >= CRYABILITY && i <= ENDING) || i == SCORE) ? " - out of ten" : ""))
+              // attrdiv.appendChild(attrname)
+              let nametd = document.createElement("td")
+              nametd.appendChild(attrname)
+              coldeftr.appendChild(nametd)
+
+              let questionicon = document.createElement("img")
+              questionicon.classList.add("questionicon")
+              questionicon.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Icon-round-Question_mark.svg/1200px-Icon-round-Question_mark.svg.png"
+              // attrdiv.appendChild(questionicon)
+              let questiontd = document.createElement("td")
+              questiontd.appendChild(questionicon)
+              coldeftr.appendChild(questiontd)
+
+              questionicon.onclick = (event) => {
+                let oldColDef = document.getElementById("coldef").innerHTML
+                document.getElementById("coldef").innerHTML = "*<b>" + sortnames[i] + "</b> refers to " + sortdescs[i]
+                if (oldColDef == document.getElementById("coldef").innerHTML)
+                  document.getElementById("coldef").innerHTML = ""
+                event.stopPropagation();
+              }
+              coldeftr.onmouseenter = () => {
+                document.getElementById("coldef").innerHTML = "*<b>" + sortnames[i] + "</b> refers to " + sortdescs[i]
+              }
+              coldeftr.onmouseleave = () => {
+                document.getElementById("coldef").innerHTML = ""
+              }
+
+              coldeftr.onclick = () => {
+                checkbox.click()
+              }
+              coldeftr.ondblclick = () => {
+                radio.click()
+              }
+              coldeftbody.appendChild(coldeftr)
+            }
           }
         </script>
       </div>
@@ -981,7 +1185,7 @@
 
     <div id="sortDiv">
       Sort by <br>
-      <select id="sortdd" onchange="populateTable();populateModal(event.currentTarget.value);"></select>
+      <select id="sortdd" onchange="populateTable();if (showPopupOnHeaderClick) {populateModal(event.currentTarget.value)};"></select>
       <script id="populatesortdd">
 
         sortnames.forEach((sortname, i) => {
@@ -989,76 +1193,98 @@
             document.getElementById("sortdd").appendChild(createOption(i, sortname))
         })
 
-        function populateModal(sorti) {
-          let sortname = sortnames[sorti]
-          let sortpng = headerpngs[sorti]
-          let sortdesc = sortdescs[sorti]
-          modal.style.display = "block";
+        let kdrama1 = kdramadetails[0]
 
-          modalcontent = document.getElementsByClassName('modal-content')[0]
-          document.getElementById("modalparkinglot").appendChild(document.getElementById("settingscontent"))
-          modalcontent.innerHTML = ""
+        function getModalContent(i) {
+          let sortname = sortnames[i]
+          let sortpng = headerpngs[i]
+          let sortdesc = sortdescs[i]
 
-
-
-
+          let modalcontent = document.createElement("div")
+          modalcontent.style.position = "relative"
           headerhtml = ""
           if (sortpng != "NONE") {
             headerhtml += "<img src='" + sortpng + "' style='margin-right:5px'/>"
           }
           headerhtml += sortname
-          if ((sorti >= CRYABILITY && sorti <= ENDING) || sorti == SCORE)
+          if ((i >= CRYABILITY && i <= ENDING) || i == SCORE)
             headerhtml += " - out of ten"
           modalcontent.appendChild(createElement("h3", headerhtml))
           modalcontent.innerHTML += sortdesc
           modalcontent.innerHTML += "<hr>"
-          modalcontent.innerHTML += "#1 on this list: " + kdramas[kdramadetails[0][TITLE]];
+          modalcontent.innerHTML += "#1 on this list"
+          modalcontent.innerHTML += sorti == i ? "" : " (currently sorted by " + sortnames[sorti] + ")" 
+          modalcontent.innerHTML += ": " + kdramas[kdrama1[TITLE]];
 
-          let val = kdramadetails[0][sorti]
+          let val = kdrama1[i]
 
-          if ((sorti >= CRYABILITY && sorti < ENDING)) {
+          if ((i >= CRYABILITY && i < ENDING)) {
             modalcontent.innerHTML += "<br>" + (val == "" ? "No " + sortname + " listed." : sortname + ":<br>" + val)
-          } else if (sorti == ENDING) {
+          } else if (i == ENDING) {
 
-            modalcontent.appendChild(getEndingDiv(kdramadetails[0]))
+            modalcontent.appendChild(getEndingDiv(kdrama1))
           }
-          else if (sorti == SORTEDITIND) {
-            let numedits = kdramastoedits[kdramadetails[0][TITLE]].length
+          else if (i == SORTEDITIND) {
+            let numedits = kdramastoedits[kdrama1[TITLE]].length
             modalcontent.innerHTML += "<br>Featured in " + (numedits + " wyx tv edits")
-          } else if (sorti == HRS) {
+          } else if (i == HRS) {
             modalcontent.innerHTML += "<br>" + (val == "" ? "No " + sortname + " listed." : val + " hours")
-          } else if (sorti == AUD) {
+          } else if (i == AUD) {
             modalcontent.innerHTML += "<br>" + (val == "" ? "No " + sortname + " listed." : val + "% audience share")
-          } else if (sorti == YR) {
+          } else if (i == YR) {
             modalcontent.innerHTML += "<br>" + (val == "" ? "No " + sortname + " listed." : val)
-          } else if (sorti == SCORE) {
+          } else if (i == SCORE) {
             modalcontent.innerHTML += "<br>" + (val == "" ? "No " + sortname + " listed." : sortname + ": " + val)
           }
 
           modalcontent.appendChild(document.createElement("br"))
           modalcontent.appendChild(document.createElement("br"))
 
-          let closebutton = createElement("button", "Just close popup")
-          closebutton.onclick = closepopup
-          modalcontent.appendChild(closebutton)
-
-          let closebuttonAndexpandfirst = createElement("button", "Close & see more about " + kdramas[kdramadetails[0][TITLE]])
+          let closebuttonAndexpandfirst = createElement("button", "see more: <b>" + kdramas[kdrama1[TITLE]] + "</b>")
           closebuttonAndexpandfirst.onclick = () => {
             closepopup();
-            document.getElementById("exp_" + kdramas[kdramadetails[0][TITLE]].replaceAll(" ", "_").replaceAll(",", "")).click()
+            document.getElementById("exp_" + kdramas[kdrama1[TITLE]].replaceAll(" ", "_").replaceAll(",", "")).click()
           }
           modalcontent.appendChild(closebuttonAndexpandfirst)
 
           modalcontent.appendChild(document.createElement("br"))
-          let noMorePopupsButton = createElement("button", "Close & stop showing popups")
+          
+          return modalcontent
+        }
+
+        function resetModalContent() {
+          modalcontent = document.getElementsByClassName('modal-content')[0]
+          modalcontent.innerHTML = ""
+          let closeicon = createElement("div", "X")
+          closeicon.onclick = closepopup
+          closeicon.style ="position: absolute; top: 0; right: 0;"
+          closeicon.style.backgroundColor = "red";
+          closeicon.style.color = "white"
+          closeicon.style.borderRadius = "10px"
+          closeicon.style.width = "25px"
+          modalcontent.appendChild(closeicon)
+        }
+
+        function getNoMorePopupButton() {
+          let noMorePopupsButton = createElement("button", "stop showing popups")
           noMorePopupsButton.onclick = () => {
             showPopupOnHeaderClick = false;
             closepopup()
           }
           noMorePopupsButton.style.marginTop = "5px"
-          modalcontent.appendChild(noMorePopupsButton)
+          return noMorePopupsButton
         }
-        populateModal(SCORE);
+
+        function populateModal(i) {
+          modal.style.display = "block";
+          document.getElementById("modalparkinglot").appendChild(document.getElementById("settingscontent"))
+          let modalcontentpopup = getModalContent(i)
+
+          resetModalContent()
+
+          modalcontentpopup.appendChild(getNoMorePopupButton())
+          modalcontent.appendChild(modalcontentpopup)
+        }
       </script>
     </div>
 
@@ -1076,10 +1302,49 @@
     </div>
 
 
+    <script>
+      function clickSlider(event) {
+        let trackrect = document.getElementById("minyear").getBoundingClientRect()
+
+        let val = (event.clientX - trackrect.left) / (trackrect.right - trackrect.left)
+        let yrs = maxYr - minYr
+        let yr = Math.ceil(yrs * val + minYr)
+
+        
+        let minyr = parseInt(document.getElementById("minyear").value)
+        let maxyr = parseInt(document.getElementById("maxyear").value)
+        
+        console.log(yr, minyr, maxyr)
+
+        if (minyr < yr && yr < maxyr) {
+          let mid = minyr + Math.ceil((maxyr - minyr)/2)
+          if (yr <= mid)
+            minyr = yr;
+          else
+            maxyr = yr;
+        } else if (minyr == yr) {
+          maxyr = yr
+        } else if (maxyr == yr) {
+          minyr = yr
+        } else if (yr < minyr) {
+          minyr = yr
+        } else {
+          maxyr = yr
+        }
+
+        
+        
+        document.getElementById("minyear").value = minyr
+        document.getElementById("maxyear").value = maxyr
+        slideOne()
+        slideTwo()
+
+      }
+    </script>
     <div id="doublerangeslider">
       <span id="minyearfb"></span> - <span id="maxyearfb"></span>
       <br>
-      <div class="slider-track"></div>
+      <div class="slider-track" onclick="clickSlider(event)"></div>
       <input type="range" id="minyear" oninput="slideOne()" />
       <input type="range" id="maxyear" oninput="slideTwo()" />
     </div>
@@ -1090,15 +1355,14 @@
     </div>
 
     <img id='reset' src="https://www.svgrepo.com/download/334208/reset.svg" onclick="resettable()">
-    <img id="settings" src="https://www.svgrepo.com/show/526221/settings.svg" onclick="showSettings()">
     <script id="setInfoModal">
       function showSettings() {
         modal.style.display = "block";
-        modalcontent = document.getElementsByClassName('modal-content')[0]
         document.getElementById("modalparkinglot").appendChild(document.getElementById("settingscontent"))
-        modalcontent.innerHTML = ""
+        resetModalContent()
         modalcontent.appendChild(document.getElementById("settingscontent"))
-        document.getElementById("headerclickresult").innerHTML = showPopupOnHeaderClick ? "see info popup" : "sort table by stat"
+        document.getElementById("showpopupInput").checked = showPopupOnHeaderClick
+        document.getElementById("hideonresortInput").checked = hideColumnOnResort
       }
 
     </script>
@@ -1260,11 +1524,31 @@
   function compareActing(a, b) { return compareScore(a, b, ACTING) }
   function compareEnding(a, b) { return compareScore(a, b, ENDING) }
 
+  
+  
+  let showcolumns = (window.innerWidth >= 1000) ? 
+    [true, true, true, true, true, false, false, true, true, true, true, true, true, true, true, true]
+    : [true, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false]
+  let sorti = SCORE
+
   function sortkdramadetailsvariable() {
     let compare
-    let sorti = document.getElementById("sortdd").value
-    showcolumns = [true, false, false, false, true, true, true, false, true, false, false, false, false, false, false]
+    if (hideColumnOnResort) {
+      showcolumns[sorti] = false
+    }
+    document.getElementById("show" + sorti + "Input").disabled = false
+    sorti = document.getElementById("sortdd").value
     showcolumns[sorti] = true
+    document.getElementById("show" + sorti + "Input").disabled = true
+
+    document.getElementById("sort" + sorti + "Input").checked = true;
+
+    showcolumns[TITLE] = true
+    document.getElementById("show" + TITLE + "Input").disabled = true
+    showcolumns.forEach((show, i) => {
+      if (i != MALE && i != SUP)
+        document.getElementById("show" + i + "Input").checked = show
+    })
     switch (parseInt(sorti)) {
       case AUD: compare = compareAudScore; break;
       case SCORE: compare = compareOverallScore; break;
@@ -1281,7 +1565,6 @@
     }
 
     kdramadetails.sort(compare)
-    addSortStyle(sorti)
   }
 </script>
 <script id="updateviewfuncs">
@@ -1293,19 +1576,36 @@
       closepopup();
     }
   });
-  function setSort(sorti) {
+  function setSort(i) {
     if (showPopupOnHeaderClick) {
-      populateModal(sorti)
+      populateModal(i)
+
+      modal.style.display = "block";
+      document.getElementById("modalparkinglot").appendChild(document.getElementById("settingscontent"))
+      resetModalContent()
+      let modalcontentpopup = getModalContent(i)
+
+      if (i != sorti) {
+        let sortbutton = createElement("button", "sort by <b>" + sortnames[i] + "</b>")
+        sortbutton.onclick = () => {
+          document.getElementById("sortdd").value = i
+          populateTable()
+          closepopup()
+        }
+        sortbutton.style.marginTop = "5px"
+        modalcontentpopup.appendChild(sortbutton)
+
+      }
+
+      modalcontentpopup.appendChild(getNoMorePopupButton())
+
+      modalcontent.appendChild(modalcontentpopup)
     } else {
-      document.getElementById("sortdd").value = sorti
+      document.getElementById("sortdd").value = i
       populateTable()
     }
   }
-  function addSortStyle(sorti) {
-    var style = document.getElementById('sortedstyle');
-    // style.sheet.deleteRule(0)
-    // style.sheet.insertRule("tr > td:nth-child("+(parseInt(sorti)+2)+") {background-color: #f1d8f6}")
-  }
+
   function checkSortVal(i) {
     return document.getElementById("sortdd").value == i
   }
@@ -1345,7 +1645,7 @@
     tr.innerHTML = ""
     tr.appendChild(createElement("th", "#"))
     headerpngs.forEach((headerpng, i) => {
-      if (showcolumns[i]) {
+      if (i != OVERVIEW && showcolumns[i]) {
         if (headerpng == "NONE") {
           if (!sortable(i))
             tr.appendChild(createElement("th", "<span>" + sortnames[i] + "</span>"))
@@ -1356,6 +1656,12 @@
         }
       }
     })
+    if (showcolumns[OVERVIEW])
+      tr.appendChild(createElement("th", "<span>" + sortnames[OVERVIEW] + "</span>"))
+
+    let lastth = createElement("th", "<img id='settings' src='https://www.svgrepo.com/show/526221/settings.svg'>")
+    lastth.onclick = showSettings
+    tr.appendChild(lastth)
 
     kdramadetails.forEach((kdrama, i) => {
       let tr = document.createElement("tr")
@@ -1365,6 +1671,72 @@
       let titletd = createElement("td", boldText(kdramas[kdrama[TITLE]], sorted) + " ")
       if (sorted)
         titletd.style.backgroundColor = "#f1d8f6"
+      
+      tr.appendChild(titletd)
+
+      function createTD(attr) {
+        let sorted = checkSortVal(attr)
+        let td = createElement("td", boldText(kdrama[attr], sorted))
+        if (sorted)
+          td.style.backgroundColor = "#f1d8f6"
+        return td
+      }
+      if (showcolumns[YR])
+        tr.appendChild(createTD(YR))
+      if (showcolumns[HRS])
+        tr.appendChild(createTD(HRS))
+      if (showcolumns[AUD]) {
+        let audTD = createTD(AUD)
+        audTD.innerHTML += "%"
+        tr.appendChild(audTD)
+      }
+      if (showcolumns[FEM]) {
+        let actortd = document.createElement("td")
+        let actortypes = [FEM, MALE, SUP]
+        actortypes.forEach((actortype) => {
+          kdrama[actortype].forEach((actor) => {
+            let btn = createElement("button", getActor(actor))
+            if (actortype == FEM)
+              btn.style.backgroundColor = "mistyrose";
+            else if (actortype == MALE)
+              btn.style.backgroundColor = "powderblue";
+            btn.onclick = () => {
+              document.getElementById("actordd").value = actor
+              filtertable()
+              populateActorDetails()
+            }
+            actortd.appendChild(btn)
+          })
+        })
+        tr.appendChild(actortd)
+      }
+      if (showcolumns[SCORE])
+        tr.appendChild(createTD(SCORE))
+      if (showcolumns[CRYABILITY])
+        tr.appendChild(createTD(CRYABILITY))
+      let scoretypes = [PLOT, CHARACTER, DIRECTION, ACTING, ENDING]
+      scoretypes.forEach((scoretype) => {
+        if (showcolumns[scoretype]) {
+          let score = getScoreFromString(kdrama[scoretype])
+          let sorted = checkSortVal(scoretype)
+          let td = createElement("td", boldText(score != -1 ? score : "", sorted))
+          if (sorted)
+            td.style.backgroundColor = "#f1d8f6"
+          tr.appendChild(td)
+        }
+      })
+      if (showcolumns[SORTEDITIND]) {
+        let sorted = checkSortVal(SORTEDITIND)
+        let td = createElement("td", boldText(kdramastoedits[kdrama[TITLE]].length, sorted))
+        if (sorted)
+          td.style.backgroundColor = "#f1d8f6"
+        tr.appendChild(td)
+      }
+
+      if (showcolumns[OVERVIEW])
+        tr.appendChild(createElement("td", kdrama[OVERVIEW].split(".")[0] + "<b>...</b>"))
+
+      let moretd = document.createElement("td")
       let btn = document.createElement("img")
       btn.src = pngs.CARETRIGHT
       btn.id = "exp_" + kdramas[kdrama[TITLE]].replaceAll(" ", "_").replaceAll(",", "")
@@ -1376,7 +1748,7 @@
             document.getElementById("exp_" + oldtitle.replaceAll(" ", "_").replaceAll(",", "")).src = pngs.CARETRIGHT
           }
           titlespan.innerHTML = kdramas[kdrama[TITLE]]
-          document.getElementById("kdramareviewdetails_subtitle").innerHTML = getKdramaSubtitle(kdrama)
+          document.getElementById("kdramareviewdetails_subtitle").innerHTML = getKdramaSubtitle(kdrama) + "<br>" + kdrama[OVERVIEW]
 
           let details = document.getElementById("kdramareviewdetails_content")
           details.innerHTML = getKdramaReview(kdrama)
@@ -1399,66 +1771,9 @@
           btn.src = pngs.CARETRIGHT
         }
       }
-      titletd.appendChild(btn)
-      tr.appendChild(titletd)
+      moretd.appendChild(btn)
+      tr.appendChild(moretd)
 
-      function createTD(attr) {
-        let sorted = checkSortVal(attr)
-        let td = createElement("td", boldText(kdrama[attr], sorted))
-        if (sorted)
-          td.style.backgroundColor = "#f1d8f6"
-        return td
-      }
-      if (showcolumns[YR])
-        tr.appendChild(createTD(YR))
-      if (showcolumns[HRS])
-        tr.appendChild(createTD(HRS))
-      if (showcolumns[AUD]) {
-        let audTD = createTD(AUD)
-        audTD.innerHTML += "%"
-        tr.appendChild(audTD)
-      }
-      let actortypes = [FEM, MALE, SUP]
-      actortypes.forEach((actortype) => {
-        if (showcolumns[actortype]) {
-          let td = document.createElement("td")
-          kdrama[actortype].forEach((actor) => {
-            let btn = createElement("button", getActor(actor))
-            btn.onclick = () => {
-              document.getElementById("actordd").value = actor
-              filtertable()
-              populateActorDetails()
-            }
-            td.appendChild(btn)
-          })
-          tr.appendChild(td)
-        }
-      })
-      if (showcolumns[SCORE])
-        tr.appendChild(createTD(SCORE))
-      if (showcolumns[OVERVIEW])
-        tr.appendChild(createElement("td", kdrama[OVERVIEW]))
-      if (showcolumns[CRYABILITY])
-        tr.appendChild(createTD(CRYABILITY))
-      let scoretypes = [PLOT, CHARACTER, DIRECTION, ACTING, ENDING]
-      scoretypes.forEach((scoretype) => {
-        if (showcolumns[scoretype]) {
-          let score = getScoreFromString(kdrama[scoretype])
-          let sorted = checkSortVal(scoretype)
-          let td = createElement("td", boldText(score != -1 ? score : "", sorted))
-          if (sorted)
-            td.style.backgroundColor = "#f1d8f6"
-          tr.appendChild(td)
-        }
-      })
-      if (showcolumns[SORTEDITIND]) {
-
-        let sorted = checkSortVal(SORTEDITIND)
-        let td = createElement("td", boldText(kdramastoedits[kdrama[TITLE]].length, sorted))
-        if (sorted)
-          td.style.backgroundColor = "#f1d8f6"
-        tr.appendChild(td)
-      }
 
       content.appendChild(tr)
     })
@@ -1471,6 +1786,9 @@
 
     slideOne();
     slideTwo();
+
+    document.getElementById("settingskdrama1").innerHTML = ""
+    document.getElementById("settingskdrama1").appendChild(getModalContent(sorti))
   }
 
   function matchesactor(kdrama, actor) {
@@ -1496,6 +1814,8 @@
     kdramadetails.forEach((kdrama, i) => {
       let shown = false
       if (matchesactor(kdrama, actor) && matchesyear(kdrama, minyr, maxyr) && matchesedit(kdrama, edit)) {
+        if (numfiltered == 0)
+          kdrama1 = kdrama
         numfiltered++
         if (showingall || numfiltered <= numresults) {
           document.getElementById("tr" + i).style.display = ""
@@ -1602,9 +1922,10 @@
     document.getElementById("kdramareviewdetails_title").innerHTML = ""
     document.getElementById("sortdd").value = SCORE
     populateTable()
-    populateModal(SCORE);
     populateActorDetails()
     populateEditDetails()
   }
+  document.getElementById("settings").click();
 </script>
+
 </html>
