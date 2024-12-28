@@ -710,6 +710,11 @@
       padding: 10px;
       border-radius: 20px;
       margin: auto;
+      display: inline-block;
+    }
+
+    #coldefholderheader div {
+      display: inline-block;
     }
 
     img {
@@ -847,47 +852,39 @@
     }
     #coldef {
       display: block;
-      min-height: 40px;
+    }
+    @media (min-width: 1000px) {
+      #coldef {
+        min-height: 40px;
+      }
+    }
+    @media (max-width: 1000px) {
+      #coldef {
+        min-height: 80px;
+      }
     }
     
 
     @media (min-width: 1000px) {
       #coldefsections {
         display: flex;
-        align-items: start;
+        align-items: center;
       }
       #coldefholder, #settingskdrama1holder {
         width: 50%;
         box-sizing: border-box;
         display: inline-block;
       }
-      @media (min-width: 1200px) {
-        #coldefholder, #settingskdrama1holder {
-          width: 50%;
-        }
-      }
-      @media (max-width: 1200px) {
         #coldefholder {
-          width: 40%;
-        }
-        #settingskdrama1holder {
           width: 60%;
         }
-      }
+        #settingskdrama1holder {
+          width: 40%;
+        }
     }
     @media (max-width: 1000px) {
       #coldefholder, #settingskdrama1holder {
         display: block;
-      }
-      @media (min-width: 600px) {
-        #coldefholder {
-          column-count: 2;
-        }
-      }
-      @media (min-width: 800px) {
-        #coldefholder {
-          column-count: 3;
-        }
       }
     }
 
@@ -897,20 +894,6 @@
       padding: 15px;
       padding-top: 5px;
       border-radius: 20px;
-    }
-
-    #coldefholder>div {
-      display: flex;
-      align-items: center;
-      text-align: left;
-      padding: 0px;
-      margin: 5px;
-    }
-
-    #coldefholder>div>* {
-      margin-top: 0px;
-      margin-bottom: 0px;
-      display: inline-block;
     }
 
     hr {
@@ -924,7 +907,16 @@
     }
 
     #doublerangeslider {
-      width: 200px;
+      display: flex;
+      align-items: baseline;
+    }
+    #doublerangeslider > * {
+      display: inline-block;
+    }
+
+    #doublerangeslider button, .yearnav{
+      display: inline-block;
+      width: 35px;
     }
 
     #minyear {
@@ -947,7 +939,12 @@
       pointer-events: auto;
     }
 
-    #doublerangeslider * {
+    #doublerangeslider #sliders {
+      width: 160px;
+      height: 40px;
+    }
+
+    #doublerangeslider #sliders * {
       width: 100%;
       /* border: 1px solid white; */
     }
@@ -991,91 +988,97 @@
         modal.style.display = "none";
       }
     </script>
+    
+    <script>
+      function showAllColumns(event) {
+        sortnames.forEach((sortname, i) => {
+          let checkbox = document.getElementById('show' + i + 'Input')
+          if (i != MALE && i != SUP && !checkbox.checked)
+            checkbox.click();
+        })
+        event.stopPropagation()
+      }
+      function hideMiscColumns(event) {
+        sortnames.forEach((sortname, i) => {
+          let checkbox = document.getElementById('show' + i + 'Input')
+          if (i != MALE && i != SUP && i != OVERVIEW && checkbox.checked)
+            checkbox.click();
+        })
+        event.stopPropagation()
+      }
+    </script>
     <div id="modalparkinglot">
       <div id="settingscontent" style="position: relative;">
 
-        <img src="https://www.svgrepo.com/show/526221/settings.svg"><br>
         <b>Kdramas Kdocumented - a watch history by coderystal</b><br>
-        Note, several of these reviews were written retroactively and/or a very long time ago. Sorry not sorry for any missing or unexplained reviews.<br>
-        <br>
-        Click outside this popup to view the full interactive table!<br>
-
-        <br>
         
         
-        <script>
-          function showAllColumns(event) {
-            sortnames.forEach((sortname, i) => {
-              let checkbox = document.getElementById('show' + i + 'Input')
-              if (i != MALE && i != SUP && !checkbox.checked)
-                checkbox.click();
-            })
-            event.stopPropagation()
-          }
-          function hideMiscColumns(event) {
-            sortnames.forEach((sortname, i) => {
-              let checkbox = document.getElementById('show' + i + 'Input')
-              if (i != MALE && i != SUP && i != OVERVIEW && checkbox.checked)
-                checkbox.click();
-            })
-            event.stopPropagation()
-          }
-        </script>
         
         <div id="coldefs">
-          <div id="coldef"></div>
           <div id="coldefsections">
-            <div id="coldefholder">
-              <table>
-                <thead id="coldefthead">
-                  <tr>
-                    <td colspan="5" style="background-color: lightgrey; padding: 4px">
-                      <div style="float: left" onclick="document.getElementById('hideonresortInput').click()">
-                        <img onclick="showAllColumns(event)" src="https://static-00.iconduck.com/assets.00/select-all-icon-512x512-h7e41rpz.png">
-                        <img style="margin-left: 7px;" onclick="hideMiscColumns(event)" src="https://static-00.iconduck.com/assets.00/select-all-off-icon-512x512-tyyanu6q.png">
-                      </div>
-                      <div style="float: right" onclick="hideColumnOnResort = !hideColumnOnResort; showSettings(); event.stopPropagation();">
-                        <input type="checkbox" id="hideonresortInput" onclick="hideColumnOnResort = !hideColumnOnResort; showSettings(); event.stopPropagation();">
-                        hide when unsorting
-                      </div>
-                    </td>
-                  </tr>
-                </thead>
-                <tbody id="coldeftbody">
-                  
-                </tbody>
-              </table>
-
-
-            </div>
             <div id="settingskdrama1holder">
               <div id="settingskdrama1"></div>
               <div onclick="document.getElementById('showpopupInput').click()">
                 <input type="checkbox" id="showpopupInput" onclick="togglePopupController(event)">show this card on sort and on header click<br></div>
             </div>
+            <div id="coldefholder">
+              <div id="coldefholderheader">
+                <img src="https://www.svgrepo.com/show/526221/settings.svg" style="margin-right: 10px;">table settings
+                <div onclick="document.getElementById('hideonresortInput').click()">
+                  <img onclick="showAllColumns(event)" src="https://static-00.iconduck.com/assets.00/select-all-icon-512x512-h7e41rpz.png">
+                  <img style="margin-left: 7px;" onclick="hideMiscColumns(event)" src="https://static-00.iconduck.com/assets.00/select-all-off-icon-512x512-tyyanu6q.png">
+                </div>
+                <div onclick="hideColumnOnResort = !hideColumnOnResort; showSettings(); event.stopPropagation();">
+                  <input type="checkbox" id="hideonresortInput" onclick="hideColumnOnResort = !hideColumnOnResort; showSettings(); event.stopPropagation();">
+                  hide when unsorting
+                </div>
+              </div>
+              <br>
+              <div>
+                <table>
+                  <thead id="coldefthead">
+                  </thead>
+                  <tbody id="coldeftbody"></tbody>
+                </table>
+                <table>
+                  <thead id="coldefthead2">
+                  </thead>
+                  <tbody id="coldeftbody2"></tbody>
+                </table>
+              </div>
+              <div id="coldef"></div>
+            </div>
           </div>
         </div>
         <script id="populateColdefs">
 
-          let coldefthead = document.getElementById("coldefthead")
-          let coldeftheadtr = document.createElement("tr")
-          coldefthead.appendChild(coldeftheadtr)
-          
-          coldeftheadtr.appendChild(createElement("th", "<img src='https://cdn4.iconfinder.com/data/icons/flat-design-word-processing-set-5/24/table-column-512.png'>"))
-          coldeftheadtr.appendChild(createElement("th", "<img src='https://cdn-icons-png.flaticon.com/512/7183/7183242.png'>"))
-          coldeftheadtr.appendChild(createElement("th", "<img src='https://freeiconshop.com/wp-content/uploads/edd/image-outline-filled.png'>"))
-          let featureth = createElement("th", "feature")
-          featureth.colSpan = 2
-          coldeftheadtr.appendChild(featureth)
+          ["coldefthead", "coldefthead2"].forEach((theadid) => {
+            let coldefthead = document.getElementById(theadid)
+            let coldeftheadtr = document.createElement("tr")
+            coldefthead.appendChild(coldeftheadtr)
+            
+            coldeftheadtr.appendChild(createElement("th", "<img src='https://cdn4.iconfinder.com/data/icons/flat-design-word-processing-set-5/24/table-column-512.png'>"))
+            coldeftheadtr.appendChild(createElement("th", "<img src='https://cdn-icons-png.flaticon.com/512/7183/7183242.png'>"))
+            coldeftheadtr.appendChild(createElement("th", "<img src='https://freeiconshop.com/wp-content/uploads/edd/image-outline-filled.png'>"))
+            let featureth = createElement("th", "feature")
+            featureth.colSpan = 2
+            coldeftheadtr.appendChild(featureth)
+
+          })
 
           
           let coldeftbody = document.getElementById("coldeftbody")
+          let coldeftbody2 = document.getElementById("coldeftbody2")
           
 
+          let mid = sortnames.length / 2
           for (let i = 0; i < sortnames.length; i++) {
             if (i != MALE && i != SUP) {
               let coldeftr = document.createElement("tr")
-              coldeftbody.appendChild(coldeftr)
+              if (i <= mid)
+                coldeftbody.appendChild(coldeftr)
+              else
+                coldeftbody2.appendChild(coldeftr)
 
               sortpng = headerpngs[i]
 
@@ -1161,7 +1164,6 @@
               coldeftr.ondblclick = () => {
                 radio.click()
               }
-              coldeftbody.appendChild(coldeftr)
             }
           }
         </script>
@@ -1212,29 +1214,33 @@
           modalcontent.appendChild(createElement("h3", headerhtml))
           modalcontent.innerHTML += sortdesc
           modalcontent.innerHTML += "<hr>"
-          modalcontent.innerHTML += "#1 on this list"
-          modalcontent.innerHTML += sorti == i ? "" : " (currently sorted by " + sortnames[sorti] + ")" 
-          modalcontent.innerHTML += ": " + kdramas[kdrama1[TITLE]];
+          modalcontent.innerHTML += "<div style='background-color: f1d8f6;'><b>#1 on this list"
+                  + (sorti == i ? "" : " (currently sorted by " + sortnames[sorti] + ")" )
+                  + ": " + kdramas[kdrama1[TITLE]] + "</b></div>";
 
           let val = kdrama1[i]
 
-          if ((i >= CRYABILITY && i < ENDING)) {
-            modalcontent.innerHTML += "<br>" + (val == "" ? "No " + sortname + " listed." : sortname + ":<br>" + val)
-          } else if (i == ENDING) {
-
+          if (i == ENDING) {
             modalcontent.appendChild(getEndingDiv(kdrama1))
-          }
-          else if (i == SORTEDITIND) {
+          } else if (i == SORTEDITIND) {
             let numedits = kdramastoedits[kdrama1[TITLE]].length
             modalcontent.innerHTML += "<br>Featured in " + (numedits + " wyx tv edits")
-          } else if (i == HRS) {
-            modalcontent.innerHTML += "<br>" + (val == "" ? "No " + sortname + " listed." : val + " hours")
-          } else if (i == AUD) {
-            modalcontent.innerHTML += "<br>" + (val == "" ? "No " + sortname + " listed." : val + "% audience share")
-          } else if (i == YR) {
-            modalcontent.innerHTML += "<br>" + (val == "" ? "No " + sortname + " listed." : val)
-          } else if (i == SCORE) {
-            modalcontent.innerHTML += "<br>" + (val == "" ? "No " + sortname + " listed." : sortname + ": " + val)
+          } else {
+            if (val == "") {
+               modalcontent.innerHTML += "No " + sortname + " listed."
+            }
+
+            if ((i >= CRYABILITY && i < ENDING)) {
+              modalcontent.innerHTML += sortname + ":<br>" + val
+            } else if (i == HRS) {
+              modalcontent.innerHTML += "<br>" + val + " hours"
+            } else if (i == AUD) {
+              modalcontent.innerHTML += "<br>" + val + "% audience share"
+            } else if (i == YR) {
+              modalcontent.innerHTML += "<br>" + val
+            } else if (i == SCORE) {
+              modalcontent.innerHTML += "<br>" + sortname + ": " + val
+            }
           }
 
           modalcontent.appendChild(document.createElement("br"))
@@ -1340,14 +1346,46 @@
         slideTwo()
 
       }
+
+      function trySetMin(min) {
+        if (min >= minYr && min <= document.getElementById('maxyear').value)
+          document.getElementById('minyear').value = min
+        slideOne();
+      }
+      function trySetMax(max) {
+        if (max <= maxYr && max >= document.getElementById('minyear').value)
+          document.getElementById('maxyear').value = max
+        slideTwo();
+      }
     </script>
-    <div id="doublerangeslider">
-      <span id="minyearfb"></span> - <span id="maxyearfb"></span>
+    <span id="doublerangeslider"><div class="yearnav">
+      <img onclick=
+        "trySetMin(parseInt(document.getElementById('minyear').value) -1)" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-left-01-256.png"/>
       <br>
-      <div class="slider-track" onclick="clickSlider(event)"></div>
-      <input type="range" id="minyear" oninput="slideOne()" />
-      <input type="range" id="maxyear" oninput="slideTwo()" />
+      <img onclick=
+        "trySetMin(parseInt(document.getElementById('minyear').value) +1)" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-512.png"/>
     </div>
+      
+      <div id="sliders">
+        <div>
+        
+          <span>
+            <span id="minyearfb"></span> - <span id="maxyearfb"></span>
+          </span>
+  
+        </div>
+        <div class="slider-track" onclick="clickSlider(event)"></div>
+        <input type="range" id="minyear" oninput="slideOne()" />
+        <input type="range" id="maxyear" oninput="slideTwo()" />
+      </div>
+      <div class="yearnav">
+        <img onclick=
+          "trySetMax(parseInt(document.getElementById('maxyear').value) +1)" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-512.png"/>
+        <br>
+        <img onclick=
+          "trySetMax(parseInt(document.getElementById('maxyear').value) -1)" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-left-01-256.png"/>
+      </div>
+    </span>
 
     <div id="showResultsDiv">
       Show results <span id="numresultsfb">1</span><br>
@@ -1418,13 +1456,22 @@
   function getLabeledSectionIfExists(str, label) {
     return (str == "") ? "" : (label + ": " + str + "<br><hr>")
   }
+
+function getActorButton(actor, actortype) {
+  return "<button"+
+    (actortype == FEM ? " style='background-color: mistyrose;'" : 
+    (actortype == MALE ? " style='background-color: powderblue;'" : ""))+
+  " onclick=\"document.getElementById('actordd').value = '"+actor+"'; filtertable(); populateActorDetails();\">"+getActor(actor)+"</button>"
+}
   function getKdramaSubtitle(kdrama) {
     return "<b>" + kdrama[SCORE] + "/10</b><br> " + kdrama[YR] + " | " + kdrama[HRS] + " hrs | " +
       kdrama[AUD] + "% audience share | Starring " +
-      kdrama[FEM].map(actor => getActor(actor)).join(" and ") +
+
+
+      kdrama[FEM].map(actor => getActorButton(actor, FEM)).join(" and ") +
       ((kdrama[FEM].length == 0 || kdrama[MALE].length == 0) ? "" : " opposite ") +
-      kdrama[MALE].map(actor => getActor(actor)).join(" and ") +
-      (kdrama[SUP].length == 0 ? "" : (", along with " + kdrama[SUP].map(actor => getActor(actor)).join(", ")))
+      kdrama[MALE].map(actor => getActorButton(actor, MALE)).join(" and ") +
+      (kdrama[SUP].length == 0 ? "" : (", along with " + kdrama[SUP].map(actor => getActorButton(actor, SUP)).join(", ")))
   }
   function getKdramaReview(kdrama) {
     return getLabeledSectionIfExists(kdrama[PLOT], "Plot") +
@@ -1679,6 +1726,8 @@
         let td = createElement("td", boldText(kdrama[attr], sorted))
         if (sorted)
           td.style.backgroundColor = "#f1d8f6"
+        if (kdrama[attr] == "")
+          td.onclick = () => {console.log("several of these reviews were written retroactively and/or a very long time ago. Sorry not sorry for any missing or unexplained reviews.")}
         return td
       }
       if (showcolumns[YR])
