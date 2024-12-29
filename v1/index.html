@@ -1191,7 +1191,7 @@
 
     <div id="sortDiv">
       Sort by <br>
-      <select id="sortdd" onchange="populateTable();if (showPopupOnHeaderClick) {populateModal(event.currentTarget.value)};"></select>
+      <select id="sortdd" onchange="populateTable();if (showPopupOnHeaderClick) {modalcontent.style.height = null;populateModal(event.currentTarget.value)};"></select>
       <script id="populatesortdd">
 
         sortnames.forEach((sortname, i) => {
